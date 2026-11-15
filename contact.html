@@ -253,6 +253,15 @@ body>.wrap{width:100%}
 body>footer{margin-top:auto}
 body>main,body>.page:not([hidden]){margin-bottom:56px}
 .ph{font:italic 700 1.8rem/1.1 var(--disp);margin:26px 0 8px}.ph:first-child{margin-top:0}.pgmeta{margin:-8px 0 18px}
+
+/* covers: small hover animation */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .poster,.rcov,.rp{transition:transform .28s cubic-bezier(.2,.8,.3,1),box-shadow .28s ease,border-color .2s}
+  .poster:hover,.rcov:hover{transform:translateY(-5px) rotate(-1.5deg) scale(1.04);box-shadow:0 16px 30px rgba(0,0,0,.5)}
+  .rp:hover{transform:translateY(-5px) rotate(1.5deg) scale(1.04)}
+  .poster img,.rcov img,.rp img{transition:opacity .45s ease,transform .5s ease}
+  .poster:hover img,.rcov:hover img,.rp:hover img{transform:scale(1.07)}
+}
 </style>
 </head>
 <body>
@@ -287,7 +296,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
   <p class="small">Last updated <span id="upd"></span></p>
 </footer>
 <script>
-const DATA_PAGE = "data/collection.txt", RULES_PAGE = "data/rules.txt";
+const RULES_PAGE = "data/rules.txt";
 const FORM = { url: "https://api.web3forms.com/submit", accessKey: "7505f919-d54e-4854-9d0e-e676422bd271" };   // see README: free key from web3forms.com, requests go to your inbox
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -295,11 +304,20 @@ const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
 const CONTACT = { email: "" };
-function parseDate(t){ t = t.trim(); if(/^\d{4}(-\d{2}){0,2}$/.test(t)) return t;
-  const m = t.match(/^([A-Za-z]+)\.?\s*(?:(\d{1,2})(?:st|nd|rd|th)?,?\s*)?(\d{4})$/);
-  if(m){ const i = MONTHS.findIndex(x => x.toLowerCase().startsWith(m[1].slice(0, 3).toLowerCase()));
-    if(i >= 0) return m[3] + "-" + String(i + 1).padStart(2, "0") + (m[2] ? "-" + String(m[2]).padStart(2, "0") : ""); }
-  return t; }
+const MON3 = ["jan","feb|fev","mar","apr|abr","may|mai","jun","jul","aug|ago","sep|set","oct|out","nov","dec|dez"];
+function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 November 2026, 15/11/2026, 11/2026, "January 2017"...
+  t = String(t || "").trim().replace(/\s+/g, " ").replace(/[ ,T]+\d{1,2}:\d{2}(:\d{2})?(\s*[ap]m)?$/i, "");
+  if(/^\d{4}(-\d{2}){0,2}$/.test(t)) return t;
+  const p2 = n => String(n).padStart(2, "0"), mk = (y, mo, d) => y + "-" + p2(mo) + (d ? "-" + p2(d) : "");
+  const mi = s => MON3.findIndex(x => x.split("|").includes(s.slice(0, 3).toLowerCase()));
+  let m;
+  if(m = t.match(/^(\d{4})[\/.\-](\d{1,2})(?:[\/.\-](\d{1,2}))?$/)) return mk(m[1], +m[2], m[3] && +m[3]);
+  if(m = t.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/)){ let d = +m[1], mo = +m[2]; if(mo > 12 && d <= 12) [d, mo] = [mo, d]; return mk(m[3], mo, d); }   // day/month/year unless the 2nd number can't be a month
+  if(m = t.match(/^(\d{1,2})[\/.\-](\d{4})$/)) return mk(m[2], +m[1]);
+  if(m = t.match(/^([A-Za-z]{3,})\.?\s*(?:(\d{1,2})(?:st|nd|rd|th)?,?\s*)?(\d{4})$/)){ const i = mi(m[1]); if(i >= 0) return mk(m[3], i + 1, m[2] && +m[2]); }
+  if(m = t.match(/^(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+|de\s+)?([A-Za-z]{3,})\.?,?\s*(?:de\s+)?(\d{4})$/i)){ const i = mi(m[2]); if(i >= 0) return mk(m[3], i + 1, +m[1]); }
+  return t;
+}
 function fmtDate(d){ if(!d) return ""; if(!/^\d{4}(-\d{2}){0,2}$/.test(d)) return d;
   const [y, m, day] = d.split("-").map(Number); return (m ? MONTHS[m-1] + " " : "") + (day ? day + ", " : "") + y; }
 const STATUS_MAP = { active: { short: "Open for trade", tone: "" }, wants: { short: "Wants only", tone: "mid" }, gifts: { short: "Gifts only", tone: "mid" }, inactive: { short: "Not trading", tone: "off" } };
@@ -327,8 +345,18 @@ function drawRules(text){ let html = "", list = false; const close = () => { if(
     else if(b){ if(!list){ html += "<ul>"; list = true; } html += `<li>${esc(b[1])}</li>`; }
     else { close(); html += `<p>${esc(line)}</p>`; } }
   close(); $("rules").innerHTML = html; $("rules").hidden = !html; }
+const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
+async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
+async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
+async function loadArchiveText(){          // data/musicals.txt + recordings.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in.
+  const [site, mus, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "recordings.txt", "plays.txt"].map(getTxt));
+  const old = [mus, rec, pla].some(hasContent) ? null : await getTxt("collection.txt");
+  if(old === null && [site, mus, rec, pla].every(x => x === null)) throw new Error("no data");
+  if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
+  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Recordings\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+}
 async function getText(u){ const r = await fetch(u, { cache: "no-cache" }); if(!r.ok) throw 0; return r.text(); }
-getText(DATA_PAGE).then(t => drawSite(siteInfo(t))).catch(() => drawSite({ status: "active", updated: "", email: "", reddit: "" }));
+loadSiteText().then(t => drawSite(siteInfo(t))).catch(() => drawSite({ status: "active", updated: "", email: "", reddit: "" }));
 getText(RULES_PAGE).then(drawRules).catch(() => { $("rules").hidden = true; });
 
 const setStatus = t => $("rStatus").textContent = t;
