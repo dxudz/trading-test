@@ -19,14 +19,17 @@
 //         If a name doesn't match, add a line   Image: image/my-poster.png
 // "Recently added" follows the order here (add new shows at the bottom),
 //         or add a line   Added: 2026-11-10
+//         TIP: a show with an Added: date always ranks above shows without one, in any category.
+//         So put an Added: line on every new entry and it will show up as new.
 // SITE INFO (all optional, any order; the home page reads these too):
 //   Updated: October 30, 2026
 //   Status: active            one of: active | wants | gifts | inactive
 //   Status note: any extra line you'd like shown on the home page
 //   Email: you@example.com
-//   Reddit: https://www.reddit.com/user/yourname
+//   Reddit: https://www.reddit.com/user/WiredPossum4
 // Lines starting with // are ignored. A line of --- also separates entries.
 // ============================================================
+
 
 Updated: November 14, 2026
 Status: active
@@ -78,6 +81,7 @@ Broadway | January/February 1993 | Unknown Master | VOB + smalls, 2.98GB
 Cast: Mandy Patinkin (Marvin), Stephen Bogardus (Whizzer), Barbara Walsh (Trina), Chip Zien (Mendel), Andrew Harrison Leeds (alt Jason), Heather MacRae (Dr. Charlotte), Maureen Moore (Cordelia)
 
 Notes: There are at least two versions, 2.98 GB and 4.09 GB. The 2.98 GB DVD has better video and audio, and runs a few seconds longer (2:11:34 compared to 2:11:08)
+Added: 2026-11-11
 
 Falsettos
 
@@ -98,6 +102,7 @@ Broadway | October 2023 | TheatreCouple14 | MP4, 6.24GB + MP3 Tracked and Untrac
 Cast: Josh Gad (Bud), Andrew Rannells (Doug), Annaleigh Ashford (g/p Producer)
 
 Notes: Decent wide-shot phone boot from the Mezz. Some of the brighter scenes suffer from washout, and unfortunately some of the hats cant be read during a few scenes, but theres zero obstruction. Action only missed when the character comes through the door a few times that was too far upstage (couldnt even see it from my seat). Very lively audience who were absolutely living for Josh and Andrew breaking character in Act 2.
+Added: 2026-11-10
 
 Hadestown
 
@@ -119,6 +124,7 @@ Broadway | August 20, 2014 | SJ Bernly | VOB + smalls, 2.71GB
 Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak)
 
 Notes: HD capture filmed beautifully. I absolutely love Andrew's sassy portrayal of Hedwig. There are some heads that get in the way and the camera wanders at times, but otherwise a great capture.
+Added: 2026-11-10
 
 Hedwig and the Angry Inch
 
@@ -134,6 +140,7 @@ First US National Tour | November 8, 2008 | SunsetBlvd79 | VOB + smalls, 4.31GB
 Cast: Joseph Leo Bwarie (Frankie Valli), Jeremy Kushnier (Tommy Devito), Steve Gouveia (Nick Massi), Andrew Rannells (Bob Gaudio), Jonathan Hadley (Bob Crewe), Joseph Siravo (Gyp DeCarlo), Sarah Darling (Hal Miller)
 
 Notes: A Great capture of the tour in Canada, before the Canadian cast took over. Joseph did a great job as Frankie. The cast had lots of energy, great chemistry and big voices. A
+Added: 2026-11-10
 
 Little Shop of Horrors
 
@@ -169,6 +176,7 @@ Broadway, Shubert Theatre | April 26, 2023 | Medium Observation | MP4. 10.87GB
 Cast: J. Harrison Ghee (Jerry | Daphne), Christian Borle (Joe | Josephine), Adrianna Hicks (Sugar Kane), NaTasha Yvette Williams (Sweet Sue), Kevin Del Aguila (Osgood Fielding III), Adam Heller (Agent Mulligan), Mark Lotito (Spats Colombo), Angie Schworer (Minnie), Devon Hadsell (Nellie), Jenny Hill (Vivian), TyNia René Brandon (Dolores), Raena White (Ginger), Casey Garvin (Mack), KJ Hippensteel (Man with Suitcase/Bar Manager), Jarvis B. Manning Jr. (Sonny), Charles South (Toothpick Charlie), DeMarius R. Copes (Ensemble), Brian Martin (Ensemble), Abby Matsusaka (Ensemble), Amber Owens (Ensemble), Brendon Stimson (Ensemble), Richard Riaz Yoder (Ensemble)
 
 Notes: Absolutely flawless video. There is a small head on the bottom left but it only obstructs the very front of the stage. The whole cast was really fantastic.
+Added: 2026-11-13
 
 Something Rotten!
 
