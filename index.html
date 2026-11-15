@@ -437,7 +437,7 @@ function nextImg(el){
 }
 
 /* counts the shows in the same pasted text that collection.html uses */
-const LABEL = /^(cast|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
+const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
 const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
 function parseArchive(text){
   const out = { status: "", note: "", updated: "", email: "", reddit: "" };
@@ -462,7 +462,7 @@ function parseArchive(text){
     if(!cur){ if(plain) start(line); continue; }
     if(plain && !field && cur.has){ push(); start(line); continue; }
     if(lab){
-      const k = lab[1].toLowerCase(); field = /^(cast|details?|notes?)$/.test(k) ? k : null;
+      const k = lab[1].toLowerCase(); field = /^(cast|more details?|details?|notes?)$/.test(k) ? k : null;
       if(k === "image") cur.image = lab[2].trim(); else if(k === "added") cur.added = parseDate(lab[2]);
       if(k !== "image" && k !== "added") cur.has = true;
       continue;
