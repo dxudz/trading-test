@@ -393,14 +393,14 @@ function nextImg(el){
 }
 
 /* ---------- reads the pasted wishlist text ---------- */
-const LABEL = /^(cast|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
+const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
 const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
 function parseArchive(text){
   const bullets = []; let updated = "";
   const blocks = []; let cat = "Musical", cur = null, field = null;
   const push = () => { if(cur && cur.title) blocks.push(cur); cur = null; field = null; };
   const start = title => { cur = { title, category: cat, tags: [], link: "", loc: "", date: "", master: "", filetype: "", resolution: "", size: "",
-    cast: "", details: "", notes: "", image: "", added: "", info: false, has: false }; field = null; };
+    cast: "", details: "", notes: "", more: "", image: "", added: "", info: false, has: false }; field = null; };
   for(const raw of String(text).split(/\r?\n/)){
     const line = raw.trim();
     if(line.startsWith("//")) continue;
@@ -420,7 +420,7 @@ function parseArchive(text){
       if(k === "location") cur.loc = v.trim(); else if(k === "date") cur.date = parseDate(v); else if(k === "master") cur.master = v.trim();
       else if(k === "format" || k === "file") Object.assign(cur, parseTech(v));
       else if(k === "image") cur.image = v.trim(); else if(k === "added") cur.added = parseDate(v);
-      else { field = k.replace(/^details?$/, "details").replace(/^notes?$/, "notes"); cur[field] = v; }
+      else { field = k.replace(/^details?$/, "details").replace(/^notes?$/, "notes").replace(/^more details?$/, "more"); cur[field] = v; }
       if(k !== "image" && k !== "added") cur.has = true;
       continue;
     }
@@ -461,7 +461,7 @@ function viewing(v){
   const file = [v.master && "Master: " + v.master, v.filetype, v.resolution, v.size].filter(Boolean).join(" · ");
   const link = /^https?:\/\//i.test(v.link) ? `<a class="pill" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer">${esc(linkLabel(v.link))}</a>` : "";
   const tags = v.tags.map(t => `<span class="pill">${esc(t)}</span>`).join("") + link;
-  const f = [["Cast", v.cast], ["Details", v.details], ["Notes", v.notes]]
+  const f = [["Cast", v.cast], ["Details", v.details], ["Notes", v.notes], ["More details", v.more]]
     .filter(r => r[1]).map(r => `<p class="f"><b>${r[0]}</b>${esc(r[1])}</p>`).join("");
   return `<div class="v"><div class="vh"><h3>${esc(fmtDate(v.date) || "Any date")}</h3></div>
     ${v.loc ? `<p class="where">${esc(v.loc)}</p>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}${file ? `<p class="file">${esc(file)}</p>` : ""}${f}</div>`;
@@ -484,7 +484,7 @@ function render(){
   const q = norm($("q").value.trim()), sort = $("sort").value, toks = q.split(/\s+/).filter(Boolean);
   const base = SHOWS.map(s => ({ ...s, total: s.viewings.length,
     viewings: !toks.length ? s.viewings : s.viewings.filter(v => {
-      const t = norm([s.title, s.category, fmtDate(v.date), v.date, v.loc, v.tags.join(" "), v.master, v.filetype, v.resolution, v.size, v.cast, v.details, v.notes].join(" "));
+      const t = norm([s.title, s.category, fmtDate(v.date), v.date, v.loc, v.tags.join(" "), v.master, v.filetype, v.resolution, v.size, v.cast, v.details, v.notes, v.more].join(" "));
       return toks.every(w => t.includes(w)); }) })).filter(s => s.viewings.length);
   const rows = base.filter(s => !cat || s.category === cat);
   const by = {
