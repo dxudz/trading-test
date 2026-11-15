@@ -1,0 +1,125 @@
+// ============================================================
+// YOUR WISHLIST. Same pasting style as the collection, plus a quick bullet list.
+//
+//   - Hedwig and the Angry Inch 2014 Audios    a line starting with "- " goes into the
+//                                               bullet list at the top. Use it for vague
+//                                               wants or anything you're not sure about.
+//   # Musicals / # Plays / # Recordings         sets the category for the detailed wants below
+//   Title
+//   Location | Month Year | Master | Filetype (Resolution), Filesize
+//   Cast: ...        Notes: ...        (fill in only what you know, "Any" is fine)
+//   EVERYTHING IS OPTIONAL. Leave out whatever you don't have, or fill only part of the
+//   Location | Month Year | Master | Filetype line (for example: Broadway | 2017). You can
+//   also give single items their own line:  Location: ...  Date: ...  Master: ...  Format: MKV (HD), 10GB
+//   A show needs at least one line besides its title (tags, cast, notes, a link...).
+//   For a bare title, put --- on the line under it.
+//   Image: image/my-poster.png                 optional; otherwise the picture is found by the show's name
+//                                               in your "images" or "image" folder (falsettos.jpg, Falsettos.png...)
+//   Updated: November 11, 2026                  optional; shown in the header and footer
+//
+// Lines starting with // are ignored.
+// ============================================================
+
+- Anything with Andrew Rannells/Christian Borle
+- Wicked w/ Idina Menzel or Stephanie J Block
+- Hedwig Andrew Rannells Audios
+- Hedwig w/ JCM or Lena Hall
+- The Great Gatsby w/ Will Branner
+
+
+# Musicals
+
+The Book of Mormon
+
+Broadway | 2011 | House-Cam | VOB + smalls, 2GB
+Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M. James (Nabulungi), Rory O'Malley (Elder McKinley)
+
+Notes: House camera. Clear audio, missing VTS_01_3.VOB and .BUP files.
+
+The Book of Mormon
+
+Broadway (Preview) | March 1, 2011 | NYCG8R | VOB + smalls, 3.66GB
+Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M. James (Nabulungi), Rory O'Malley (Elder McKinley), Michael Potts (Mafala Hatimbi), Lewis Cleale (Mission President), Kevin Duda (Cunningham's Father), Darlesia Cearcy (Sadaka), Clark Johnsen (Elder Michaels), Scott Barnhardt (Elder Thomas), Justin Bohon (Elder Zelder), John Eric Parker (Guard), Asmeret Ghebremichael (Ensemble)
+
+Notes: Very nice video of the show however a bar can be visible in wide shots but it doesnt interfere with anything. Disc also includes behind the scenes footage, interviews and reviews.
+
+Falsettos 
+
+Broadway | December 30, 2016 (Matinée) | SJ Bernly |VOB + smalls, 8.22GB
+Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (Trina), Brandon Uranowitz (Mendel), Anthony Rosenthal (Jason), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia)
+
+Notes: Great clear capture with no washout. One quick dropout in the first few minutes of Act One, and a railing that can be seen occasionally but never affects the action.
+
+Gutenberg! The Musical!
+
+Never Gift
+Broadway | December 17, 2023 | bikinibottomday | MP4, 8.1GB
+Cast: Josh Gad (Bud), Andrew Rannells (Doug), Taran Killam (g/p Producer)
+
+Notes: Okay 4K capture of this hysterical show! Act One has a major railing obstruction that blocks off the center of the stage and means a good portion of main action is missed. The filming in the first ten minutes is messy and wanders and blacks out more than usual. Act Two is a lot better with a minor head and railing obstruction and most action captured. Wandering/readjustment and unfocusing throughout. Includes curtain call, audio fed from external source.
+
+Gutenberg! The Musical!
+
+Broadway | December, 2023 | StarCuffedJeans | MP4, 4.9GB
+Cast: Josh Gad (Bud), Andrew Rannells (Doug), Jackie Hoffman (g/p Producer)
+
+Hairspray
+
+Broadway | January 31, 2006 | Pigerty | ?, ?GB
+Cast: Michelle Dowdy (u/s Tracy Turnblad), John Pinette (Edna Turnblad), Darlene Love (Motormouth Maybelle), Tracy Miller (Penny Pingleton), Leah Hocking (Velma Von Tussle), Becky Gulsvig (Amber Von Tussle), Stephen DeRosa (Wilbur Turnblad), Andrew Rannells (Link Larkin), Michael Cunio (u/s Corny Collins), Tevin Campbell (Seaweed J. Stubbs), Chloe Smith (Little Inez), Julie Halston (Prudy Pingleton/Gym Teacher/Matron), Kevin Meaney (Mr. Pinky/Harriman F. Spritzer/Principal/Guard), Cameron Adams (Brenda), Tyler Hanes (Fender), Anne Warren (Lou Ann), Lindsay Nicole Chambers (Tammy), Todd Michel Smith (IQ), Donna Vivino (Shelley), Bryan West (Sketch), Tyrick Wiltez Jones (Duane), Arbender Robinson (Gilbert), Terita R. Redd (Lorraine), Carla J. Hargrove (Dynamite), Judine Somerville (Dynamite), Candice Marie Woods (Dynamite), Rashad Naylor (Thad)
+
+Notes: Blackouts during It Takes Two and after Edna’s You Cant Stop The Beat. Does not include curtain call.
+
+Jersey Boys
+
+San Francisco (Pre-Vegas) | December 22, 2007 | juniper47 | MP4, 2.18GB
+Cast: Rick Faugno (Frankie Valli), Bryan McElroy (Tommy Devito), Jeff Leibow (Nick Massi), Andrew Rannells (Bob Gaudio), Joyce Chittick (Mary Delgado), Jonathan Hadley (Bob Crewe), Jason Martinez (Norm Waxman), Julia Krohn (Lorraine), Lauren Tartaglia (s/w Lorraine), Jonathan Gerard Rodriguez (Joey), Natalie Bradshaw (Francine), Ken Krugman (Gyp DeCarlo), John Salvatore (Billy Dixon), Michael James Scott (Hal Miller), Kristofer McNeeley (Hank Majewski)
+
+Notes: Lorraine is played by Julia Krohn in Act 1 and Lauren Tartaglia in Act 2. A little shaky at times, and a little obstruction from some heads downstage. Great energy from this cast, which became the original Las Vegas cast. A-
+
+Jersey Boys
+
+Never Gift
+Broadway | July 8, 2009 | juniper47 | VOB + smalls, 4.33GB
+Cast: Jarrod Spector (Frankie Valli), Dominic Nolfi (Tommy Devito), Matt Bogart (Nick Massi), Andrew Rannells (Bob Gaudio), Bridget Berger (Mary Delgado), Peter Gregus (Bob Crewe), Miles Aubrey (Norm Waxman), Heather Ferguson (Lorraine), Russell Fischer (Joey), Sara Schmidt (Francine), Mark Lotito (Gyp DeCarlo), Kris Coleman (Hal Miller), Erik Bates (Hank Majewski), Joe Payne (Thug), Ken Dow (Thug)
+
+Notes: Filmed in 16:9 widescreen, SD, minimal obstructions except for in the widest shots. Zooms and wide-shots to focus on characters or larger ensemble numbers. So much fun seeing Andrew Rannells as Bob Gaudio, when he was just starting to become a name on Broadway. NO PART OF THIS VIDEO IS EVER TO BE POSTED/SHARED/GIFTED ANYWHERE ONLINE including but not limited to YouTube, Tumblr, Vimeo, Reddit, etc.
+
+Pokémon Live!
+
+First US National Tour | September, 2000 | Press Reel | MP4, 253MB
+
+Pokémon Live!
+
+First US National Tour | October 1, 2000 | House-Cam | MP4, 712MB
+
+Pokémon Live!
+
+First US National Tour | November, 2000 | House-Cam | MP4, 488MB
+
+Pokémon Live!
+
+First US National Tour | December 30, 2000 | House-Cam | MP4, 712MB
+
+Some Like it Hot
+
+Never Gift (Has Subtitles Available)
+Broadway, Shubert Theatre | February 26, 2026 | bikinibottomday | MP4  (4K), 9.95GB
+Cast: Jarvis B. Manning Jr. (u/s Jerry | Daphne), Christian Borle (Joe | Josephine), Adrianna Hicks (Sugar Kane), NaTasha Yvette Williams (Sweet Sue), Kevin Del Aguila (Osgood Fielding III), Adam Heller (Agent Mulligan), Mark Lotito (Spats Colombo), Ian Campayno (s/w Ensemble), Julius Williams (s/w Ensemble), Kayla Pecchioni (s/w Ensemble)
+
+Notes: Great 4K capture of this hilarious musical! More spotlight washout than usual on the wideshots, and some light obstruction on the bottom that doesn’t really block anything. Some wandering throughout. Includes curtain call, audio fed from external source. Folder includes subtitle files made by Buffooligan.
+
+Tammy Faye
+
+Off-West End | October, 2022 | Lasagna | MP4, 10.4GB
+Cast: Katie Brayben (Tammy Faye), Andrew Rannells (Jim Baker), Zubin Varla, Amy Booth-Steel, Richard Dempsey, Gemma Sutton, Peter Caulfield, Nicholas Rowe, Steve John Shepherd, Martin Sarreal, Ashley Campbell, Fred Haig, Colin Burnicle, Danny Collins, Georgia Louise, Robyn Rose, Kelly Agbowu
+
+Notes: Great capture of this new show! Shot around heads with some really nice close-ups.
+
+Tammy Faye
+
+Never Gift
+Off-West End | November, 2022 | Jagweed | MP4, 10.56GB
+Cast: Katie Brayben (Tammy Faye), Andrew Rannells (Jim Bakker), Zubin Varla (Jerry Falwell), Fred Haig (Marvin Gorman/TV Ad Voice/Monson/Proctologist), Martin Sarreal (John Fletcher), Steve John Shepherd (Reagan/Archbishop of Canterbury/Jimmy Swaggart), Nicholas Rowe (The Pope/Pat Robertson/Ted Turner), Peter Caulfield (Billy Graham/Larry Flint/Judge/Pontius Pilate), Gemma Sutton (Jessica Hahn/Nurse/Announcer/Receptionist), Richard Dempsey (Paul Crouch/Ally the Alligator/Colonel Sanders), Amy Booth-Steel (Susie Moppet/Jan Crouch/Lori Beth), Ashley Campbell (Oral Roberts/Charles Shepherd/Steve Pieters/Reggie/PTL Singer), Colin Burnicle (Jesus/PTL Singer), Danny Collins (PTL Singer/Letter Writer/FBI), Georgia Louise (PTL Singer/Prime Time Girl/Heritage Partner/Jim's Mother/Production Manager/Choir Member), Robyn Rose (PTL Singer/Nurse/Prime Time Girl/Newsreader/Heritage Waitress/Linda), Kelly Agbowu (PTL Singer/Nurse/Prime Time Girl/Letter Writer/Heritage Partner/FBI Agent)
+
+Notes: Pretty much a perfect capture of this show. Nice mix of wides, mediums and close ups. Captures all of the action well. Occasionally, there is a focus issue and a head in frame which never obstructs what’s happening onstage. Recording includes the curtain call and a shot of the outside of the theatre.
