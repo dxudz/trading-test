@@ -191,7 +191,8 @@ body{font-size:17px}
 .search,select{font-size:1rem}.panel{font-size:1.05rem}
 .heroin::before{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none;animation:none;z-index:1;
   background:linear-gradient(90deg,rgba(33,29,25,.9) 0,rgba(33,29,25,.62) 48%,rgba(33,29,25,.3) 100%)}
-.herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%;filter:blur(7px);transform:scale(1.08);z-index:0}
+.herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%;filter:blur(3px);transform:scale(1.08);z-index:0}
+@media(prefers-reduced-motion:no-preference){.herobg{animation:drift 16s ease-in-out infinite alternate}}
 @media(max-width:640px){.heroin::before{background:linear-gradient(180deg,rgba(33,29,25,.8),rgba(33,29,25,.55))}}
 .heroin::after{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none}
 .tm{display:none}
@@ -252,6 +253,15 @@ body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
 body>.wrap{width:100%}
 body>footer{margin-top:auto}
 body>main,body>.page:not([hidden]){margin-bottom:56px}
+
+/* covers: small hover animation */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .poster,.rcov,.rp{transition:transform .28s cubic-bezier(.2,.8,.3,1),box-shadow .28s ease,border-color .2s}
+  .poster:hover,.rcov:hover{transform:translateY(-5px) rotate(-1.5deg) scale(1.04);box-shadow:0 16px 30px rgba(0,0,0,.5)}
+  .rp:hover{transform:translateY(-5px) rotate(1.5deg) scale(1.04)}
+  .poster img,.rcov img,.rp img{transition:opacity .45s ease,transform .5s ease}
+  .poster:hover img,.rcov:hover img,.rp:hover img{transform:scale(1.07)}
+}
 </style>
 </head>
 <body>
@@ -339,7 +349,7 @@ const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const TABS = [["Musical","Musicals"],["Play","Plays"],["Recording","Recordings"],["","All"]];
+const TABS = [["Musical","Musicals"],["Recording","Recordings"],["Play","Plays"],["","All"]];
 const REQ_KEY = "archive-requests";
 const reqSet = new Set();
 try{ JSON.parse(localStorage.getItem(REQ_KEY) || "[]").forEach(k => reqSet.add(k)); }catch{}
@@ -376,14 +386,18 @@ function nextImg(el){
   if(l.length){ el.dataset.alt = JSON.stringify(l.slice(1)); el.src = l[0]; } else el.remove();
 }
 
-function parseDate(t){
-  t = t.trim();
+const MON3 = ["jan","feb|fev","mar","apr|abr","may|mai","jun","jul","aug|ago","sep|set","oct|out","nov","dec|dez"];
+function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 November 2026, 15/11/2026, 11/2026, "January 2017"...
+  t = String(t || "").trim().replace(/\s+/g, " ").replace(/[ ,T]+\d{1,2}:\d{2}(:\d{2})?(\s*[ap]m)?$/i, "");
   if(/^\d{4}(-\d{2}){0,2}$/.test(t)) return t;
-  const m = t.match(/^([A-Za-z]+)\.?\s*(?:(\d{1,2})(?:st|nd|rd|th)?,?\s*)?(\d{4})$/);
-  if(m){
-    const i = MONTHS.findIndex(x => x.toLowerCase().startsWith(m[1].slice(0, 3).toLowerCase()));
-    if(i >= 0) return m[3] + "-" + String(i + 1).padStart(2, "0") + (m[2] ? "-" + String(m[2]).padStart(2, "0") : "");
-  }
+  const p2 = n => String(n).padStart(2, "0"), mk = (y, mo, d) => y + "-" + p2(mo) + (d ? "-" + p2(d) : "");
+  const mi = s => MON3.findIndex(x => x.split("|").includes(s.slice(0, 3).toLowerCase()));
+  let m;
+  if(m = t.match(/^(\d{4})[\/.\-](\d{1,2})(?:[\/.\-](\d{1,2}))?$/)) return mk(m[1], +m[2], m[3] && +m[3]);
+  if(m = t.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/)){ let d = +m[1], mo = +m[2]; if(mo > 12 && d <= 12) [d, mo] = [mo, d]; return mk(m[3], mo, d); }   // day/month/year unless the 2nd number can't be a month
+  if(m = t.match(/^(\d{1,2})[\/.\-](\d{4})$/)) return mk(m[2], +m[1]);
+  if(m = t.match(/^([A-Za-z]{3,})\.?\s*(?:(\d{1,2})(?:st|nd|rd|th)?,?\s*)?(\d{4})$/)){ const i = mi(m[1]); if(i >= 0) return mk(m[3], i + 1, m[2] && +m[2]); }
+  if(m = t.match(/^(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+|de\s+)?([A-Za-z]{3,})\.?,?\s*(?:de\s+)?(\d{4})$/i)){ const i = mi(m[2]); if(i >= 0) return mk(m[3], i + 1, +m[1]); }
   return t;
 }
 function parseTech(t){            // "MKV (HD), 10.26GB"
@@ -419,7 +433,7 @@ function parseArchive(text){
       const k = lab[1].toLowerCase(), v = lab[2]; field = null;
       if(k === "location") cur.loc = v.trim(); else if(k === "date") cur.date = parseDate(v); else if(k === "master") cur.master = v.trim();
       else if(k === "format" || k === "file") Object.assign(cur, parseTech(v));
-      else if(k === "image") cur.image = v.trim(); else if(k === "added") cur.added = v.trim();
+      else if(k === "image") cur.image = v.trim(); else if(k === "added") cur.added = parseDate(v);
       else { field = k.replace(/^details?$/, "details").replace(/^notes?$/, "notes"); cur[field] = v; }
       if(k !== "image" && k !== "added") cur.has = true;
       continue;
@@ -451,7 +465,17 @@ function parseArchive(text){
   }));
   return shows;
 }
-let RAW=""; try{ const r=await fetch("data/collection.txt",{cache:"no-cache"}); if(!r.ok) throw 0; RAW=await r.text(); }catch{ document.querySelector("main").insertAdjacentHTML("afterbegin",'<p class="empty">Could not load data/collection.txt. If you opened this file from your computer, view the site through GitHub Pages (or a local server) instead.</p>'); }
+const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
+async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
+async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
+async function loadArchiveText(){          // data/musicals.txt + recordings.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in.
+  const [site, mus, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "recordings.txt", "plays.txt"].map(getTxt));
+  const old = [mus, rec, pla].some(hasContent) ? null : await getTxt("collection.txt");
+  if(old === null && [site, mus, rec, pla].every(x => x === null)) throw new Error("no data");
+  if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
+  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Recordings\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+}
+let RAW=""; try{ RAW = await loadArchiveText(); }catch{ document.querySelector("main").insertAdjacentHTML("afterbegin",'<p class="empty">Could not load the files in the data folder. If you opened this file from your computer, view the site through GitHub Pages (or a local server) instead.</p>'); }
 window.imgOk=imgOk; window.nextImg=nextImg;
 const SHOWS = parseArchive(RAW);
 { const q = new URLSearchParams(location.search).get("cat");
@@ -573,7 +597,7 @@ function reqItem(k){
 }
 function renderReq(){
   $("reqUl").innerHTML = reqSet.size ? [...reqSet].map(reqItem).join("")
-    : `<li class="none">Nothing here yet. Head to the <a href="#collection">collection</a> and tap “+ Request” on a show.</li>`;
+    : `<li class="none">Nothing here yet.</li>`;
   $("reqForm").hidden = !reqSet.size;
 }
 const toggle = k => { reqSet.has(k) ? reqSet.delete(k) : reqSet.add(k); saveReq(); setStatus(""); render(); renderReq(); };
