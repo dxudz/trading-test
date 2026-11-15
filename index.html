@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>wiredPossum4's List</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎟️</text></svg>">
+<title>WiredPossum4's Collection</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☘️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,700;1,500;1,700;1,800&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@500;600;700;800&family=Inter+Tight:wght@700;800&family=Yellowtail&display=swap" rel="stylesheet">
@@ -218,20 +218,95 @@ a.ctile:hover{border-color:var(--green)}
 .poster img,.rp img,.rcov img{opacity:0}
 .poster img.ok,.rp img.ok,.rcov img.ok{opacity:1}
 @media(prefers-reduced-motion:no-preference){.poster img,.rp img,.rcov img{transition:opacity .45s ease}}
+
+/* ===== v2 tweaks: bigger text, hero photo, tools, phone layout ===== */
+body{font-size:17px}
+.blk{font-size:clamp(2.7rem,6.4vw,5.4rem)}
+.sub{max-width:46ch;font-size:1rem;line-height:1.55}
+.hmeta{font-size:.85rem;align-items:center}
+.meta{font-size:1.02rem}.v h3{font-size:1.2rem}.where{font-size:1.05rem}
+.pill{font-size:.82rem}.file{font-size:.92rem}.v p.f{font-size:1.02rem;line-height:1.6}
+.req{font-size:.85rem;padding:5px 14px}
+.intro{font-size:1.05rem}.stext{font-size:1.02rem}.snote{font-size:.92rem}
+.ctile small{font-size:.9rem}.rtxt span{font-size:1rem}
+.search,select{font-size:1rem}.panel{font-size:1.05rem}
+.heroin::before{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none;animation:none;z-index:1;
+  background:linear-gradient(90deg,rgba(33,29,25,.9) 0,rgba(33,29,25,.62) 48%,rgba(33,29,25,.3) 100%)}
+.herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%;filter:blur(7px);transform:scale(1.08);z-index:0}
+@media(max-width:640px){.heroin::before{background:linear-gradient(180deg,rgba(33,29,25,.8),rgba(33,29,25,.55))}}
+.heroin::after{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none}
+.tm{display:none}
+.tg{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--cf) 40%,transparent);background:transparent;color:var(--cf);display:grid;place-items:center;cursor:pointer;padding:0;z-index:2}
+.tg:hover{background:color-mix(in srgb,var(--cf) 16%,transparent)}
+.tg svg{transition:transform .2s}.card.collapsed .tg svg{transform:rotate(-90deg)}
+h2.t{padding-right:48px}
+.card.collapsed .viewings{display:none}.card.collapsed .body{padding-bottom:24px}
+.toolrow{display:flex;justify-content:flex-end;margin:0 0 10px}
+.mini{font:700 .85rem Manrope,sans-serif;color:var(--muted);background:none;border:1.5px solid var(--line);border-radius:99px;padding:6px 14px;cursor:pointer}
+.mini:hover{color:var(--ink);border-color:var(--green)}
+#lb{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:18px;background:rgba(20,17,14,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb img{max-width:min(94vw,900px);max-height:90vh;object-fit:contain;border-radius:14px;border:4px solid #f6f0e1;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.poster:has(img.ok),.rcov:has(img.ok){cursor:zoom-in}
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 12px}
+  nav{padding:8px 10px 0}
+  .navin{border-radius:22px;padding:8px 12px;gap:6px 10px}
+  .brand{font-size:.95rem;margin-right:auto;gap:4px}.brand i{font-size:1.2rem}
+  #trade{display:none}
+  .tm:not([hidden]){display:inline-flex;font-size:.72rem;padding:4px 11px}
+  .reqbtn{font-size:.78rem;padding:7px 11px}.reqbtn b{margin-left:6px;padding:0 7px}
+  .links{flex:0 0 100%;order:5;overflow-x:auto;scrollbar-width:none;margin:0 -4px}
+  .links::-webkit-scrollbar{display:none}
+  .links a{padding:7px 12px;font-size:14px}
+  .wrap.hero{padding-top:14px}
+  .heroin{border-radius:22px}
+  .hl{padding:20px 20px 6px;gap:16px}
+  .blk{font-size:clamp(2.4rem,12.5vw,3.6rem)}.scr{font-size:clamp(2rem,9vw,2.6rem)}
+  .sub{max-width:none;font-size:.88rem}
+  .hr{padding:10px 14px 18px}.glass{padding:14px}
+  #collection{padding-top:26px}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tab{min-height:68px;padding:12px 14px;border-radius:20px;font-size:1.15rem}
+  .alpha a,.alpha span{min-width:26px;padding:3px 5px;font-size:.85rem}
+  .letter{font-size:2.3rem}.list{gap:20px}
+  .card{grid-template-columns:92px 1fr;column-gap:14px;padding:16px 16px 4px;border-radius:24px}
+  .stub{grid-column:1;grid-row:1/3;display:block;padding:0;border:0;background:none;border-radius:0}
+  .poster{position:relative;top:0;width:92px;border-width:3px;border-radius:14px}
+  .body{display:contents}
+  h2.t{grid-column:2;grid-row:1;align-self:end;margin:0 0 4px;font-size:1.4rem;padding-right:42px}
+  .meta{grid-column:2;grid-row:2;align-self:start;margin:0;font-size:.9rem}
+  .viewings{grid-column:1/-1;grid-row:3;margin:16px 0 4px;padding-left:22px}
+  .card.collapsed .viewings{display:none}
+  .tg{top:14px;right:14px}
+  .vh{flex-wrap:wrap}.cp{width:36px;height:36px}
+  .where{font-size:.98rem}.v p.f{font-size:.95rem}
+  .pg{padding-top:34px}.pt{font-size:2.4rem}.panel{padding:20px;border-radius:26px}
+  .btn{width:100%}
+  .rcov{width:64px}
+  footer{border-radius:30px 30px 0 0}
+}
+
+/* footer sticks to the bottom on short pages */
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+body>.wrap{width:100%}
+body>footer{margin-top:auto}
+body>main,body>.page:not([hidden]){margin-bottom:56px}
 </style>
 </head>
 <body>
 <nav id="nav"><div class="navin">
-  <a class="brand" href="index.html"><i>wiredPossum4's</i>List</a>
-  <div class="links"><a class="on" href="index.html">Home</a><a href="collection.html#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="collection.html#about">About &amp; Rules</a><a href="#contact">Contact</a></div>
+  <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
+  <div class="links"><a class="on" href="index.html">Home</a><a href="collection.html#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="contact.html">Contact &amp; Rules</a></div>
   <span class="trade" id="trade" hidden></span>
   <a class="reqbtn" href="collection.html#request">Request List <b id="reqN">0</b></a>
 </div></nav>
 
-<header class="wrap hero"><div class="heroin">
+<header class="wrap hero"><div class="heroin"><img class="herobg" src="image/header.webp" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2">–</span></span></div>
-    <h1><span class="scr">wiredPossum4's</span> <span class="blk">List</span></h1>
+    <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
     <div class="hbot">
       <!-- YOUR INTRODUCTION: edit these few lines -->
       <p class="intro">Hi, I’m glad you’re here! This is where I keep track of every musical and play I’ve seen on stage, along with the recordings I’ve collected. Have a look around, and send me a request if something catches your eye.</p>
@@ -280,13 +355,14 @@ a.ctile:hover{border-color:var(--green)}
    ============================================================ */
 const DATA_PAGE = "data/collection.txt";
 const FALLBACK = { status: "active", note: "", updated: "October 30, 2026",
-  email: "you@example.com", reddit: "https://www.reddit.com/user/yourname",
+  email: "you@example.com", reddit: "https://www.reddit.com/user/WiredPossum4",
   musicals: { titles: 1, shows: 2 }, plays: { titles: 1, shows: 1 }, recordings: { titles: 1, shows: 1 },
   recent: [ { title: "Example Cast Album", category: "Recording", image: "" },
             { title: "Hamlet", category: "Play", image: "" },
             { title: "Falsettos", category: "Musical", image: "" } ] };
 
 const $ = id => document.getElementById(id);
+const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -450,7 +526,7 @@ function draw(d){
   drawRecent(d.recent || []);
 
   $("contactLinks").innerHTML = [d.email && `<a href="mailto:${esc(d.email)}">${esc(d.email)}</a>`,
-    d.reddit && `<a href="${esc(d.reddit)}" target="_blank" rel="noopener">Reddit profile</a>`].filter(Boolean).join(" · ");
+    d.reddit && `<a href="${esc(d.reddit)}" target="_blank" rel="noopener">${esc(redditName(d.reddit))}</a>`].filter(Boolean).join(" · ");
 }
 
 try{ $("reqN").textContent = JSON.parse(localStorage.getItem("archive-requests") || "[]").length; }catch{}
