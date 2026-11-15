@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Collection | wiredPossum4's List</title>
+<title>Collection | WiredPossum4's Collection</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎟️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,700;1,500;1,700;1,800&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@500;600;700;800&family=Inter+Tight:wght@700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,700;1,500;1,700;1,800&family=Manrope:wght@500;600;700;800&family=Inter+Tight:wght@700;800&family=Yellowtail&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#2f2a24;--bg2:#24201b;--surface:#40382e;--surface2:#4c4337;--ink:#f6f0e1;--muted:#b9ad98;--line:#4f4639;
   --green:#9bad50;--green-d:#6f8030;--orange:#b5562f;--orange-d:#8f4120;--orange-l:#df7f52;
-  --disp:Besley,Georgia,serif;--mono:"Courier Prime","Courier New",monospace}
+  --disp:Besley,Georgia,serif;--mono:Verdana,Geneva,"DejaVu Sans",sans-serif}
 *{box-sizing:border-box}
 html{scroll-padding-top:calc(var(--nav,70px) + 70px)}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -177,11 +177,80 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
 .poster img,.rp img,.rcov img{opacity:0}
 .poster img.ok,.rp img.ok,.rcov img.ok{opacity:1}
 @media(prefers-reduced-motion:no-preference){.poster img,.rp img,.rcov img{transition:opacity .45s ease}}
+
+/* ===== v2 tweaks: bigger text, hero photo, tools, phone layout ===== */
+body{font-size:17px}
+.blk{font-size:clamp(2.7rem,6.4vw,5.4rem)}
+.sub{max-width:46ch;font-size:1rem;line-height:1.55}
+.hmeta{font-size:.85rem;align-items:center}
+.meta{font-size:1.02rem}.v h3{font-size:1.2rem}.where{font-size:1.05rem}
+.pill{font-size:.82rem}.file{font-size:.92rem}.v p.f{font-size:1.02rem;line-height:1.6}
+.req{font-size:.85rem;padding:5px 14px}
+.intro{font-size:1.05rem}.stext{font-size:1.02rem}.snote{font-size:.92rem}
+.ctile small{font-size:.9rem}.rtxt span{font-size:1rem}
+.search,select{font-size:1rem}.panel{font-size:1.05rem}
+.heroin::before{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none;
+  background:linear-gradient(90deg,rgba(33,29,25,.9) 0,rgba(33,29,25,.62) 48%,rgba(33,29,25,.3) 100%),url(image/header.webp) 60% 28%/cover no-repeat;
+  filter:blur(7px)}
+.heroin::after{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none}
+.tm{display:none}
+.tg{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--cf) 40%,transparent);background:transparent;color:var(--cf);display:grid;place-items:center;cursor:pointer;padding:0;z-index:2}
+.tg:hover{background:color-mix(in srgb,var(--cf) 16%,transparent)}
+.tg svg{transition:transform .2s}.card.collapsed .tg svg{transform:rotate(-90deg)}
+h2.t{padding-right:48px}
+.card.collapsed .viewings{display:none}.card.collapsed .body{padding-bottom:24px}
+.toolrow{display:flex;justify-content:flex-end;margin:0 0 10px}
+.mini{font:700 .85rem Manrope,sans-serif;color:var(--muted);background:none;border:1.5px solid var(--line);border-radius:99px;padding:6px 14px;cursor:pointer}
+.mini:hover{color:var(--ink);border-color:var(--green)}
+#lb{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:18px;background:rgba(20,17,14,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb img{max-width:min(94vw,900px);max-height:90vh;object-fit:contain;border-radius:14px;border:4px solid #f6f0e1;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.poster:has(img.ok),.rcov:has(img.ok){cursor:zoom-in}
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 12px}
+  nav{padding:8px 10px 0}
+  .navin{border-radius:22px;padding:8px 12px;gap:6px 10px}
+  .brand{font-size:.95rem;margin-right:auto;gap:4px}.brand i{font-size:1.2rem}
+  #trade{display:none}
+  .tm:not([hidden]){display:inline-flex;font-size:.72rem;padding:4px 11px}
+  .reqbtn{font-size:.78rem;padding:7px 11px}.reqbtn b{margin-left:6px;padding:0 7px}
+  .links{flex:0 0 100%;order:5;overflow-x:auto;scrollbar-width:none;margin:0 -4px}
+  .links::-webkit-scrollbar{display:none}
+  .links a{padding:7px 12px;font-size:14px}
+  .wrap.hero{padding-top:14px}
+  .heroin{border-radius:22px}
+  .hl{padding:20px 20px 6px;gap:16px}
+  .blk{font-size:clamp(2.4rem,12.5vw,3.6rem)}.scr{font-size:clamp(2rem,9vw,2.6rem)}
+  .sub{max-width:none;font-size:.88rem}
+  .hr{padding:10px 14px 18px}.glass{padding:14px}
+  #collection{padding-top:26px}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tab{min-height:68px;padding:12px 14px;border-radius:20px;font-size:1.15rem}
+  .alpha a,.alpha span{min-width:26px;padding:3px 5px;font-size:.85rem}
+  .letter{font-size:2.3rem}.list{gap:20px}
+  .card{grid-template-columns:92px 1fr;column-gap:14px;padding:16px 16px 4px;border-radius:24px}
+  .stub{grid-column:1;grid-row:1/3;display:block;padding:0;border:0;background:none;border-radius:0}
+  .poster{position:relative;top:0;width:92px;border-width:3px;border-radius:14px}
+  .body{display:contents}
+  h2.t{grid-column:2;grid-row:1;align-self:end;margin:0 0 4px;font-size:1.4rem;padding-right:42px}
+  .meta{grid-column:2;grid-row:2;align-self:start;margin:0;font-size:.9rem}
+  .viewings{grid-column:1/-1;grid-row:3;margin:16px 0 4px;padding-left:22px}
+  .card.collapsed .viewings{display:none}
+  .tg{top:14px;right:14px}
+  .vh{flex-wrap:wrap}.cp{width:36px;height:36px}
+  .where{font-size:.98rem}.v p.f{font-size:.95rem}
+  .pg{padding-top:34px}.pt{font-size:2.4rem}.panel{padding:20px;border-radius:26px}
+  .btn{width:100%}
+  .rcov{width:64px}
+  footer{border-radius:30px 30px 0 0}
+}
 </style>
 </head>
 <body>
+<div id="lb" hidden role="dialog" aria-label="Poster"><img alt=""></div>
 <nav id="nav"><div class="navin">
-  <a class="brand" href="index.html"><i>wiredPossum4's</i>List</a>
+  <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
   <div class="links"><a href="index.html">Home</a><a href="#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="#about">About &amp; Rules</a><a href="#contact">Contact</a></div>
   <span class="trade" id="trade"></span>
   <a class="reqbtn" href="#request">Request List <b id="reqN">0</b></a>
@@ -190,9 +259,9 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
 <div class="page" id="p-home">
 <header class="wrap hero"><div class="heroin">
   <div class="hl">
-    <div class="hmeta"><span>Updated on <span id="upd2"></span></span></div>
-    <h1><span class="scr">wiredPossum4's</span> <span class="blk">List</span></h1>
-    <div class="hbot"><p class="sub">Everything I’ve seen on stage, and who was in it.</p></div>
+    <div class="hmeta"><span>Updated on <span id="upd2"></span></span><span class="trade tm" id="trade2" hidden></span></div>
+    <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
+    <div class="hbot"><p class="sub">I don’t have an Encora yet (I’d love an invite, though!), so all information is gathered from the lists of people I got the file from.</p></div>
   </div>
   <div class="hr"><div class="glass">
     <div class="gtop"><span class="gl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search the archive</span></div>
@@ -203,6 +272,7 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
 <main class="wrap">
   <section id="collection">
     <div class="tabs" id="tabs" role="group" aria-label="Category"></div>
+    <div class="toolrow"><button class="mini" id="collAll" type="button">Collapse all</button></div>
     <div class="alpha" id="alpha" role="navigation" aria-label="Jump to letter"></div>
     <div class="list" id="list"></div>
   </section>
@@ -229,8 +299,8 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
       <input id="rEmail" type="email" required autocomplete="email" placeholder="you@example.com">
       <label for="rTrade">Your own trading list</label>
       <textarea id="rTrade" required placeholder="Paste your trading list link here."></textarea>
-      <label for="rMsg">Message <span class="opt">(optional)</span></label>
-      <textarea id="rMsg" placeholder="Anything else I should know about your request."></textarea>
+      <label for="rMsg">Message</label>
+      <textarea id="rMsg" required placeholder="Write your message here."></textarea>
       <input type="text" id="rBot" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <button class="btn" type="submit" id="rSend">Send request</button>
     </form>
@@ -265,6 +335,7 @@ const FORM = { url: "https://api.web3forms.com/submit", accessKey: "7505f919-d54
 
 
 const $ = id => document.getElementById(id);
+const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -440,13 +511,15 @@ function viewing(v, s){
     ${v.loc ? `<p class="where">${esc(v.loc)}</p>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}${file ? `<p class="file">${esc(file)}</p>` : ""}${f}</div>`;
 }
 
+const COLL = new Set(), ckey = s => s.category + "|" + s.title;
+const SVG_CHEV = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
 function card(s, i, id){
   const letter = esc(key(s)[0]?.toUpperCase() || "?");
   const art = imgTag(s.title, s.image);
   const n = s.viewings.length, tot = s.total ?? n;
-  return `<article class="card t${i % 3}"${id ? ` id="${id}"` : ""}>
+  return `<article class="card t${i % 3}${COLL.has(ckey(s)) ? " collapsed" : ""}" data-k="${esc(ckey(s))}"${id ? ` id="${id}"` : ""}>
     <div class="stub"><div class="poster"><span class="ltr" aria-hidden="true">${letter}</span>${art}</div></div>
-    <div class="body"><h2 class="t">${esc(s.title)}</h2>
+    <div class="body"><button class="tg" type="button" aria-expanded="${!COLL.has(ckey(s))}" aria-label="Show or hide details" title="Show / hide details">${SVG_CHEV}</button><h2 class="t">${esc(s.title)}</h2>
       <p class="meta">${esc(s.category)} · ${n === tot ? n : n + " of " + tot} ${tot === 1 ? "show" : "shows"}</p>
       <div class="viewings">${s.viewings.slice().sort(byDate).map(v => viewing(v, s)).join("")}</div></div>
   </article>`;
@@ -525,7 +598,7 @@ $("reqForm").addEventListener("submit", async e => {
   e.preventDefault();
   if(!reqSet.size || $("rBot").value) return;
   const name = $("rName").value.trim(), email = $("rEmail").value.trim(), trade = $("rTrade").value.trim(), msg = $("rMsg").value.trim();
-  if(!name || !trade){ setStatus("Please add your name, your email and your own trading list."); return; }
+  if(!name || !trade || !msg){ setStatus("Please add your name, your email, your own trading list and a message."); return; }
   const text = "Name: " + name + "\nEmail: " + email + "\n\nMy trading list:\n" + trade + (msg ? "\n\nMessage:\n" + msg : "") + "\n\nRequested:\n" + [...reqSet].map(x => "- " + x).join("\n");
   if(!FORM.accessKey || /^PASTE/.test(FORM.accessKey)){   // no key yet: fall back to the visitor's email app
     location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Trade request")}&body=${encodeURIComponent(text)}`;
@@ -534,7 +607,7 @@ $("reqForm").addEventListener("submit", async e => {
   const btn = $("rSend"); btn.disabled = true; setStatus("Sending…");
   try{
     const r = await fetch(FORM.url, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ access_key: FORM.accessKey || undefined, subject: "New request from " + name, from_name: "wiredPossum4's List", name, email, message: text }) });
+      body: JSON.stringify({ access_key: FORM.accessKey || undefined, subject: "New request from " + name, from_name: "WiredPossum4's Collection", name, email, message: text }) });
     const j = await r.json().catch(() => ({}));
     if(!r.ok || j.success === false) throw 0;
     reqSet.clear(); saveReq(); $("rMsg").value = ""; render(); renderReq();
@@ -560,12 +633,30 @@ window.addEventListener("hashchange", route);
 
 const st = statusInfo(STATUS);
 $("trade").textContent = st.short; $("trade").className = "trade" + (st.tone ? " " + st.tone : "");
-$("contactLinks").innerHTML = [CONTACT.email && `<a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a>`, CONTACT.reddit && `<a href="${esc(CONTACT.reddit)}" target="_blank" rel="noopener">Reddit profile</a>`].filter(Boolean).join(" · ");
+$("contactLinks").innerHTML = [CONTACT.email && `<a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a>`, CONTACT.reddit && `<a href="${esc(CONTACT.reddit)}" target="_blank" rel="noopener">${esc(redditName(CONTACT.reddit))}</a>`].filter(Boolean).join(" · ");
 const updated = fmtDate(UPDATED || SHOWS.map(lastSeen).sort().pop() || "");
 $("upd").textContent = updated;
 $("upd2").textContent = updated;
 new ResizeObserver(() => document.documentElement.style.setProperty("--nav", $("nav").offsetHeight + "px")).observe($("nav"));
 render(); renderReq(); route();
+
+/* collapse single cards / all cards */
+$("list").addEventListener("click", e => { const b = e.target.closest(".tg"); if(!b) return;
+  const c = b.closest(".card"), off = c.classList.toggle("collapsed"); b.setAttribute("aria-expanded", String(!off)); off ? COLL.add(c.dataset.k) : COLL.delete(c.dataset.k); });
+const syncAll = () => { const rows = [...document.querySelectorAll("#list .card")]; $("collAll").hidden = !rows.length;
+  $("collAll").textContent = rows.some(c => !c.classList.contains("collapsed")) ? "Collapse all" : "Expand all"; };
+$("collAll").addEventListener("click", () => { const rows = [...document.querySelectorAll("#list .card")], open = rows.some(c => !c.classList.contains("collapsed"));
+  rows.forEach(c => { c.classList.toggle("collapsed", open); c.querySelector(".tg")?.setAttribute("aria-expanded", String(!open)); open ? COLL.add(c.dataset.k) : COLL.delete(c.dataset.k); }); });
+new MutationObserver(syncAll).observe($("list"), { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] }); syncAll();
+/* click a poster to see it bigger */
+{ const lb = $("lb");
+  document.addEventListener("click", e => { const p = e.target.closest(".poster,.rcov"), im = p && p.querySelector("img.ok");
+    if(im){ lb.querySelector("img").src = im.currentSrc || im.src; lb.hidden = false; } else if(!lb.hidden) lb.hidden = true; });
+  document.addEventListener("keydown", e => { if(e.key === "Escape") lb.hidden = true; }); }
+/* phone: mirror the trading status into the hero */
+{ const sync = () => { const t = $("trade"), m = $("trade2"); if(!m) return; m.textContent = t.textContent;
+    m.className = "trade tm" + (t.classList.contains("mid") ? " mid" : "") + (t.classList.contains("off") ? " off" : ""); m.hidden = t.hidden || !t.textContent; };
+  new MutationObserver(sync).observe($("trade"), { childList: true, characterData: true, subtree: true, attributes: true }); sync(); }
 </script>
 </body>
 </html>
