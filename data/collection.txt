@@ -1,0 +1,219 @@
+// ============================================================
+// YOUR ARCHIVE. Paste each show exactly as you keep it in your notes.
+//
+//   # Musicals / # Plays / # Recordings   sets the category for what follows
+//   Title                                  same title again = another date on the same card
+//   Never Gift ・Subtitles (en)            tags (optional, split by ・)
+//   Location | Month Year | Master | Filetype (Resolution), Filesize
+//   Cast: ...        Details: ...        Notes: ...        (all optional)
+//   EVERYTHING IS OPTIONAL. Leave out whatever you don't have, or fill only part of the
+//   Location | Month Year | Master | Filetype line (for example: Broadway | 2017). You can
+//   also give single items their own line:  Location: ...  Date: ...  Master: ...  Format: MKV (HD), 10GB
+//   A show needs at least one line besides its title (tags, cast, notes, a link...).
+//   For a bare title, put --- on the line under it.
+//   https://encora.it/recordings/123456    link (optional, shows as an Encora pill)
+//
+// Dates can be "January 2017", "August 19, 2023" or "2023-08-19".
+// Poster: save the picture in your "images" (or "image") folder with the show's name,
+//         like falsettos.jpg, Falsettos.png or "Dear Evan Hansen.jpg" (jpg, png, jpeg or webp).
+//         If a name doesn't match, add a line   Image: image/my-poster.png
+// "Recently added" follows the order here (add new shows at the bottom),
+//         or add a line   Added: 2026-11-10
+// SITE INFO (all optional, any order; the home page reads these too):
+//   Updated: October 30, 2026
+//   Status: active            one of: active | wants | gifts | inactive
+//   Status note: any extra line you'd like shown on the home page
+//   Email: you@example.com
+//   Reddit: https://www.reddit.com/user/yourname
+// Lines starting with // are ignored. A line of --- also separates entries.
+// ============================================================
+
+Updated: November 14, 2026
+Status: active
+Email: wiredpossum4@gmail.com
+Reddit: https://www.reddit.com/user/WiredPossum4
+
+# Musicals
+
+The Book of Mormon
+
+Pre-Broadway Workshop | September 1, 2010 | Pro-Shot | MKV (SD)
+Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M James (Nabulungi), Rory O’Malley (Elder McKinley), Michael Potts (Mafala Hatimbi), Asmeret Ghebremichael, Clark Johnson, John Eric Parker, Justin Bohon, Kevin Duda, Lewis Cleale, Scott Barnhardt
+
+Notes: Workshop all staged on barebones sets. Very interesting changes from the eventual Broadway version, including a much different “All American Prophet” (a squaredaney number called “The Bible is a Trilogy, Too”) This version is far less polished and focused but incredibly interesting to see for fans of the show.
+
+The Book of Mormon
+
+Broadway | March 7, 2011 (Preview) | SunsetBlvd79 | VOB + smalls, 4.30GB
+Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M. James (Nabulungi), Rory O'Malley (Elder McKinley), Michael Potts (Mafala Hatimbi), Brian Tyree Henry (General), Lewis Cleale (Mission President)
+
+Notes: A nice capture of this hilarious original show. A very solid and funny cast. Nikki does a fantastic job acting and vocally. On wide shots there can be heads on the sides, but nothing that really obstructs the action. During Broadway previews, less than a month before the official premiere. So there are differences from the Cast Recording. Very nice video of the show however a bar can be visible in wide shots but it doesn't interfere with anything.
+T/W: This video contains a PETA advertisement at the beginning, which contains graphic images and may be distressing. This was included by the master on release.
+Listed as either March 7 or March 11 due to a labeling error by the master. The DVD menu shows the capture date as March 11 while the poster at the beginning says March 7.
+
+The Book of Mormon
+
+West End, London | May 29, 2013 | Unknown Master | VOBs + smalls, 6.95GB
+Cast: Gavin Creel (Elder Price), Daniel Buckley (s/b Elder Cunningham), Alexia Khadime (Nabulungi), Stephen Ashfield (Elder McKinley), Giles Terera (Mafala Hatimbi), Haydn Oakley (Mission President), Tosh Wanogho-Maud (u/s General), Haydn Oakley (Price’s Dad), Haydn Oakley (Prices Dad/Joseph Smith/Mission President)
+
+Notes: Clear capture with some spotlight washout; filmed from the stalls in clear 16:9 widescreen HD
+
+The Book of Mormon
+
+UNIRIO (RJ, Brasil) | 2014 | Pro-Shot | MP4 (HD), 1.95GB
+Cast: Leo Bahia, Hugo Kerth, Larissa Landim e Tauã Delmiro
+
+Notes: Acts separated in two files. PT-BR.
+
+The Book of Mormon
+
+First UK & Ireland Tour, Amsterdam | 2019 | Rompel | VOB + smalls (SD), 7.04GB
+Cast: Kevin Clay (Elder Price), Conner Peirson (Elder Cunningham), Nicole-Lily Baisden (Nabulungi), Will Hawksworth (Elder McKinley), Ewen Cummins (Mafala Hatimbi), Thomas Vernal (General), Johnathan Tweedie (Mission President), Johnathan Tweedie (Joseph Smith), Tre Copeland-Williams (Doctor), Cleopatra Isaac (Mrs. Brown), David Brewis (Cunningham's Father), Johnathan Tweedie (Price's Father), Jemal Felix (Guard), Lukin Simmonds (Guard), Evan James (Ensemble), Alex James-Hatton (Ensemble), George Crawford (Ensemble), Jed Berry (Ensemble), Iz Hesketh (Ensemble), Fergal McGoff (Ensemble)
+
+Notes: One of the best videos of this show out there. Recorded from the right wing, doesnt miss any action. High quality video and excellent sound. Kevin is a very good Elder Price.
+
+Falsettos
+
+January/February 1993 | Unknown Master | VOB + smalls, 2.98GB
+Cast: Mandy Patinkin (Marvin), Stephen Bogardus (Whizzer), Barbara Walsh (Trina), Chip Zien (Mendel), Andrew Harrison Leeds (alt Jason), Heather MacRae (Dr. Charlotte), Maureen Moore (Cordelia)
+
+Notes: There are at least two versions, 2.98 GB and 4.09 GB. The 2.98 GB DVD has better video and audio, and runs a few seconds longer (2:11:34 compared to 2:11:08)
+
+Falsettos
+
+Broadway, Walter Kerr Theatre | October 28, 2016 | SunsetBlvd79 | VOB + smalls, 8.14GB
+Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J Block (Trina), Brandon Uranowitz (Mendel), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia), Anthony Rosenthal (Jason)
+
+Notes: Beautiful HD capture of the Revival following opening night. Such a talented cast and the chemistry amongst them is incredible. Beautifully executed and not to be missed! A
+
+Falsettos
+
+Subtitles (en)
+Broadway, Walter Kerr Theatre | January 2017 | Pro-Shot | MKV (HD), 10.26GB
+Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (Trina), Brandon Uranowitz (Mendel), Anthony Rosenthal (Jason), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia)
+
+Gutenberg! The Musical!
+
+Broadway | October 2023 | TheatreCouple14 | MP4, 6.24GB + MP3 Tracked and Untracked
+Cast: Josh Gad (Bud), Andrew Rannells (Doug), Annaleigh Ashford (g/p Producer)
+
+Notes: Decent wide-shot phone boot from the Mezz. Some of the brighter scenes suffer from washout, and unfortunately some of the hats cant be read during a few scenes, but theres zero obstruction. Action only missed when the character comes through the door a few times that was too far upstage (couldnt even see it from my seat). Very lively audience who were absolutely living for Josh and Andrew breaking character in Act 2.
+
+Hadestown
+
+Broadway | September 2, 2025 | bikinibottomday | MOV (4K), 9.58GB
+Cast: Jack Wolfe (Orpheus), Morgan Dudley (Eurydice), Rebecca Naomi Jones (Persephone), Paulo Szot (Hades), Kurt Elling (Hermes), Shea Renne (Fate), Jessie Shelton (Fate), Kay Trinidad (Fate), Emily Afton (Worker), Malcolm Armwood (Worker), Jeffrey Cornelius (Worker), Sydney Parra (Worker), Alex Puette (Worker)
+
+Notes: Excellent 4K capture of Jack, Morgan, Rebecca, Paulo, Kurt, and Jeffrey’s debut! Increased wandering and unfocusing throughout. Includes curtain call and “We Raise Our Cups,” audio fed from external source.
+Only released by the master as a 9.68 GB MP4, other file sizes are rips.
+
+Hadestown
+
+West End | 2025 | Pro-Shot | MKV (4K), 20.23GB
+Cast: Reeve Carney (Orpheus), Eva Noblezada (Eurydice), Amber Gray (Persephone), Patrick Page (Hades), André De Shields (Hermes), Bella Brown (Fate), Madeline Charlemagne (Fate), Allie Daniel (Fate), Tiago Dhondt Bamberger (Worker), Waylon Jacobs (Worker), Lauren Azania (Worker), Christopher Short (Worker)
+
+Hedwig and the Angry Inch
+
+Subtitles (en)
+Broadway | August 20, 2014 | SJ Bernly | VOB + smalls, 2.71GB
+Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak)
+
+Notes: HD capture filmed beautifully. I absolutely love Andrew's sassy portrayal of Hedwig. There are some heads that get in the way and the camera wanders at times, but otherwise a great capture.
+
+Hedwig and the Angry Inch
+
+Subtitles (en)
+Broadway, Belasco Theatre | August 31, 2014 | SunsetBlvd79 | VOB + smalls, 6.12GB
+Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak), Justin Craig (Skszp), Peter Yanowitz (Schlatko), Tim Mislock (Krzyzhtoff), Matt Duncan (Jacek)
+
+Notes: Beautiful HD capture of Andrew stepping in to the role. He gives a great performance and makes it his own, with his own jokes and characterizations. Great comparison and follow-up to Neil. Lena has only gotten stronger in the role and holds out an amazing riff! A+
+
+Jersey Boys
+
+First US National Tour | November 8, 2008 | SunsetBlvd79 | VOB + smalls, 4.31GB
+Cast: Joseph Leo Bwarie (Frankie Valli), Jeremy Kushnier (Tommy Devito), Steve Gouveia (Nick Massi), Andrew Rannells (Bob Gaudio), Jonathan Hadley (Bob Crewe), Joseph Siravo (Gyp DeCarlo), Sarah Darling (Hal Miller)
+
+Notes: A Great capture of the tour in Canada, before the Canadian cast took over. Joseph did a great job as Frankie. The cast had lots of energy, great chemistry and big voices. A
+
+Little Shop of Horrors
+
+Off-Broadway Revival | January, 2022 (1) | StarCuffedJeans | MP4 (4K), 4.76 GB
+Cast: Jeremy Jordan (Seymour), Tammy Blanchard (Audrey), Christian Borle (Orin), Tom Alan Robbins (Mr. Mushnik), Joy Woods (Chiffon), Aveena Sawyer (Crystal), Salome Smith (Ronnette), Aaron Arnell Harrington (Voice of Audrey II), Weston Chandler Long (u/s Audrey II Manipulation), Paul McGinnis (Audrey II Manipulation), Josh Daniel (Audrey II Manipulation), Weston Chandler Long (u/s Derelict), Christian Borle (Others)
+
+Notes: Jeremy's last show!
+
+Mean Girls
+
+First US National Tour | November 2019 | StarCuffedJeans | MP4 (HD), 6.54GB
+Cast: Danielle Wade (Cady Heron), Mariah Rose Faith Casillas (Regina George), Megan Masako Haley (Gretchen Wieners), Jonalyn Saxer (Karen Smith), Mary Kate Morrissey (Janis Sarkisian), Eric Huffman (Damian Hubbard), Adante Carter (Aaron Samuels), Kabir Bery (Kevin Gnapoor), Gaelen Gilliland (Mrs. Heron), Gaelen Gilliland (Ms. Norbury), Gaelen Gilliland (Mrs. George), Lawrence E. Street (Principal Duvall), Sarah Crane (Ensemble), Sydney Mei Ruf-Wong (Ensemble), Marcus Shane (s/w Ensemble), DeShawn Bowens (Ensemble), Blake Zelesnikar (Ensemble), Asia Kreitz (Ensemble), Grace Romanello (s/w Ensemble), David Wright Jr. (Ensemble), Fernell Hogan II (Ensemble), Olivia Renteria (Ensemble), Morgan Ashley Bryant (Ensemble), Niani Feelings (Ensemble), Kaitlyn Louise Smith (Ensemble), Will Branner (Ensemble)
+
+Notes: Phenomenal HD capture of the First National Tour of the show, shot from the left balcony with a mix of wides, mediums, and many closeups. The video starts at the beginning of both acts and covers all of the action and the fantastic performances of the tour cast. Please do not post screenshots of this video on Twitter ever. Gifs on Tumblr are okay after the NFT date, but don't go linking things to actors and shows.
+
+Rent
+
+Subtitles (en)
+Broadway | 2008 | Pro-Shot | MP4 (HD), 2,81GB
+Cast: Adam Kantor as Mark Cohen, Will Chase as Roger Davis, Michael McElroy as Thomas B. "Tom" Collins, Rodney Hicks as Benjamin "Benny" Coffin III, Tracie Thoms as Joanne Jefferson, Justin Johnston as Angel Dumott-Schunard, Renée Elise Goldsberry as Mimi Marquez, Eden Espinosa as Maureen Johnson, Marcus Paul James as Mr. Jefferson / Pastor, Gwen Stewart as Mrs. Jefferson / Woman with bags / "Seasons of Love" soloist, Jay Wilkison as Gordon / The Man / Mr. Grey, Shaun Earl as Paul, Andrea Goss as Alexi Darling / Mrs. Davis, Telly Leung as Steve / Squeegee man / Waiter, Tracy McDowell as Mrs. Cohen
+
+Rent
+
+30th Anniversary Concert | October 26, 2026 | Pro-Shot | MP4 (HD), 3.26GB
+Cast: Michael McElroy (Performer), Jai Rodriguez (Performer), Anthony Rapp (Performer), Manley Pope (Performer), Adam Pascal (Performer), Timothy Britten Parker (Performer), Alan Mingo Jr. (Performer), David Merino (Performer), Idina Menzel (Performer), Daphne Rubin-Vega (Performer), Tracy McDowell (Performer), Jose Llana (Performer), Telly Leung (Performer), Tamika Lawrence (Performer), Lencia Kebede (Performer), Adam Kantor (Performer), Owen Johnston II (Performer), Justin Johnston (Performer), James Schoppe (Performer), Andy Señor Jr. (Performer), Aiyana Smash (Performer), Antonique Smith (Performer), Jacques C. Smith (Performer), Ephraim Sykes (Performer), Tracie Thoms (Performer), Deri'Andra Tucker (Performer), Aaron Tveit (Performer), Byron Utley (Performer), Lorraine Velez (Performer), Fredi Walker-Browne (Performer), Jay Wilkison (Performer), Schele Williams (Performer), Rachel Zegler (Performer), Gilles Chiasson (Performer), Taye Diggs (Performer), Shelley Dickinson (Performer), Darius de Haas (Performer), Maya Days (Performer), Merle Dandridge (Performer), Coleman Cummings (Performer), Wilson Cruz (Performer), Nicholas Christopher (Performer), David Driver (Performer), Will Chase (Performer), Matt Caplan (Performer), Norbert Leo Butz (Performer), Haven Burton (Performer), Bryson Bruce (Performer), Sharon Catherine Brown (Performer), Natalie Venetia Belcon (Performer), Yassmin Alers (Performer), Shaun Earl (Performer), Trey Ellett (Performer), Eden Espinosa (Performer), Jordan Fisher (Performer), Rayla Garske (Performer), Ava Gaudet (Performer), Andrea Goss (Performer), Tamyra Gray (Performer), Christopher J. Hanke (Performer), Neil Patrick Harris (Performer), Nicolette Hart (Performer), Wilson Jermaine Heredia (Performer), Rodney Hicks (Performer), Marcus Paul James (Performer), Cody Jenkins (Performer)
+
+Notes: Multiple files circulating.
+
+Some Like it Hot
+
+Subtitles (en)
+Broadway, Shubert Theatre | April 26, 2023 | Medium Observation | MP4. 10.87GB
+Cast: J. Harrison Ghee (Jerry | Daphne), Christian Borle (Joe | Josephine), Adrianna Hicks (Sugar Kane), NaTasha Yvette Williams (Sweet Sue), Kevin Del Aguila (Osgood Fielding III), Adam Heller (Agent Mulligan), Mark Lotito (Spats Colombo), Angie Schworer (Minnie), Devon Hadsell (Nellie), Jenny Hill (Vivian), TyNia René Brandon (Dolores), Raena White (Ginger), Casey Garvin (Mack), KJ Hippensteel (Man with Suitcase/Bar Manager), Jarvis B. Manning Jr. (Sonny), Charles South (Toothpick Charlie), DeMarius R. Copes (Ensemble), Brian Martin (Ensemble), Abby Matsusaka (Ensemble), Amber Owens (Ensemble), Brendon Stimson (Ensemble), Richard Riaz Yoder (Ensemble)
+
+Notes: Absolutely flawless video. There is a small head on the bottom left but it only obstructs the very front of the stage. The whole cast was really fantastic.
+
+Something Rotten!
+
+Subtitles (en)
+Broadway | March 28, 2015 | SunsetBlvd79 | VOB + smalls (HD), 7.74GB
+Cast: Brian d'Arcy James (Nick Bottom), John Cariani (Nigel Bottom), Christian Borle (Shakespeare), Heidi Blickenstaff (Bea), Kate Reinders (Portia), Brad Oscar (Nostradamus), Brooks Ashmanskas (Brother Jeremiah), Gerry Vichi (Shylock), Michael James Scott (Minstrel), Michael James Scott (Snug), Peter Bartlett (Lord Clapham), Peter Bartlett (Eyepatch Man)
+
+Notes: Excellent HD capture of this hilarious new musical. The cast is just too perfect in every way. Superb performances, music, and story, and a great homage to theatre and musicals. Not to be missed! A
+
+Spring Awakening
+
+Broadway | February 10, 2007 | SunsetBlvd79 | VOB + smalls, 4.29GB
+Cast: Jonathan Groff (Melchior Gabor), Lea Michele (Wendla Bergmann), John Gallagher Jr. (Moritz Stiefel), Phoebe Strole (u/s Ilse Neumann), Lilli Cooper (Martha Bessell), Jonathan B. Wright (Hanschen Rilow), Brian Charles Johnson (Otto Lämmermeier), Skylar Astin (Georg Zirschnitz), Remy Zaken (Thea), Krysta Rodriguez (u/s Anna), Gideon Glick (Ernst Robel), Frances Mercanti-Anthony (u/s The Adult Women), Stephen Spinella (The Adult Men)
+
+Notes: AMAZING capture, closeups, performances. Not to be missed. A+
+Content warning, there is partial nudity in this bootleg.
+
+https://encora.it/recordings/316
+
+# Plays
+
+A Streetcar named desire
+
+Young Vic Theatre | 2014 | Pro-Shot | MP4 (HD), 2.17GB
+Cast: Gillian Anderson, Vanessa Kirby, and Ben Foster
+
+Much Ado About Nothing
+
+West End | 2011 | Pro-Shot | MP4 (SD)
+Cast: David Tennant (Benedick), Catherine Tate (Beatrice)
+
+# Recordings
+
+The Boys in the Band
+
+Broadway | May 16, 2018 | redladydeath | M4A (untracked), 53.7MB
+Cast: Matt Bomer, Zachary Quinto, Jim Parsons, Andrew Rannells, Robin De Jesus, Brian Hutchison, Charlie Carver, Michael Benjamin Washington, Tuc Watkins
+
+Falsettos
+
+Never Gift
+Carnegie Hall - 10-Year Revival Anniversary Concert | October 18, 2026 | ColorAndLight | M4A (separated acts, untracked), 139MB
+Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (Trina), Brandon Uranowitz (Mendel), Matthew Eby (Jason), Anthony Rosenthal (g/p Jason), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia)
+
+Master Notes: Recorded from the orchestra. Occasional shuffling. The first of 3 reunion concerts in NY. Very enthusiastic audience. Includes the pre-show speech by Betsy Wolfe.
+
+https://encora.it/recordings/2041088
+
