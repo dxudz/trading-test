@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Collection | WiredPossum4's Collection</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎟️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☘️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,700;1,500;1,700;1,800&family=Manrope:wght@500;600;700;800&family=Inter+Tight:wght@700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,500;0,700;1,500;1,700;1,800&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@500;600;700;800&family=Inter+Tight:wght@700;800&family=Yellowtail&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#2f2a24;--bg2:#24201b;--surface:#40382e;--surface2:#4c4337;--ink:#f6f0e1;--muted:#b9ad98;--line:#4f4639;
   --green:#9bad50;--green-d:#6f8030;--orange:#b5562f;--orange-d:#8f4120;--orange-l:#df7f52;
-  --disp:Besley,Georgia,serif;--mono:Verdana,Geneva,"DejaVu Sans",sans-serif}
+  --disp:Besley,Georgia,serif;--mono:"Courier Prime","Courier New",monospace}
 *{box-sizing:border-box}
 html{scroll-padding-top:calc(var(--nav,70px) + 70px)}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -189,9 +189,10 @@ body{font-size:17px}
 .intro{font-size:1.05rem}.stext{font-size:1.02rem}.snote{font-size:.92rem}
 .ctile small{font-size:.9rem}.rtxt span{font-size:1rem}
 .search,select{font-size:1rem}.panel{font-size:1.05rem}
-.heroin::before{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none;
-  background:linear-gradient(90deg,rgba(33,29,25,.9) 0,rgba(33,29,25,.62) 48%,rgba(33,29,25,.3) 100%),url(image/header.webp) 60% 28%/cover no-repeat;
-  filter:blur(7px)}
+.heroin::before{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none;animation:none;z-index:1;
+  background:linear-gradient(90deg,rgba(33,29,25,.9) 0,rgba(33,29,25,.62) 48%,rgba(33,29,25,.3) 100%)}
+.herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%;filter:blur(7px);transform:scale(1.08);z-index:0}
+@media(max-width:640px){.heroin::before{background:linear-gradient(180deg,rgba(33,29,25,.8),rgba(33,29,25,.55))}}
 .heroin::after{top:0;left:0;width:100%;height:100%;-webkit-mask:none;mask:none}
 .tm{display:none}
 .tg{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--cf) 40%,transparent);background:transparent;color:var(--cf);display:grid;place-items:center;cursor:pointer;padding:0;z-index:2}
@@ -245,19 +246,25 @@ h2.t{padding-right:48px}
   .rcov{width:64px}
   footer{border-radius:30px 30px 0 0}
 }
+
+/* footer sticks to the bottom on short pages */
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+body>.wrap{width:100%}
+body>footer{margin-top:auto}
+body>main,body>.page:not([hidden]){margin-bottom:56px}
 </style>
 </head>
 <body>
 <div id="lb" hidden role="dialog" aria-label="Poster"><img alt=""></div>
 <nav id="nav"><div class="navin">
   <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
-  <div class="links"><a href="index.html">Home</a><a href="#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="#about">About &amp; Rules</a><a href="#contact">Contact</a></div>
+  <div class="links"><a href="index.html">Home</a><a href="#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="contact.html">Contact &amp; Rules</a></div>
   <span class="trade" id="trade"></span>
   <a class="reqbtn" href="#request">Request List <b id="reqN">0</b></a>
 </div></nav>
 
 <div class="page" id="p-home">
-<header class="wrap hero"><div class="heroin">
+<header class="wrap hero"><div class="heroin"><img class="herobg" src="image/header.webp" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2"></span></span><span class="trade tm" id="trade2" hidden></span></div>
     <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
@@ -279,13 +286,6 @@ h2.t{padding-right:48px}
 </main>
 </div>
 
-<div class="wrap page pg" id="p-about" hidden>
-  <h1 class="pt">About &amp; <em>rules</em></h1>
-  <div class="panel">
-    <p>Write a few lines about yourself and this archive here.</p>
-    <ul><li>Rule one goes here.</li><li>Rule two goes here.</li><li>Rule three goes here.</li></ul>
-  </div>
-</div>
 
 <div class="wrap page pg" id="p-request" hidden>
   <h1 class="pt">Request <em>list</em></h1>
@@ -599,7 +599,7 @@ $("reqForm").addEventListener("submit", async e => {
   if(!reqSet.size || $("rBot").value) return;
   const name = $("rName").value.trim(), email = $("rEmail").value.trim(), trade = $("rTrade").value.trim(), msg = $("rMsg").value.trim();
   if(!name || !trade || !msg){ setStatus("Please add your name, your email, your own trading list and a message."); return; }
-  const text = "Name: " + name + "\nEmail: " + email + "\n\nMy trading list:\n" + trade + (msg ? "\n\nMessage:\n" + msg : "") + "\n\nRequested:\n" + [...reqSet].map(x => "- " + x).join("\n");
+  const text = "Name: " + name + "\nEmail: " + email + "\n\nMy trading list:\n" + trade + (msg ? "\n\nMessage:\n" + msg : "") + "\n\nRequested:\n" + [...reqSet].map(x => { const r = REQ_INDEX.get(x); return "- " + (r ? copyStr(r.s, r.v) : x); }).join("\n");
   if(!FORM.accessKey || /^PASTE/.test(FORM.accessKey)){   // no key yet: fall back to the visitor's email app
     location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Trade request")}&body=${encodeURIComponent(text)}`;
     return;
@@ -616,7 +616,7 @@ $("reqForm").addEventListener("submit", async e => {
   btn.disabled = false;
 });
 
-const PAGES = ["about", "request"]; let page = "";
+const PAGES = ["request"]; let page = "";
 function route(){
   const h = location.hash.slice(1);
   if(h === "contact") return $("contact").scrollIntoView();
