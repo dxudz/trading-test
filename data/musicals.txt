@@ -1,0 +1,9 @@
+// MUSICALS. One show per block, pasted the way you keep it in your notes. No "# MUSICALS" heading needed.
+// Full format guide (tags, cast, notes, poster, Added dates...): data/_guide.txt
+// Example (remove the // to use it):
+//   Falsettos
+//   Never Gift ・Subtitles (en)
+//   Broadway, Walter Kerr Theatre | January 2017 | Pro-Shot | MKV (HD), 10.26GB
+//   Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer)
+//   Notes: Professional recording.      Added: Nov 15, 2026
+// Lines starting with // are ignored.

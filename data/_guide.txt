@@ -1,0 +1,28 @@
+// ============================================================
+// FORMAT GUIDE for data/musicals.txt, data/recordings.txt and data/plays.txt
+// (this file is only a guide, the site doesn't read it)
+//
+//   Title                                  same title again = another date on the same card
+//   Never Gift ・Subtitles (en)            tags (optional, split by ・)
+//   Location | Month Year | Master | Filetype (Resolution), Filesize
+//   Cast: ...        Details: ...        Notes: ...        (all optional)
+//   EVERYTHING IS OPTIONAL. Leave out whatever you don't have, or fill only part of the
+//   Location | Month Year | Master | Filetype line (for example: Broadway | 2017). You can
+//   also give single items their own line:  Location: ...  Date: ...  Master: ...  Format: MKV (HD), 10GB
+//   A show needs at least one line besides its title (tags, cast, notes, a link...).
+//   For a bare title, put --- on the line under it.
+//   https://encora.it/recordings/123456    link (optional, shows as an Encora pill)
+//
+// DATES (show dates, Added: and Updated:) can be written almost any way:
+//   January 2017 | Jan 2017 | August 19, 2023 | 19 August 2023 | 2023-08-19 | 19/08/2023 | 8/2023
+//   Numbers like 03/04/2026 are read as day/month/year. (If the second number is above 12,
+//   like 03/25/2026, it's read as month/day.)
+//
+// POSTER: save the picture in your "image" folder with the show's name, like
+//   falsettos.jpg, Falsettos.png or "Dear Evan Hansen.jpg" (jpg, png, jpeg or webp).
+//   If a name doesn't match, add a line   Image: image/my-poster.png
+//
+// RECENTLY ADDED: add a line   Added: Nov 15, 2026   to each new entry. A show with an
+//   Added: date always ranks above shows without one, in any category. Without it, the
+//   newest is simply the last one in the files.
+// ============================================================

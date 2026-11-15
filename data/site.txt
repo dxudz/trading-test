@@ -1,0 +1,7 @@
+// SITE INFO. Shown on the home page, the footer and the header. Every line is optional.
+//   Updated: October 30, 2026       any date format works
+//   Status: active                  one of: active | wants | gifts | inactive
+//   Status note: any extra line you'd like shown on the home page
+//   Email: you@example.com
+//   Reddit: https://www.reddit.com/user/YourUsername
+// Lines starting with // are ignored.
