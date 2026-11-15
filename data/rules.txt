@@ -1,0 +1,11 @@
+// CONTACT & RULES page text. Edit and commit, no HTML needed.
+//   # Heading        a title
+//   - something      a bullet point
+//   plain line       a paragraph
+// Lines starting with // are ignored.
+# About me
+Write a few lines about yourself and this archive here.
+# Rules
+- Rule one goes here.
+- Rule two goes here.
+- Rule three goes here.
