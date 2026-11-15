@@ -228,7 +228,7 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
       <label for="rEmail">Your email</label>
       <input id="rEmail" type="email" required autocomplete="email" placeholder="you@example.com">
       <label for="rTrade">Your own trading list</label>
-      <textarea id="rTrade" required placeholder="Paste your trading list here, or a link to it (Encora profile, Reddit post, spreadsheet…)"></textarea>
+      <textarea id="rTrade" required placeholder="Paste your trading list link here."></textarea>
       <label for="rMsg">Message <span class="opt">(optional)</span></label>
       <textarea id="rMsg" placeholder="Anything else I should know about your request."></textarea>
       <input type="text" id="rBot" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
@@ -261,7 +261,7 @@ function statusInfo(v){
   const k = /want/.test(t) ? "wants" : /gift/.test(t) ? "gifts" : /inactive|closed|not|off|pause|\bno\b/.test(t) ? "inactive" : /active|open|yes|\bon\b/.test(t) ? "active" : t ? "" : "active";
   return STATUS_MAP[k] || { short: String(v).slice(0, 22), tone: "mid", text: "" };
 }
-const FORM = { url: "https://api.web3forms.com/submit", accessKey: "PASTE_YOUR_ACCESS_KEY_HERE" };   // see README: free key from web3forms.com, requests go to your inbox
+const FORM = { url: "https://api.web3forms.com/submit", accessKey: "7505f919-d54e-4854-9d0e-e676422bd271" };   // see README: free key from web3forms.com, requests go to your inbox
 
 
 const $ = id => document.getElementById(id);
