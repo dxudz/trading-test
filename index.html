@@ -170,7 +170,7 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
 /* home */
 [hidden]{display:none!important}
 .hbot{display:block}
-.intro{margin:0 0 18px;max-width:42ch;color:#cfc6b2;font:500 .98rem/1.55 var(--mono)}
+.intro{margin:0 0 18px;max-width:52ch;color:#cfc6b2;font:500 .98rem/1.55 var(--mono)}
 .cta{display:inline-block;padding:11px 22px;border-radius:99px;background:var(--orange);color:#fff3e6;font-weight:700;font-size:.92rem;text-decoration:none}
 .cta:hover{background:var(--orange-d)}
 .status{display:flex;align-items:center;gap:14px;margin:2px 0 10px}
@@ -319,7 +319,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
     <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
     <div class="hbot">
       <!-- YOUR INTRODUCTION: edit these few lines -->
-      <p class="intro">Hello! Welcome to my page! I’ve been trading since November 2026, mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can tell me if you need more time :) More information on the “Contact & Rules” tab.</p>
+      <p class="intro">Hello! Welcome to my page! I’ve been trading since November 2026, mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :) More information on the “Contact &amp; Rules” tab.</p>
       <a class="cta" href="collection.html#collection">Browse the collection</a>
     </div>
   </div>
@@ -338,7 +338,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
     <div class="counter">
       <div class="ctile big"><b id="c-shows">0</b><span>shows in the archive</span><small id="c-titles">&nbsp;</small></div>
       <a class="ctile" href="collection.html?cat=musicals#collection"><b id="c-m">0</b><span>musicals</span><small id="c-ms">&nbsp;</small></a>
-      <a class="ctile" href="collection.html?cat=recordings#collection"><b id="c-r">0</b><span>recordings</span><small id="c-rs">&nbsp;</small></a>
+      <a class="ctile" href="collection.html?cat=audios#collection"><b id="c-r">0</b><span>audios</span><small id="c-rs">&nbsp;</small></a>
       <a class="ctile" href="collection.html?cat=plays#collection"><b id="c-p">0</b><span>plays</span><small id="c-ps">&nbsp;</small></a>
     </div>
   </section>
@@ -365,8 +365,8 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
    ============================================================ */
 const FALLBACK = { status: "active", note: "", updated: "October 30, 2026",
   email: "you@example.com", reddit: "https://www.reddit.com/user/WiredPossum4",
-  musicals: { titles: 1, shows: 2 }, plays: { titles: 1, shows: 1 }, recordings: { titles: 1, shows: 1 },
-  recent: [ { title: "Example Cast Album", category: "Recording", image: "" },
+  musicals: { titles: 1, shows: 2 }, plays: { titles: 1, shows: 1 }, audios: { titles: 1, shows: 1 },
+  recent: [ { title: "Example Cast Album", category: "Audio", image: "" },
             { title: "Hamlet", category: "Play", image: "" },
             { title: "Falsettos", category: "Musical", image: "" } ] };
 
@@ -454,8 +454,8 @@ function parseArchive(text){
       else if(k === "email") out.email = v; else out.reddit = v;
       field = null; continue;
     }
-    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|recordings?)\b/i);
-    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Recording"; continue; }
+    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
+    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Audio"; continue; }
     if(/^-{3,}$/.test(line)){ push(); continue; }
     if(!line){ field = null; continue; }
     const lab = line.match(LABEL), isUrl = /^https?:\/\//i.test(line), hasPipe = line.includes("|"), plain = !lab && !isUrl && !hasPipe;
@@ -473,7 +473,7 @@ function parseArchive(text){
     if(!cur.tagged && !hasPipe){ cur.tagged = true; cur.has = true; continue; }
   }
   push();
-  const map = new Map(), n = { Musical: { titles: 0, shows: 0 }, Play: { titles: 0, shows: 0 }, Recording: { titles: 0, shows: 0 } };
+  const map = new Map(), n = { Musical: { titles: 0, shows: 0 }, Play: { titles: 0, shows: 0 }, Audio: { titles: 0, shows: 0 } };
   blocks.forEach((b, i) => {
     const id = b.category + "|" + b.title.toLowerCase();
     let s = map.get(id);
@@ -484,18 +484,18 @@ function parseArchive(text){
   });
   // newest first: by "Added:" date, otherwise by position in the text
   const recent = [...map.values()].sort((a, b) => b.addedAt.localeCompare(a.addedAt) || b.ord - a.ord).slice(0, 4);
-  return { ...out, musicals: n.Musical, plays: n.Play, recordings: n.Recording, recent };
+  return { ...out, musicals: n.Musical, plays: n.Play, audios: n.Audio, recent };
 }
 
 const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
 async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
 async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
-async function loadArchiveText(){          // data/musicals.txt + recordings.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in.
-  const [site, mus, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "recordings.txt", "plays.txt"].map(getTxt));
-  const old = [mus, rec, pla].some(hasContent) ? null : await getTxt("collection.txt");
-  if(old === null && [site, mus, rec, pla].every(x => x === null)) throw new Error("no data");
+async function loadArchiveText(){          // data/musicals.txt + audios.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in. An old recordings.txt still counts as audios.
+  const [site, mus, aud, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "audios.txt", "recordings.txt", "plays.txt"].map(getTxt));
+  const all = [mus, aud, rec, pla], old = all.some(hasContent) ? null : await getTxt("collection.txt");
+  if(old === null && [site, ...all].every(x => x === null)) throw new Error("no data");
   if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
-  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Recordings\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Audios\n" + (aud || "") + "\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
 }
 async function load(){
   try{
@@ -517,7 +517,7 @@ function tween(el, to){
 }
 const plural = (n, a, b) => n + " " + (n === 1 ? a : b);
 
-const CAT_KEY = { Musical: "musicals", Play: "plays", Recording: "recordings" };
+const CAT_KEY = { Musical: "musicals", Play: "plays", Audio: "audios" };
 function drawRecent(list){
   $("recent").hidden = !list.length;
   $("recent-grid").innerHTML = list.map(s => {
@@ -537,10 +537,10 @@ function draw(d){
   const upd = fmtDate(d.updated) || "–";
   $("upd").textContent = upd; $("upd2").textContent = upd;
 
-  const cats = [d.musicals, d.plays, d.recordings];
+  const cats = [d.musicals, d.plays, d.audios];
   const shows = cats.reduce((n, c) => n + c.shows, 0), titles = cats.reduce((n, c) => n + c.titles, 0);
   tween($("c-shows"), shows); $("c-titles").textContent = "across " + plural(titles, "title", "titles");
-  [["c-m", d.musicals], ["c-p", d.plays], ["c-r", d.recordings]].forEach(([id, c]) => {
+  [["c-m", d.musicals], ["c-p", d.plays], ["c-r", d.audios]].forEach(([id, c]) => {
     tween($(id), c.titles); $(id + "s").textContent = plural(c.shows, "show", "shows");
   });
 
