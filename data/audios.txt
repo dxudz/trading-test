@@ -1,4 +1,4 @@
-// RECORDINGS. One show per block, pasted the way you keep it in your notes. No "# RECORDINGS" heading needed.
+// AUDIOS. One show per block, pasted the way you keep it in your notes. No "# AUDIOS" heading needed.
 // Full format guide (tags, cast, notes, poster, Added dates...): data/_guide.txt
 // Example (remove the // to use it):
 //   Falsettos
