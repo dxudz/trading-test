@@ -3,6 +3,11 @@
 //   - something      a bullet point
 //   plain line       a paragraph
 // Lines starting with // are ignored.
+# About Me
+A uni student with apparently too much time on my hands :)
+While I do wish to have a collection with hundreds of shows, unfortunately I have limited storage at the moment, so all the files I’m gathering are things I am really excited about watching and having. 
+So, I might not have exactly what you’re looking for, but who knows? Take a look around, maybe you’ll find something to enjoy! I really hope you do!
+
 # Rules
 - Please send your whole list, even if it’s small.
 - I don’t do “this for that” trades, and don’t take rips from sites like YouTube, Archive.org, or other streaming sites.
@@ -10,4 +15,3 @@
 - Please don't share my links or post the videos anywhere online.
 - My trade ratios are usually the standard:
 1:1 video | 1:1 audio | 2:1 audio to video
-(But I’m always open to figuring something out!)
