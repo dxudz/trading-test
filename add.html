@@ -294,10 +294,10 @@ summary{cursor:pointer}details[open] summary{margin-bottom:6px}
           <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Nothing else.</li>
           <li>Pick an expiry date, generate, copy the token and paste it below.</li>
         </ol>
-        <label for="repo">Repository (owner/name)</label>
-        <input id="repo" type="text" autocomplete="off" spellcheck="false">
+        <label for="repo">Repository <span class="opt2">optional, this site’s own repo is used when empty</span></label>
+        <input id="repo" type="text" autocomplete="off" spellcheck="false" placeholder="owner/name">
         <label for="tok">Token</label>
-        <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…">
+        <input id="tok" type="password" autocomplete="off" placeholder="github…">
         <label class="chk"><input id="remember" type="checkbox" checked> Remember on this device</label>
         <div class="row">
           <button class="btn" type="button" id="saveTok">Save &amp; test connection</button>
@@ -354,10 +354,10 @@ const catOf = h => { const c = h[1][0].toLowerCase(); return c === "m" ? "Musica
 const getS = k => { try{ return localStorage.getItem(k) || sessionStorage.getItem(k) || ""; }catch{ return ""; } };
 function guessRepo(){ const h = location.hostname, p = location.pathname.split("/").filter(Boolean);
   if(h.endsWith(".github.io")) return h.split(".")[0] + "/" + (p[0] && !p[0].includes(".") ? p[0] : h);
-  return "dxudz/trading-test"; }
-$("repo").value = getS("gh-repo") || guessRepo();
+  return ""; }
+$("repo").value = getS("gh-repo");          // only what you typed yourself; empty = use this site's own repo
 const token = () => getS("gh-token");
-const repo = () => $("repo").value.trim();
+const repo = () => $("repo").value.trim() || guessRepo();
 function showConn(t){ $("conn").textContent = t ? "· " + t : ""; }
 if(token()){ showConn("token saved on this device"); } else { $("setup").open = true; }
 
@@ -379,9 +379,10 @@ async function putFile(path, b64, message, sha){ const r = await gh(cpath(path),
 
 $("saveTok").onclick = async () => {
   const t = $("tok").value.trim(); const keep = $("remember").checked;
-  try{ localStorage.setItem("gh-repo", repo()); }catch{}
+  try{ const r = $("repo").value.trim(); r ? localStorage.setItem("gh-repo", r) : localStorage.removeItem("gh-repo"); }catch{}
   if(t){ try{ localStorage.removeItem("gh-token"); sessionStorage.removeItem("gh-token"); (keep ? localStorage : sessionStorage).setItem("gh-token", t); }catch{ say("This browser won’t store the token.", "err"); return; } $("tok").value = ""; }
   if(!token()){ say("Paste a token first.", "err"); return; }
+  if(!repo()){ say("Fill in the repository (owner/name) above.", "err"); return; }
   say("Testing…");
   const r = await gh(`/repos/${repo()}`).catch(() => null);
   if(r && r.ok){ showConn("connected to " + repo()); say("Connected to " + repo() + ".", "ok"); $("setup").open = false; }
@@ -476,6 +477,7 @@ $("go").onclick = async () => {
   const t = title();
   if(!t){ say("Add a title first.", "err"); return; }
   if(!token()){ $("setup").open = true; say("Add your GitHub token first (GitHub connection box).", "err"); return; }
+  if(!repo()){ $("setup").open = true; say("Fill in the repository (owner/name) in the GitHub connection box.", "err"); return; }
   $("go").disabled = true;
   try{
     const path = targetPath(); say("Reading " + path + "…");
