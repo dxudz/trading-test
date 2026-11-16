@@ -276,6 +276,10 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 #msg{min-height:1.4em;font-weight:700}#msg.ok{color:var(--green)}#msg.err{color:#e8806a}
 .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
 summary{cursor:pointer}details[open] summary{margin-bottom:6px}
+.ent{border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:10px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ent .t{font-weight:700;flex:1 1 100%}.ent img{width:44px;border-radius:6px;border:2px solid #f6f0e1}.ent .st{flex:1 1 auto;font-size:.95rem;color:var(--muted)}
+.ent input[type=file]{padding:8px 10px;margin-top:4px}.ent.bad{border-color:#e8806a}.ent.bad .st{color:#e8806a}
+#entries:empty{display:none}
 </style>
 </head>
 <body>
@@ -297,7 +301,7 @@ summary{cursor:pointer}details[open] summary{margin-bottom:6px}
         <label for="repo">Repository <span class="opt2">optional, this site’s own repo is used when empty</span></label>
         <input id="repo" type="text" autocomplete="off" spellcheck="false" placeholder="owner/name">
         <label for="tok">Token</label>
-        <input id="tok" type="password" autocomplete="off" placeholder="github…">
+        <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…">
         <label class="chk"><input id="remember" type="checkbox" checked> Remember on this device</label>
         <div class="row">
           <button class="btn" type="button" id="saveTok">Save &amp; test connection</button>
@@ -314,24 +318,10 @@ summary{cursor:pointer}details[open] summary{margin-bottom:6px}
       <div><label for="cat">Category</label>
         <select id="cat"><option value="Musical">Musical</option><option value="Audio">Audio</option><option value="Play">Play</option></select></div>
     </div>
-    <label for="title">Title <span class="req2">required</span></label>
-    <input id="title" type="text" autocomplete="off">
-
-    <div id="posterBox" hidden>
-      <div class="pst" id="found" hidden><img id="thumb" alt=""><span id="foundTxt"></span></div>
-      <p class="hint" id="posterNote"></p>
-      <button class="mini" type="button" id="swap" hidden>Use a different poster</button>
-      <div id="upWrap" hidden><label for="poster">Upload a poster <span class="opt2">gets resized and saved to the image folder</span></label><input id="poster" type="file" accept="image/*"></div>
-    </div>
-
-    <label for="body">Entry <span class="opt2">paste it like in the txt file, everything is optional</span></label>
-    <textarea id="body" rows="12" spellcheck="false" placeholder="Gifting/Trade Status, Subtitles&#10;Location | Month DD, YYYY | Master | Filetype (Resolution), Filesize&#10;Cast: XXX, XXX, XXX&#10;Notes: XXX&#10;More Details: if applicable&#10;Encora URL (if known)&#10;Added: Month DD, YYYY (or automatic check-box)"></textarea>
-
-    <div id="addedBox">
-      <label class="chk"><input id="addedChk" type="checkbox" checked><span>Add today’s date as <code>Added:</code></span></label>
-      <div id="dateWrap" hidden><label for="addedOn">Added on <span class="opt2">leave empty for no date</span></label><input id="addedOn" type="date"></div>
-    </div>
-    <label class="chk"><input id="updChk" type="checkbox" checked><span>Also refresh <code>Updated:</code> in data/site.txt <span class="opt2">(only if it already has that line)</span></span></label>
+    <label for="body">Entries <span class="opt2">first line = title. Separate entries with an empty line</span></label>
+    <textarea id="body" rows="14" spellcheck="false" placeholder="Title&#10;Gifting/Trade Status, Subtitles&#10;Location | Month DD, YYYY | Master | Filetype (Resolution), Filesize&#10;Cast: XXX, XXX, XXX&#10;Notes: XXX&#10;More Details: if applicable&#10;Encora URL (if known)&#10;Added: Month DD, YYYY&#10;&#10;Next title&#10;Gifting/Trade Status&#10;Cast: XXX"></textarea>
+    <div id="entries"></div>
+    <label class="chk"><input id="updChk" type="checkbox" checked><span>Also refresh <code>Updated:</code> in data/site.txt</span></label>
 
     <p class="hint" id="where"></p>
     <pre id="pv"></pre>
@@ -389,29 +379,31 @@ $("saveTok").onclick = async () => {
   else say(r ? await ghErr(r) : "Couldn’t reach GitHub.", "err"); };
 $("forget").onclick = () => { try{ localStorage.removeItem("gh-token"); sessionStorage.removeItem("gh-token"); }catch{} showConn(""); say("Token removed from this device.", "ok"); };
 
-/* ---------- building the entry ---------- */
+/* ---------- the pasted entries ---------- */
 const slug = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "poster";
-const longDate = d => d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-const today = () => longDate(new Date());
-const title = () => $("title").value.replace(/\s+/g, " ").replace(/\|/g, "/").trim();
+const today = () => new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:/i;
 const targetPath = () => $("list").value === "wishlist" ? "data/wishlist.txt" : "data/" + FILE[$("cat").value] + ".txt";
-const upFile = () => !$("upWrap").hidden && $("poster").files[0] || null;
-const upPath = () => "image/" + slug(title()) + ".jpg";
-$("addedOn").value = new Date().toLocaleDateString("en-CA");
-
-function addedValue(){
-  if($("list").value !== "collection") return "";
-  if($("addedChk").checked) return today();
-  const v = $("addedOn").value; return v ? longDate(new Date(v + "T12:00:00")) : ""; }
-function buildBlock(){
-  const t = title(); let raw = $("body").value.replace(/\r\n/g, "\n").split("\n").map(l => l.trim()).filter(Boolean);
-  if(raw.length && raw[0].toLowerCase() === t.toLowerCase()) raw.shift();            // title pasted twice
-  const L = [t, ...raw], has = x => raw.some(l => new RegExp("^" + x + "\\s*:", "i").test(l));
-  if(upFile()) { if(!has("image")) L.push("Image: " + upPath()); }
-  else if(FOUND && !FOUND.auto && !has("image")) L.push("Image: " + FOUND.dir + "/" + FOUND.name);
-  const a = has("added") ? "" : addedValue(); if(a) L.push("Added: " + a);
-  if(!raw.some(l => !/^(image|added)\s*:/i.test(l))) L.push("---");              // a bare title needs --- so the next entry isn't swallowed
+const UP = new Map(), SWAP = new Set();          // chosen poster files / "use a different poster" clicks, by title key
+function parseEntries(){
+  const out = []; let cur = null;
+  for(const l of $("body").value.replace(/\r\n/g, "\n").split("\n").map(x => x.trim())){
+    if(!l){ cur = null; continue; }
+    if(!cur){ cur = { raw: l, title: l.replace(/\s+/g, " ").replace(/\|/g, "/"), body: [] }; out.push(cur); } else cur.body.push(l); }
+  for(const e of out){ e.key = slug(e.title); e.bad = LABEL.test(e.raw) || e.raw.includes("|") || /^https?:\/\//i.test(e.raw); }
+  return out; }
+function findPoster(e){
+  if(!IMGS) return null; const hits = [];
+  for(const d of ["image", "images"]) for(const f of IMGS[d] || []){ const m = f.match(/^(.*)\.(jpe?g|png|webp)$/i);
+    if(m && slug(m[1]) === e.key) hits.push({ dir: d, name: f, auto: (m[1] === e.key || m[1] === e.title) && m[2] === m[2].toLowerCase() }); }
+  hits.sort((a, b) => b.auto - a.auto); return hits[0] || null; }
+function entryBlock(e){
+  const has = x => e.body.some(l => new RegExp("^" + x + "\\s*:", "i").test(l)), L = [e.title, ...e.body];
+  if(UP.has(e.key)){ if(!has("image")) L.push("Image: image/" + e.key + ".jpg"); }
+  else { const f = findPoster(e); if(f && !f.auto && !has("image")) L.push("Image: " + f.dir + "/" + f.name); }
+  if(!e.body.some(l => !/^(image|added)\s*:/i.test(l))) L.push("---");              // a bare title needs --- so the next entry isn't swallowed
   return L; }
+const allBlocks = es => es.flatMap((e, i) => i ? ["", ...entryBlock(e)] : entryBlock(e));
 function sections(lines, defCat){
   const secs = [{ cat: defCat, start: 0, end: lines.length }];
   lines.forEach((l, i) => { const h = l.trim().match(HEAD); if(h){ secs[secs.length - 1].end = i; secs.push({ cat: catOf(h), start: i + 1, end: lines.length }); } });
@@ -424,33 +416,15 @@ function insertEntry(text, cat, block, defCat){
     const before = lines.slice(0, at), rest = lines.slice(at);
     out = [...before, ...(before.length && before[before.length - 1].trim() ? [""] : []), ...block, ...(rest.length && rest[0].trim() ? [""] : []), ...rest]; }
   const s = out.join("\n"); return s.endsWith("\n") ? s : s + "\n"; }
-const render = text => insertEntry(text, $("cat").value, buildBlock(), $("list").value === "wishlist" ? "Musical" : $("cat").value);
 
 /* ---------- posters already in your repo ---------- */
-let IMGS = null, FOUND = null;
+let IMGS = null;
 async function loadImgs(){
-  if(!token()){ IMGS = null; return lookup(); }
+  if(!token()){ IMGS = null; return renderAll(); }
   IMGS = {};
   for(const d of ["image", "images"]){ try{ const r = await gh(cpath(d)); const j = r.ok ? await r.json() : []; IMGS[d] = Array.isArray(j) ? j.filter(x => x.type === "file").map(x => x.name) : []; }catch{ IMGS[d] = []; } }
-  lookup(); }
-function lookup(){
-  const t = title(); FOUND = null;
-  $("posterBox").hidden = !t; if(!t){ refresh(); return; }
-  if(IMGS){
-    const k = slug(t), hits = [];
-    for(const d of ["image", "images"]) for(const f of IMGS[d] || []){ const m = f.match(/^(.*)\.(jpe?g|png|webp)$/i);
-      if(m && slug(m[1]) === k) hits.push({ dir: d, name: f, auto: (m[1] === k || m[1] === t) && m[2] === m[2].toLowerCase() }); }
-    hits.sort((a, b) => b.auto - a.auto); FOUND = hits[0] || null; }
-  $("found").hidden = !FOUND; $("swap").hidden = !FOUND;
-  if(FOUND){ $("thumb").src = FOUND.dir + "/" + encodeURIComponent(FOUND.name); $("foundTxt").textContent = "Poster found: " + FOUND.dir + "/" + FOUND.name;
-    $("posterNote").textContent = ""; if($("upWrap").dataset.swap !== "1") $("upWrap").hidden = true; }
-  else { $("upWrap").hidden = false; $("posterNote").textContent = IMGS ? "No poster with this title yet, you can upload one:" : "Connect GitHub (box above) to look for an existing poster. You can upload one:"; }
-  refresh(); }
-$("swap").onclick = () => { $("upWrap").hidden = false; $("upWrap").dataset.swap = "1"; $("swap").hidden = true; refresh(); };
-$("thumb").onerror = () => { $("thumb").style.display = "none"; }; $("thumb").onload = () => { $("thumb").style.display = ""; };
-
-/* poster: resized to 1400px max, saved as jpg */
-async function posterB64(file){
+  renderAll(); }
+async function posterB64(file){            // resized to 1400px max, saved as jpg
   const url = URL.createObjectURL(file);
   const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
   const s = Math.min(1, 1400 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement("canvas");
@@ -460,22 +434,36 @@ async function posterB64(file){
 
 /* ---------- UI ---------- */
 const say = (t, k = "") => { $("msg").textContent = t; $("msg").className = k; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function renderEntries(){
+  const es = parseEntries();
+  $("entries").innerHTML = es.map((e, i) => {
+    if(e.bad) return `<div class="ent bad"><span class="t">Entry ${i + 1}: ${esc(e.raw.slice(0, 60))}</span><span class="st">This looks like a detail line, not a title. Put the title on the first line and separate entries with an empty line.</span></div>`;
+    const pic = UP.get(e.key), f = findPoster(e), k = esc(e.key);
+    let st;
+    if(pic) st = `New poster: ${esc(pic.name)} <button class="mini" type="button" data-act="rm" data-k="${k}">remove</button>`;
+    else if(f && !SWAP.has(e.key)) st = `<img src="${esc(f.dir + "/" + encodeURIComponent(f.name))}" alt="" onerror="this.style.display='none'"> Poster found: ${esc(f.dir + "/" + f.name)} <button class="mini" type="button" data-act="swap" data-k="${k}">use a different one</button>`;
+    else st = (IMGS ? "No poster yet." : "Connect GitHub (box above) to look for existing posters.") + `<input type="file" accept="image/*" data-k="${k}">`;
+    return `<div class="ent"><span class="t">${esc(e.title)}</span><span class="st">${st}</span></div>`; }).join(""); }
 function refresh(){
-  const wl = $("list").value === "wishlist";
-  $("addedBox").hidden = wl; $("dateWrap").hidden = $("addedChk").checked;
-  $("pv").textContent = title() ? buildBlock().join("\n") : "";
-  $("pv").hidden = !title();
-  $("where").textContent = "Goes to " + targetPath() + (wl ? ", under # " + PLURAL[$("cat").value] + "." : ", at the end."); }
-let tmr; $("title").addEventListener("input", () => { clearTimeout(tmr); tmr = setTimeout(lookup, 300); });
-$("list").addEventListener("change", refresh);
-document.addEventListener("input", refresh); document.addEventListener("change", refresh);
-$("saveTok").addEventListener("click", () => setTimeout(loadImgs, 1500)); loadImgs(); refresh();
+  const es = parseEntries().filter(e => !e.bad), wl = $("list").value === "wishlist";
+  $("pv").textContent = es.length ? allBlocks(es).join("\n") : ""; $("pv").hidden = !es.length;
+  $("where").textContent = "Goes to " + targetPath() + (wl ? ", under # " + PLURAL[$("cat").value] + "." : ", at the end.") + (es.length ? " (" + es.length + (es.length === 1 ? " entry)" : " entries)") : ""); }
+const renderAll = () => { renderEntries(); refresh(); };
+let tmr; $("body").addEventListener("input", () => { clearTimeout(tmr); tmr = setTimeout(renderAll, 250); });
+$("list").addEventListener("change", refresh); $("cat").addEventListener("change", refresh);
+$("entries").addEventListener("change", e => { const i = e.target.closest("input[type=file]"); if(i && i.files[0]){ UP.set(i.dataset.k, i.files[0]); renderAll(); } });
+$("entries").addEventListener("click", e => { const b = e.target.closest("button[data-act]"); if(!b) return; const k = b.dataset.k;
+  if(b.dataset.act === "rm"){ UP.delete(k); } else { SWAP.add(k); } renderAll(); });
+$("saveTok").addEventListener("click", () => setTimeout(loadImgs, 1500)); loadImgs(); renderAll();
 
 $("copy").onclick = async () => { try{ await navigator.clipboard.writeText($("pv").textContent); say("Copied.", "ok"); }catch{ say("Couldn’t copy, select the text above instead.", "err"); } };
 
 $("go").onclick = async () => {
-  const t = title();
-  if(!t){ say("Add a title first.", "err"); return; }
+  const es = parseEntries();
+  if(!es.length){ say("Paste at least one entry first.", "err"); return; }
+  const bad = es.find(e => e.bad);
+  if(bad){ say("“" + bad.raw.slice(0, 40) + "” isn’t a title. Put the title on the first line of each entry, with an empty line between entries.", "err"); return; }
   if(!token()){ $("setup").open = true; say("Add your GitHub token first (GitHub connection box).", "err"); return; }
   if(!repo()){ $("setup").open = true; say("Fill in the repository (owner/name) in the GitHub connection box.", "err"); return; }
   $("go").disabled = true;
@@ -483,22 +471,24 @@ $("go").onclick = async () => {
     const path = targetPath(); say("Reading " + path + "…");
     const cur = await getFile(path), text = cur ? cur.text : "";
     if($("list").value === "collection" && !hasContent(text)){      // first entry in a new split file: don't silently hide the old collection.txt
-      const [m, r, p, old] = await Promise.all(["musicals", "audios", "recordings", "plays"].map(n => getFile("data/" + n + ".txt")).concat(getFile("data/collection.txt")));
-      if(![m, r, p].some(x => x && hasContent(x.text)) && old && !confirm("data/collection.txt is still what your site shows. Saving the first entry here switches the site to the new files, and everything still in collection.txt will disappear until you move it over (see README). Save anyway?")){ say("Cancelled, nothing was saved."); return; } }
-    if(text.split(/\r?\n/).some(l => l.trim().toLowerCase() === t.toLowerCase())) say("“" + t + "” already exists there, so this is added as another viewing of it.");
-    const next = render(text), pic = upFile();
-    if(pic){
-      const ip = upPath(), ex = await getFile(ip, true);
-      if(ex && !confirm("There is already a poster called " + ip + ". Replace it?")){ say("Cancelled, nothing was saved."); return; }
-      say("Uploading poster…"); await putFile(ip, await posterB64(pic), "Add poster for " + t, ex && ex.sha); }
+      const [m, r, p, old] = await Promise.all(["musicals", "recordings", "plays"].map(n => getFile("data/" + n + ".txt")).concat(getFile("data/collection.txt")));
+      const [a] = await Promise.all([getFile("data/audios.txt")]);
+      if(![m, r, p, a].some(x => x && hasContent(x.text)) && old && !confirm("data/collection.txt is still what your site shows. Saving the first entries here switches the site to the new files, and everything still in collection.txt will disappear until you move it over (see README). Save anyway?")){ say("Cancelled, nothing was saved."); return; } }
+    const have = new Set(text.split(/\r?\n/).map(l => l.trim().toLowerCase())), again = es.filter(e => have.has(e.title.toLowerCase())).length;
+    const next = insertEntry(text, $("cat").value, allBlocks(es), $("list").value === "wishlist" ? "Musical" : $("cat").value);
+    const pics = [...new Set(es.filter(e => UP.has(e.key)).map(e => e.key))], existing = {};
+    for(const k of pics){ const ip = "image/" + k + ".jpg", ex = await getFile(ip, true); existing[k] = ex;           // ask about every overwrite before saving anything
+      if(ex && !confirm("There is already a poster called " + ip + ". Replace it?")){ say("Cancelled, nothing was saved."); return; } }
+    for(const k of pics){ say("Uploading poster " + k + "…"); await putFile("image/" + k + ".jpg", await posterB64(UP.get(k)), "Add poster for " + k, existing[k] && existing[k].sha); }
     say("Saving…");
-    await putFile(path, enc64(next), "Add " + t + " to " + ($("list").value === "wishlist" ? "wishlist" : "collection"), cur && cur.sha);
+    const what = $("list").value === "wishlist" ? "wishlist" : "collection";
+    await putFile(path, enc64(next), es.length === 1 ? "Add " + es[0].title + " to " + what : "Add " + es.length + " entries to " + what, cur && cur.sha);
     let note = "";
     if($("updChk").checked){ const s = await getFile("data/site.txt");
       if(s && /^\s*updated\s*:/im.test(s.text)){ await putFile("data/site.txt", enc64(s.text.replace(/^(\s*updated\s*:).*$/im, "$1 " + today())), "Update date", s.sha); note = " Updated date refreshed."; }
       else note = " (No Updated: line in site.txt, so left alone.)"; }
-    say("Saved. The site refreshes in about a minute." + note, "ok");
-    $("title").value = ""; $("body").value = ""; $("poster").value = ""; $("upWrap").dataset.swap = ""; if(pic) await loadImgs(); else lookup();
+    say("Saved " + es.length + (es.length === 1 ? " entry" : " entries") + (again ? " (" + again + " added as another viewing of a title that already existed)" : "") + ". The site refreshes in about a minute." + note, "ok");
+    $("body").value = ""; UP.clear(); SWAP.clear(); if(pics.length) await loadImgs(); else renderAll();
   }catch(e){ say(e.message || "That didn’t work.", "err"); }
   finally{ $("go").disabled = false; } };
 </script>
