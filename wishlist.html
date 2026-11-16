@@ -270,6 +270,9 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
   .poster img,.rcov img,.rp img{transition:opacity .45s ease,transform .5s ease}
   .poster:hover img,.rcov:hover img,.rp:hover img{transform:scale(1.07)}
 }
+
+/* status tags */
+.pill.red{--cf:#f0705f}.pill.green{--cf:#7fcf5a}.pill.yellow{--cf:#f1c93b}
 </style>
 </head>
 <body>
@@ -328,7 +331,7 @@ const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const TABS = [["Musical","Musicals"],["Recording","Recordings"],["Play","Plays"],["","All"]];
+const TABS = [["Musical","Musicals"],["Audio","Audios"],["Play","Plays"],["","All"]];
 const THEMES = 3;
 let cat = "Musical";
 
@@ -393,6 +396,14 @@ function nextImg(el){
 }
 
 /* ---------- reads the pasted wishlist text ---------- */
+const splitTags = line => {          // tags split on ・ · • and on commas that are not inside (brackets)
+  const out = []; let cur = "", depth = 0;
+  for(const ch of line){
+    if("([（".includes(ch)) depth++; else if(")]）".includes(ch)) depth = Math.max(0, depth - 1);
+    if(depth === 0 && /[・·•,]/.test(ch)){ out.push(cur); cur = ""; } else cur += ch; }
+  out.push(cur); return out.map(x => x.trim()).filter(Boolean); };
+const TAGCLS = { "never gift": "red", "nft": "red", "gift on request": "green", "trade only": "yellow" };
+const tagCls = t => TAGCLS[t.toLowerCase().replace(/\s+/g, " ").trim()] || "";
 const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
 const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
 function parseArchive(text){
@@ -408,8 +419,8 @@ function parseArchive(text){
     if(dm){ if(dm[1].toLowerCase() === "updated") updated = parseDate(dm[2].trim()); field = null; continue; }
     const bm = line.match(/^[-•*]\s+(.+)$/);
     if(bm && !field){ push(); bullets.push(bm[1].trim()); continue; }
-    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|recordings?)\b/i);
-    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Recording"; continue; }
+    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
+    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Audio"; continue; }
     if(/^-{3,}$/.test(line)){ push(); continue; }
     if(!line){ field = null; continue; }
     const lab = line.match(LABEL), isUrl = /^https?:\/\//i.test(line), hasPipe = line.includes("|"), plain = !lab && !isUrl && !hasPipe;
@@ -432,7 +443,7 @@ function parseArchive(text){
       Object.assign(cur, parseTech(p.slice(3).join(", "))); continue;
     }
     if(field){ cur[field] += " " + line; continue; }
-    if(!cur.tags.length && !hasPipe){ cur.tags = line.split(/[・·•]/).map(x => x.trim()).filter(Boolean); cur.has = true; continue; }
+    if(!cur.tags.length && !hasPipe){ cur.tags = splitTags(line); cur.has = true; continue; }
     cur.details += (cur.details ? " " : "") + line;
   }
   push();
@@ -460,7 +471,7 @@ function linkLabel(u){
 function viewing(v){
   const file = [v.master && "Master: " + v.master, v.filetype, v.resolution, v.size].filter(Boolean).join(" · ");
   const link = /^https?:\/\//i.test(v.link) ? `<a class="pill" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer">${esc(linkLabel(v.link))}</a>` : "";
-  const tags = v.tags.map(t => `<span class="pill">${esc(t)}</span>`).join("") + link;
+  const tags = v.tags.map(t => `<span class="pill${tagCls(t) ? " " + tagCls(t) : ""}">${esc(t)}</span>`).join("") + link;
   const f = [["Cast", v.cast], ["Details", v.details], ["Notes", v.notes], ["More details", v.more]]
     .filter(r => r[1]).map(r => `<p class="f"><b>${r[0]}</b>${esc(r[1])}</p>`).join("");
   return `<div class="v"><div class="vh"><h3>${esc(fmtDate(v.date) || "Any date")}</h3></div>
@@ -541,12 +552,12 @@ function siteInfo(text){
 const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
 async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
 async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
-async function loadArchiveText(){          // data/musicals.txt + recordings.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in.
-  const [site, mus, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "recordings.txt", "plays.txt"].map(getTxt));
-  const old = [mus, rec, pla].some(hasContent) ? null : await getTxt("collection.txt");
-  if(old === null && [site, mus, rec, pla].every(x => x === null)) throw new Error("no data");
+async function loadArchiveText(){          // data/musicals.txt + audios.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in. An old recordings.txt still counts as audios.
+  const [site, mus, aud, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "audios.txt", "recordings.txt", "plays.txt"].map(getTxt));
+  const all = [mus, aud, rec, pla], old = all.some(hasContent) ? null : await getTxt("collection.txt");
+  if(old === null && [site, ...all].every(x => x === null)) throw new Error("no data");
   if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
-  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Recordings\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Audios\n" + (aud || "") + "\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
 }
 async function loadSite(){
   try{
