@@ -3,8 +3,6 @@
 //   - something      a bullet point
 //   plain line       a paragraph
 // Lines starting with // are ignored.
-# About me
-Hey! At the moment I'm still new to trading but 
 # Rules
 - Please send your whole list, even if it’s small.
 - I don’t do “this for that” trades, and don’t take rips from sites like YouTube, Archive.org, or other streaming sites.
@@ -12,4 +10,4 @@ Hey! At the moment I'm still new to trading but
 - Please don't share my links or post the videos anywhere online.
 - My trade ratios are usually the standard:
 1:1 video | 1:1 audio | 2:1 audio to video
-But I’m always open to figuring something out!
+(But I’m always open to figuring something out!)
