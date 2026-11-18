@@ -270,7 +270,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 <body>
 <div id="lb" hidden role="dialog" aria-label="Poster"><img alt=""></div>
 <nav id="nav"><div class="navin">
-  <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
+  <a class="brand" href="index.html"><i data-sn="first">WiredPossum4's</i><span data-sn="last">Collection</span></a>
   <div class="links"><a href="index.html">Home</a><a href="#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="contact.html">Contact &amp; Rules</a></div>
   <span class="trade" id="trade"></span>
   <a class="reqbtn" href="#request">Request List <b id="reqN">0</b></a>
@@ -280,8 +280,8 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 <header class="wrap hero"><div class="heroin"><img class="herobg" src="image/header.jpg" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2"></span></span><span class="trade tm" id="trade2" hidden></span></div>
-    <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
-    <div class="hbot"><p class="sub">I try my best to keep my list up-to-date, but some things might slip through. Please contact me if there are any errors on the file’s info!</p></div>
+    <h1><span class="scr" data-sn="first">WiredPossum4's</span> <span class="blk" data-sn="last">Collection</span></h1>
+    <div class="hbot"><p class="sub" data-text="collection description">I try my best to keep my list up-to-date, but some things might slip through. Please contact me if there are any errors on the file’s info!</p></div>
   </div>
   <div class="hr"><div class="glass">
     <div class="gtop"><span class="gl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search the archive</span></div>
@@ -348,6 +348,19 @@ const FORM = { url: "https://api.web3forms.com/submit", accessKey: "7505f919-d54
 
 
 const $ = id => document.getElementById(id);
+const TEXT_KEYS = ["index description", "collection description", "wishlist description", "site name", "contact title"];
+const TEXTS = {}, BASE_TITLE = document.title;          // texts you can change from the Data tab / site.txt (Key: value lines)
+function applyTexts(){
+  const pick = (el, v) => { if(el.dataset.def === undefined) el.dataset.def = el.textContent; el.textContent = v || el.dataset.def; };
+  document.querySelectorAll("[data-text]").forEach(el => pick(el, TEXTS[el.dataset.text]));
+  const sn = TEXTS["site name"], i = sn ? sn.lastIndexOf(" ") : -1;
+  document.querySelectorAll("[data-sn=first]").forEach(el => pick(el, sn && (i < 0 ? "" : sn.slice(0, i))));
+  document.querySelectorAll("[data-sn=last]").forEach(el => pick(el, sn && (i < 0 ? sn : sn.slice(i + 1))));
+  document.title = sn ? BASE_TITLE.replace("WiredPossum4's Collection", sn) : BASE_TITLE; }
+function setTexts(t){ if(!t) return; Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
+  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); }
+try{ Object.assign(TEXTS, JSON.parse(localStorage.getItem("site-texts") || "{}")); applyTexts(); }catch{}
+
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -359,6 +372,7 @@ try{ JSON.parse(localStorage.getItem(REQ_KEY) || "[]").forEach(k => reqSet.add(k
 const saveReq = () => { try{ localStorage.setItem(REQ_KEY, JSON.stringify([...reqSet])); }catch{} };
 let cat = "Musical";
 let UPDATED = "", STATUS = "", STATUS_NOTE = "";
+const PARSED_TEXTS = {};
 
 /* ---------- reads the pasted text above into shows ---------- */
 const splitTags = line => {          // tags split on ・ · • and on commas that are not inside (brackets)
@@ -427,11 +441,11 @@ function parseArchive(text){
   for(const raw of String(text).split(/\r?\n/)){
     const line = raw.trim();
     if(line.startsWith("//")) continue;
-    const dm = line.match(/^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i);
+    const dm = line.match(/^(updated|status note|status|email|reddit|my encora|encora|index description|collection description|wishlist description|site name|contact title)\s*:\s*(.+)$/i);
     if(dm){
       const k = dm[1].toLowerCase(), v = dm[2].trim();
       if(k === "updated") UPDATED = parseDate(v); else if(k === "status") STATUS = v; else if(k === "status note") STATUS_NOTE = v;
-      else if(k === "email") CONTACT.email = v; else if(/encora$/.test(k)){ /* used on the home page */ } else CONTACT.reddit = v;
+      else if(k === "email") CONTACT.email = v; else if(/encora$/.test(k)){ /* used on the home page */ } else if(TEXT_KEYS.includes(k)) PARSED_TEXTS[k] = v; else CONTACT.reddit = v;
       field = null; continue;
     }
     const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
@@ -490,6 +504,7 @@ async function loadArchiveText(){          // data/musicals.txt + audios.txt + p
 let RAW=""; try{ RAW = await loadArchiveText(); }catch{ document.querySelector("main").insertAdjacentHTML("afterbegin",'<p class="empty">Could not load the files in the data folder. If you opened this file from your computer, view the site through GitHub Pages (or a local server) instead.</p>'); }
 window.imgOk=imgOk; window.nextImg=nextImg;
 const SHOWS = parseArchive(RAW);
+setTexts(PARSED_TEXTS);
 { const q = new URLSearchParams(location.search).get("cat");
   const m = q && { musicals: "Musical", musical: "Musical", plays: "Play", play: "Play", audios: "Audio", audio: "Audio", recordings: "Audio", recording: "Audio", all: "" }[q.toLowerCase()];
   if(m !== undefined && m !== null && q) cat = m;
