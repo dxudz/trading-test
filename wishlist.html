@@ -398,14 +398,15 @@ function nextImg(el){
 /* ---------- reads the pasted wishlist text ---------- */
 const splitTags = line => {          // tags split on ・ · • and on commas that are not inside (brackets)
   const out = []; let cur = "", depth = 0;
-  for(const ch of line){
+  for(let i = 0; i < line.length; i++){ const ch = line[i];
     if("([（".includes(ch)) depth++; else if(")]）".includes(ch)) depth = Math.max(0, depth - 1);
-    if(depth === 0 && /[・·•,]/.test(ch)){ out.push(cur); cur = ""; } else cur += ch; }
+    const yearComma = ch === "," && /\d$/.test(cur) && /^\s*\d{4}(?!\d)/.test(line.slice(i + 1));   // "December 30, 2025" stays in one piece
+    if(depth === 0 && /[・·•,]/.test(ch) && !yearComma){ out.push(cur); cur = ""; } else cur += ch; }
   out.push(cur); return out.map(x => x.trim()).filter(Boolean); };
-const TAGCLS = { "never gift": "red", "nft": "red", "gift on request": "green", "trade only": "yellow" };
-const tagCls = t => TAGCLS[t.toLowerCase().replace(/\s+/g, " ").trim()] || "";
+const tagCls = t => { const x = t.toLowerCase().replace(/\s+/g, " ").trim();      // starts-with, so "NFT until Dec 30 2025" or "NFT Forever" work too
+  return /^(nft|never gift)\b/.test(x) ? "red" : /^gift on request\b/.test(x) ? "green" : /^trade only\b/.test(x) ? "yellow" : ""; };
 const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
-const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
+const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i;
 function parseArchive(text){
   const bullets = []; let updated = "";
   const blocks = []; let cat = "Musical", cur = null, field = null;
