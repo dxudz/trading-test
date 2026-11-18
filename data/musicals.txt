@@ -1,13 +1,6 @@
-// MUSICALS. One show per block, pasted the way you keep it in your notes. No "# MUSICALS" heading needed.
-// Full format guide (tags, cast, notes, poster, Added dates...): data/_guide.txt
-// Example (remove the // to use it):
-//   Falsettos
-//   Never Gift ・Subtitles (en)
-//   Broadway, Walter Kerr Theatre | January 2017 | Pro-Shot | MKV (HD), 10.26GB
-//   Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer)
-//   Notes: Professional recording.      Added: Nov 15, 2026
-// Lines starting with // are ignored.
-
+// Musicals
+// # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+// B
 The Book of Mormon
 Pre-Broadway Workshop | September 1, 2010 | Pro-Shot | VOB + smalls, 2.6GB
 Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M James (Nabulungi), Rory O’Malley (Elder McKinley), Michael Potts (Mafala Hatimbi), Asmeret Ghebremichael, Clark Johnson, John Eric Parker, Justin Bohon, Kevin Duda, Lewis Cleale, Scott Barnhardt
@@ -23,7 +16,7 @@ More Details: T/W: This video contains a PETA advertisement at the beginning, wh
 https://encora.it/recordings/282/
 
 The Book of Mormon
-West End, London | May 29, 2013 | Unknown | VOBs + smalls, 6.95GB
+West End, London | May 29, 2013 | Unknown | VOB + smalls, 6.95GB
 Cast: Gavin Creel (Elder Price), Daniel Buckley (s/b Elder Cunningham), Alexia Khadime (Nabulungi), Stephen Ashfield (Elder McKinley), Giles Terera (Mafala Hatimbi), Haydn Oakley (Mission President), Tosh Wanogho-Maud (u/s General), Haydn Oakley (Price’s Dad), Haydn Oakley (Prices Dad/Joseph Smith/Mission President)
 Notes: Clear capture with some spotlight washout; filmed from the stalls in clear 16:9 widescreen HD. Released in both MP4 and VOB formats.
 https://encora.it/recordings/284/
@@ -41,7 +34,14 @@ First UK & Ireland Tour, Amsterdam | January 1, 2019 | Rumpel | VOB + smalls (SD
 Cast: Kevin Clay (Elder Price), Conner Peirson (Elder Cunningham), Nicole-Lily Baisden (Nabulungi), Will Hawksworth (Elder McKinley), Ewen Cummins (Mafala Hatimbi), Thomas Vernal (General), Johnathan Tweedie (Mission President), Johnathan Tweedie (Joseph Smith), Tre Copeland-Williams (Doctor), Cleopatra Isaac (Mrs. Brown), David Brewis (Cunningham's Father), Johnathan Tweedie (Price's Father), Jemal Felix (Guard), Lukin Simmonds (Guard), Evan James (Ensemble), Alex James-Hatton (Ensemble), George Crawford (Ensemble), Jed Berry (Ensemble), Iz Hesketh (Ensemble), Fergal McGoff (Ensemble)
 Notes: One of the best videos of this show out there. Recorded from the right wing, doesnt miss any action. High quality video and excellent sound. Kevin is a very good Elder Price.
 https://encora.it/recordings/28396/
-
+// D
+Death Becomes Her
+Broadway | November 27, 2024 | bikinibottomday | MP4 (4K), 9.26GB
+Cast: Megan Hilty (Madeline Ashton), Jennifer Simard (Helen Sharp), Christopher Sieber (Ernest Menville), Ximone Rose (u/s Viola Van Horn), Taurean Everett (Chagall), Josh Lamon (Stefan), Marija Juliette Abney (Ensemble), Lauren Celentano (Ensemble), Sarita Colón (Ensemble), Kaleigh Cronin (Ensemble), Natalie Charle Ellis (Ensemble), Michael Graceffa (Ensemble), Neil Haskell (Ensemble), Kolton Krouse (Ensemble), Sarah Meahl (Ensemble), Johanna Moise (s/w Ensemble), Sir Brock Warren (Ensemble), Bud Weber (Ensemble), Ryan Worsing (Ensemble), Warren Yang (Ensemble)
+Notes: Excellent 4K capture of Ximone as Viola Van Horne! Some very minor head and bar obstruction that blocks off a tiny bit of action here and there. Some wandering / readjustment and unfocusing throughout. Includes curtain call, audio fed from external source.
+https://encora.it/recordings/2007736/
+Added: November 16, 2026
+// F
 Falsettos
 Subtitles (en)
 Broadway | January, 1993 | Unknown | VOB + smalls, 2.98GB
@@ -64,6 +64,24 @@ Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (T
 Notes: Filmed January 3 & 4, 2017 and aired on PBS on October 27, 2017.
 https://encora.it/recordings/64/
 
+Falsettos
+Never Gift
+Broadway (Matinée) | December 30, 2016 | SJ Bernly | VOB + smalls, 8.83GB
+Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (Trina), Brandon Uranowitz (Mendel), Anthony Rosenthal (Jason), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia)
+Notes: Great clear capture with no washout. One quick dropout in the first few minutes of Act One, and a railing that can be seen occasionally but never affects the action.
+https://encora.it/recordings/1444
+Added: November 15, 2026
+
+Finn
+5th Anniversary Celebration | March 17, 2025 | Pro-Shot | MP4, 1.25GB
+Cast: Andrew Rannells (Finn), Kelli O'Hara (Auntie), Lea Salonga (Mamma), Bonnie Milligan (Aggie), Jessie Mueller (Lola), Nikki M. James (Seasil), Hennessy Winkler (Roscoe), Andrew Levitt | Nina West (Narrator), Zachary Noah Piser (Bruce), Michael Urie (Patrick/Puff), James Wesley Jackson (Squidgy), David Katz (Krabby/Frances), Javier Muñoz (Seahorse), Adam Pascal (Performer), Peppermint (Performer), Andrew Martin (Performer), Charlotte d'Amboise (Performer), Brenda Braxton (Performer), Jose Llana (Performer)
+Notes: Livestreamed benefit concert after Kennedy Center national tour for the show was cancelled
+https://encora.it/recordings/2025164/
+
+
+
+
+// G
 Gutenberg! The Musical!
 Broadway, James Earl Jones Theatre | October, 2023 | TheatreCouple14 | MP4, 6.24GB + MP3 Tracked and Untracked
 Cast: Josh Gad (Bud), Andrew Rannells (Doug), Annaleigh Ashford (g/p Producer)
@@ -77,6 +95,8 @@ Cast: Josh Gad (Bud), Andrew Rannells (Doug), Jackie Hoffman (g/p Producer)
 https://encora.it/recordings/1154832/
 Added: 2026-11-15
 
+
+// H
 Hadestown
 Broadway | September 2, 2025 | bikinibottomday | MP4 (4K), 9.58GB
 Cast: Jack Wolfe (Orpheus), Morgan Dudley (Eurydice), Rebecca Naomi Jones (Persephone), Paulo Szot (Hades), Kurt Elling (Hermes), Shea Renne (Fate), Jessie Shelton (Fate), Kay Trinidad (Fate), Emily Afton (Worker), Malcolm Armwood (Worker), Jeffrey Cornelius (Worker), Sydney Parra (Worker), Alex Puette (Worker)
@@ -84,15 +104,27 @@ Notes: Excellent 4K capture of Jack, Morgan, Rebecca, Paulo, Kurt, and Jeffrey�
 More Details: Only released by the master as a 9.68 GB MP4, other file sizes are rips.
 https://encora.it/recordings/2020104/
 
-
 Hadestown
 West End | 2025 | Pro-Shot | MKV (4K), 20.23GB
 Cast: Reeve Carney (Orpheus), Eva Noblezada (Eurydice), Amber Gray (Persephone), Patrick Page (Hades), André De Shields (Hermes), Bella Brown (Fate), Madeline Charlemagne (Fate), Allie Daniel (Fate), Tiago Dhondt Bamberger (Worker), Waylon Jacobs (Worker), Lauren Azania (Worker), Christopher Short (Worker)
 Notes: Footage was captured during three live performances on February 28 and March 1, 2025. Premiered on June 8, 2026; released in the United States on July 24, 2026. https://www.imdb.com/title/tt36307021/
 https://encora.it/recordings/2037885/
 
+Hairspray
+Broadway | January 31, 2006 | Pigerty | VOB + smalls, 3.43GB
+Cast: Michelle Dowdy (u/s Tracy Turnblad), John Pinette (Edna Turnblad), Darlene Love (Motormouth Maybelle), Tracy Miller (Penny Pingleton), Leah Hocking (Velma Von Tussle), Becky Gulsvig (Amber Von Tussle), Stephen DeRosa (Wilbur Turnblad), Andrew Rannells (Link Larkin), Michael Cunio (u/s Corny Collins), Tevin Campbell (Seaweed J. Stubbs), Chloe Smith (Little Inez), Julie Halston (Prudy Pingleton/Gym Teacher/Matron), Kevin Meaney (Mr. Pinky/Harriman F. Spritzer/Principal/Guard), Cameron Adams (Brenda), Tyler Hanes (Fender), Anne Warren (Lou Ann), Lindsay Nicole Chambers (Tammy), Todd Michel Smith (IQ), Donna Vivino (Shelley), Bryan West (Sketch), Tyrick Wiltez Jones (Duane), Arbender Robinson (Gilbert), Terita R. Redd (Lorraine), Carla J. Hargrove (Dynamite), Judine Somerville (Dynamite), Candice Marie Woods (Dynamite), Rashad Naylor (Thad)
+Notes: Blackouts during It Takes Two and after Edna’s You Cant Stop The Beat. Does not include curtain call.
+https://encora.it/recordings/1604
+Added: November 15, 2026
+
+Hamilton
+Broadway | February, 2024 | StarCuffedJeans | MP4, 6.87GB
+Cast: Alexander Ferguson (u/s Alexander Hamilton), Stephanie Jae Park (Eliza Hamilton), Jared Dixon (Aaron Burr), Jennie Harney-Fleming (Angelica Schuyler), Tamar Greene (George Washington), Bryson Bruce (s/b Marquis de Lafayette/s/b Thomas Jefferson), Jonathan Butler-Duplessis (u/s Hercules Mulligan/u/s James Madison), Rubén J. Carbajal (John Laurens/Philip Hamilton), Yana Perrault (Peggy Schuyler/Maria Reynolds), Jarrod Spector (King George III), Eddy Lee (s/w Philip Schuyler/s/w James Reynolds/s/w Doctor), Thayne Jasperson (Samuel Seabury), John Michael Fiumara (Charles Lee), Preston Mui (George Eacker)
+https://encora.it/recordings/2025614
+Added: November 17, 2026
+
 Hedwig and the Angry Inch
-Subtitles (en)
+Never Gift, Subtitles (en)
 Broadway, Belasco Theatre | August 20, 2014 | SJ Bernly | VOB + smalls, 2.71GB
 Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak)
 Notes: HD capture filmed beautifully. I absolutely love Andrew's sassy portrayal of Hedwig. There are some heads that get in the way and the camera wanders at times, but otherwise a great capture.
@@ -106,6 +138,8 @@ Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak), Justin Craig (Skszp), Peter
 Notes: Beautiful HD capture of Andrew stepping in to the role. He gives a great performance and makes it his own, with his own jokes and characterizations. Great comparison and follow-up to Neil. Lena has only gotten stronger in the role and holds out an amazing riff! A+
 https://encora.it/recordings/5145/
 
+
+// J
 Jersey Boys
 First US National Tour | November 8, 2008 | SunsetBlvd79 | VOB + smalls, 4.31GB
 Cast: Joseph Leo Bwarie (Frankie Valli), Jeremy Kushnier (Tommy Devito), Steve Gouveia (Nick Massi), Andrew Rannells (Bob Gaudio), Jonathan Hadley (Bob Crewe), Joseph Siravo (Gyp DeCarlo), Sarah Darling (Hal Miller)
@@ -113,18 +147,36 @@ Notes: A Great capture of the tour in Canada, before the Canadian cast took over
 https://encora.it/recordings/7316/
 Added: 2026-11-10
 
+// L
+Legally Blonde
+Broadway, Palace Theatre | April 14, 2007 | SunsetBlvd79 | VOB + smalls, 4.37GB
+Cast: Laura Bell Bundy (Elle Woods), Christian Borle (Emmett Forrest), Richard H. Blake (Warner Huntington III), Orfeh (Paulette), Kate Shindle (Vivienne Kensington), Nikki Snelson (Brooke Wyndham/Shandi), Michael Rupert (Professor Callahan), Annaleigh Ashford (Margot), Leslie Rodriguez Kritzer (Serena), DeQuina Moore (Pilar), Andy Karl (Kyle/Dewey/Grandmaster Chad), Natalie Joy Johnson (Enid/Veronica), Kate Wetherhead (Kate/Chutney)
+Notes: Great fun show and nice capture. Laura was wonderful, alongside a fantastic cast. A-
+https://encora.it/recordings/1142
+Added: November 15, 2026
+
 Little Shop of Horrors
 Off-Broadway Revival | January, 2022 (1) | StarCuffedJeans | MP4 (4K), 4.76 GB
 Cast: Jeremy Jordan (Seymour), Tammy Blanchard (Audrey), Christian Borle (Orin), Tom Alan Robbins (Mr. Mushnik), Joy Woods (Chiffon), Aveena Sawyer (Crystal), Salome Smith (Ronnette), Aaron Arnell Harrington (Voice of Audrey II), Weston Chandler Long (u/s Audrey II Manipulation), Paul McGinnis (Audrey II Manipulation), Josh Daniel (Audrey II Manipulation), Weston Chandler Long (u/s Derelict), Christian Borle (Others)
 Notes: Jeremy's last show!
 https://encora.it/recordings/1129574/
 
+// M
 Mean Girls
 First US National Tour | November, 2019 | StarCuffedJeans | MP4 (HD), 6.54GB
 Cast: Danielle Wade (Cady Heron), Mariah Rose Faith Casillas (Regina George), Megan Masako Haley (Gretchen Wieners), Jonalyn Saxer (Karen Smith), Mary Kate Morrissey (Janis Sarkisian), Eric Huffman (Damian Hubbard), Adante Carter (Aaron Samuels), Kabir Bery (Kevin Gnapoor), Gaelen Gilliland (Mrs. Heron), Gaelen Gilliland (Ms. Norbury), Gaelen Gilliland (Mrs. George), Lawrence E. Street (Principal Duvall), Sarah Crane (Ensemble), Sydney Mei Ruf-Wong (Ensemble), Marcus Shane (s/w Ensemble), DeShawn Bowens (Ensemble), Blake Zelesnikar (Ensemble), Asia Kreitz (Ensemble), Grace Romanello (s/w Ensemble), David Wright Jr. (Ensemble), Fernell Hogan II (Ensemble), Olivia Renteria (Ensemble), Morgan Ashley Bryant (Ensemble), Niani Feelings (Ensemble), Kaitlyn Louise Smith (Ensemble), Will Branner (Ensemble)
 Notes: Phenomenal HD capture of the First National Tour of the show, shot from the left balcony with a mix of wides, mediums, and many closeups. The video starts at the beginning of both acts and covers all of the action and the fantastic performances of the tour cast. Please do not post screenshots of this video on Twitter ever. Gifs on Tumblr are okay after the NFT date, but don't go linking things to actors and shows.
 https://encora.it/recordings/27633/
+// P
+Pokémon Live!
+First US National Tour | November 2000 | House-Cam | MP4, 1.26GB
+Cast: Heidi Michelle Weyhmueller (Misty), Dennis Kenney (Brock), Jennifer Risser (Pikachu), Natalie Weld (Nurse Joy), Leah Smith (Jigglypuff/Psyduck), Shaun Bradley (Mewtwo), Kathleen Roche (Meowth), Dominic Nolfi (Ash Ketchum), Patrick Frankfort (Professor Oak), Andrew Rannells (James), Lauren Kling (Jessie), Darren Dunstan (Giovanni), Dee Roscioli (Delia Ketchum), Suzanne Wogisch (Officer Jenny), Sinclair Mitchell (Dexter)
+Notes: House Cam from PML US TOUR, Wide Shot of stage only, good picture overall B+/A Quality
+More Details: Includes the show in 7 parts, a merged version, and a "Making Of" video
+https://encora.it/recordings/1005546
+Added: November 15, 2026
 
+// R
 Rent
 Subtitles (en)
 Broadway | September 7, 2008 | Pro-Shot | MP4 (HD), 2,81GB
@@ -132,9 +184,10 @@ Cast: Adam Kantor as Mark Cohen, Will Chase as Roger Davis, Michael McElroy as T
 Notes: Filmed on August 20, 2008 and September 7, 2008. Released on DVD as RENT: Filmed Live On Broadway on February 3, 2009. https://www.imdb.com/title/tt1273675/
 https://encora.it/recordings/19592/
 
+// S
 Some Like it Hot
 Subtitles (en)
-Broadway, Shubert Theatre | April 26, 2023 | Medium Observation | MP4. 10.87GB
+Broadway, Shubert Theatre | April 26, 2023 | Medium Observation | MP4, 10.87GB
 Cast: J. Harrison Ghee (Jerry | Daphne), Christian Borle (Joe | Josephine), Adrianna Hicks (Sugar Kane), NaTasha Yvette Williams (Sweet Sue), Kevin Del Aguila (Osgood Fielding III), Adam Heller (Agent Mulligan), Mark Lotito (Spats Colombo), Angie Schworer (Minnie), Devon Hadsell (Nellie), Jenny Hill (Vivian), TyNia René Brandon (Dolores), Raena White (Ginger), Casey Garvin (Mack), KJ Hippensteel (Man with Suitcase/Bar Manager), Jarvis B. Manning Jr. (Sonny), Charles South (Toothpick Charlie), DeMarius R. Copes (Ensemble), Brian Martin (Ensemble), Abby Matsusaka (Ensemble), Amber Owens (Ensemble), Brendon Stimson (Ensemble), Richard Riaz Yoder (Ensemble)
 Notes: Absolutely flawless video. There is a small head on the bottom left but it only obstructs the very front of the stage. The whole cast was really fantastic.
 https://encora.it/recordings/1146070/
@@ -154,28 +207,8 @@ Notes: AMAZING capture, closeups, performances. Not to be missed. A+
 Content warning, there is partial nudity in this bootleg.
 https://encora.it/recordings/316
 
-Falsettos
-Broadway (Matinée) | December 30, 2016 | SJ Bernly | VOB + smalls, 8.83GB
-Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (Trina), Brandon Uranowitz (Mendel), Anthony Rosenthal (Jason), Tracie Thoms (Dr. Charlotte), Betsy Wolfe (Cordelia)
-Notes: Great clear capture with no washout. One quick dropout in the first few minutes of Act One, and a railing that can be seen occasionally but never affects the action.
-https://encora.it/recordings/1444
-Added: November 15, 2026
 
-Legally Blonde
-Broadway, Palace Theatre | April 14, 2007 | SunsetBlvd79 | VOB + smalls, 4.37GB
-Cast: Laura Bell Bundy (Elle Woods), Christian Borle (Emmett Forrest), Richard H. Blake (Warner Huntington III), Orfeh (Paulette), Kate Shindle (Vivienne Kensington), Nikki Snelson (Brooke Wyndham/Shandi), Michael Rupert (Professor Callahan), Annaleigh Ashford (Margot), Leslie Rodriguez Kritzer (Serena), DeQuina Moore (Pilar), Andy Karl (Kyle/Dewey/Grandmaster Chad), Natalie Joy Johnson (Enid/Veronica), Kate Wetherhead (Kate/Chutney)
-Notes: Great fun show and nice capture. Laura was wonderful, alongside a fantastic cast. A-
-https://encora.it/recordings/1142
-Added: November 15, 2026
-
-Pokémon Live!
-First US National Tour | November 2000 | House-Cam | MP4, 1.26GB
-Cast: Heidi Michelle Weyhmueller (Misty), Dennis Kenney (Brock), Jennifer Risser (Pikachu), Natalie Weld (Nurse Joy), Leah Smith (Jigglypuff/Psyduck), Shaun Bradley (Mewtwo), Kathleen Roche (Meowth), Dominic Nolfi (Ash Ketchum), Patrick Frankfort (Professor Oak), Andrew Rannells (James), Lauren Kling (Jessie), Darren Dunstan (Giovanni), Dee Roscioli (Delia Ketchum), Suzanne Wogisch (Officer Jenny), Sinclair Mitchell (Dexter)
-Notes: House Cam from PML US TOUR, Wide Shot of stage only, good picture overall B+/A Quality
-More Details: Includes the show in 7 parts, a merged version, and a "Making Of" video
-https://encora.it/recordings/1005546
-Added: November 15, 2026
-
+// T
 Tammy Faye
 Off-West End | November 2022 | Jagweed | MP4, 11.53GB
 Cast: Katie Brayben (Tammy Faye), Andrew Rannells (Jim Bakker), Zubin Varla (Jerry Falwell), Fred Haig (Marvin Gorman/TV Ad Voice/Monson/Proctologist), Martin Sarreal (John Fletcher), Steve John Shepherd (Reagan/Archbishop of Canterbury/Jimmy Swaggart), Nicholas Rowe (The Pope/Pat Robertson/Ted Turner), Peter Caulfield (Billy Graham/Larry Flint/Judge/Pontius Pilate), Richard Dempsey (Paul Crouch/Ally the Alligator/Colonel Sanders), Amy Booth-Steel (Susie Moppet/Jan Crouch/Lori Beth), Ashley Campbell (Oral Roberts/Charles Shepherd/Steve Pieters/Reggie/PTL Singer), Gemma Sutton (Jessica Hahn/Nurse/Announcer/Receptionist), Colin Burnicle (Jesus/PTL Singer), Kelly Agbowu (Nurse/Prime Time Girl/Letter Writer/Heritage Partner/FBI Agent/PTL Singer), Robyn Rose (Nurse/Prime Time Girl/Newsreader/Heritage Waitress/Linda/PTL Singer), Georgia Louise (Prime Time Girl/Heritage Partner/Jim's Mother/Production Manager/Choir Member/PTL Singer), Danny Collins (Letter Writer/FBI/PTL Singer)
@@ -183,23 +216,6 @@ Notes: Pretty much a perfect capture of this show. Nice mix of wides, mediums an
 https://encora.it/recordings/1142977
 Added: November 15, 2026
 
-Hairspray
-Broadway | January 31, 2006 | Pigerty | VOB + smalls, 3.43GB
-Cast: Michelle Dowdy (u/s Tracy Turnblad), John Pinette (Edna Turnblad), Darlene Love (Motormouth Maybelle), Tracy Miller (Penny Pingleton), Leah Hocking (Velma Von Tussle), Becky Gulsvig (Amber Von Tussle), Stephen DeRosa (Wilbur Turnblad), Andrew Rannells (Link Larkin), Michael Cunio (u/s Corny Collins), Tevin Campbell (Seaweed J. Stubbs), Chloe Smith (Little Inez), Julie Halston (Prudy Pingleton/Gym Teacher/Matron), Kevin Meaney (Mr. Pinky/Harriman F. Spritzer/Principal/Guard), Cameron Adams (Brenda), Tyler Hanes (Fender), Anne Warren (Lou Ann), Lindsay Nicole Chambers (Tammy), Todd Michel Smith (IQ), Donna Vivino (Shelley), Bryan West (Sketch), Tyrick Wiltez Jones (Duane), Arbender Robinson (Gilbert), Terita R. Redd (Lorraine), Carla J. Hargrove (Dynamite), Judine Somerville (Dynamite), Candice Marie Woods (Dynamite), Rashad Naylor (Thad)
-Notes: Blackouts during It Takes Two and after Edna’s You Cant Stop The Beat. Does not include curtain call.
-https://encora.it/recordings/1604
-Added: November 15, 2026
 
-Death Becomes Her
-Broadway | November 27, 2024 | bikinibottomday | MP4 (4K), 9.26GB
-Cast: Megan Hilty (Madeline Ashton), Jennifer Simard (Helen Sharp), Christopher Sieber (Ernest Menville), Ximone Rose (u/s Viola Van Horn), Taurean Everett (Chagall), Josh Lamon (Stefan), Marija Juliette Abney (Ensemble), Lauren Celentano (Ensemble), Sarita Colón (Ensemble), Kaleigh Cronin (Ensemble), Natalie Charle Ellis (Ensemble), Michael Graceffa (Ensemble), Neil Haskell (Ensemble), Kolton Krouse (Ensemble), Sarah Meahl (Ensemble), Johanna Moise (s/w Ensemble), Sir Brock Warren (Ensemble), Bud Weber (Ensemble), Ryan Worsing (Ensemble), Warren Yang (Ensemble)
-Notes: Excellent 4K capture of Ximone as Viola Van Horne! Some very minor head and bar obstruction that blocks off a tiny bit of action here and there. Some wandering / readjustment and unfocusing throughout. Includes curtain call, audio fed from external source.
-https://encora.it/recordings/2007736/
-Added: November 16, 2026
-
-Finn
-5th Anniversary Celebration | March 17, 2025 | Pro-Shot | MP4, 1.25GB
-Cast: Andrew Rannells (Finn), Kelli O'Hara (Auntie), Lea Salonga (Mamma), Bonnie Milligan (Aggie), Jessie Mueller (Lola), Nikki M. James (Seasil), Hennessy Winkler (Roscoe), Andrew Levitt | Nina West (Narrator), Zachary Noah Piser (Bruce), Michael Urie (Patrick/Puff), James Wesley Jackson (Squidgy), David Katz (Krabby/Frances), Javier Muñoz (Seahorse), Adam Pascal (Performer), Peppermint (Performer), Andrew Martin (Performer), Charlotte d'Amboise (Performer), Brenda Braxton (Performer), Jose Llana (Performer)
-Notes: Livestreamed benefit concert after Kennedy Center national tour for the show was cancelled
-https://encora.it/recordings/2025164/
-
+// NEW! (NOVEMBER)
+// To sort later
