@@ -1,14 +1,20 @@
-// SITE INFO. Shown on the home page, the footer and the header. Every line is optional.
-//   Updated: October 30, 2026       any date format works
-//   Status: active                  one of: active | wants | gifts | inactive
-//   Status note: any extra line you'd like shown on the home page
-//   Email: you@example.com
-//   Reddit: https://www.reddit.com/user/YourUsername
-// Lines starting with // are ignored.
-
-
 Updated: November 18, 2026
+// SITE INFO. Every line is optional, and each one stays on a single line.
+//   Status: active | wants | gifts | inactive
+//   Status note: an extra line shown on the home page
+//   The "Updated:" date is automatic, so there is no line for it here.
+//   Leave a line out to keep the site's built-in text.
+
 Status: active
 Email: wiredpossum4@gmail.com
 Reddit: https://www.reddit.com/user/WiredPossum4
 Encora: https://encora.it/traders/wiredpossum4/collection
+
+Site Name: WiredPossum4's Collection
+Contact Title: Get in touch
+
+Index Description: Hello, welcome to my page! I’ve been trading since October 2026! Just a uni student with apparently too much time on my hands :) Please check out the “Contact & Rules” tab for more information!
+
+Collection Description: I try my best to keep my list up-to-date, but some things might slip through. Please contact me if there are any errors on the file’s info!
+
+Wishlist Description: Shows I’m still looking for. If you have one of them, I’d love to hear from you!
