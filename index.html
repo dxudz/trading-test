@@ -307,7 +307,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 </head>
 <body>
 <nav id="nav"><div class="navin">
-  <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
+  <a class="brand" href="index.html"><i data-sn="first">WiredPossum4's</i><span data-sn="last">Collection</span></a>
   <div class="links"><a class="on" href="index.html">Home</a><a href="collection.html#collection">Collection</a><a href="wishlist.html">Wishlist</a><a href="contact.html">Contact &amp; Rules</a></div>
   <span class="trade" id="trade" hidden></span>
   <a class="reqbtn" href="collection.html#request">Request List <b id="reqN">0</b></a>
@@ -316,10 +316,10 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 <header class="wrap hero"><div class="heroin"><img class="herobg" src="image/header.jpg" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2">–</span></span></div>
-    <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
+    <h1><span class="scr" data-sn="first">WiredPossum4's</span> <span class="blk" data-sn="last">Collection</span></h1>
     <div class="hbot">
       <!-- YOUR INTRODUCTION: edit these few lines -->
-      <p class="intro">Hello! Welcome to my page! I’ve been trading since November 2026, mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :) More information on the “Contact &amp; Rules” tab.</p>
+      <p class="intro" data-text="index description">Hello! Welcome to my page! I’ve been trading since November 2026, mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :) More information on the “Contact &amp; Rules” tab.</p>
       <a class="cta" href="collection.html#collection">Browse the collection</a>
     </div>
   </div>
@@ -371,6 +371,19 @@ const FALLBACK = { status: "active", note: "", updated: "October 30, 2026",
             { title: "Falsettos", category: "Musical", image: "" } ] };
 
 const $ = id => document.getElementById(id);
+const TEXT_KEYS = ["index description", "collection description", "wishlist description", "site name", "contact title"];
+const TEXTS = {}, BASE_TITLE = document.title;          // texts you can change from the Data tab / site.txt (Key: value lines)
+function applyTexts(){
+  const pick = (el, v) => { if(el.dataset.def === undefined) el.dataset.def = el.textContent; el.textContent = v || el.dataset.def; };
+  document.querySelectorAll("[data-text]").forEach(el => pick(el, TEXTS[el.dataset.text]));
+  const sn = TEXTS["site name"], i = sn ? sn.lastIndexOf(" ") : -1;
+  document.querySelectorAll("[data-sn=first]").forEach(el => pick(el, sn && (i < 0 ? "" : sn.slice(0, i))));
+  document.querySelectorAll("[data-sn=last]").forEach(el => pick(el, sn && (i < 0 ? sn : sn.slice(i + 1))));
+  document.title = sn ? BASE_TITLE.replace("WiredPossum4's Collection", sn) : BASE_TITLE; }
+function setTexts(t){ if(!t) return; Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
+  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); }
+try{ Object.assign(TEXTS, JSON.parse(localStorage.getItem("site-texts") || "{}")); applyTexts(); }catch{}
+
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -438,9 +451,9 @@ function nextImg(el){
 
 /* counts the shows in the same pasted text that collection.html uses */
 const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
-const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i;
+const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora|index description|collection description|wishlist description|site name|contact title)\s*:\s*(.+)$/i;
 function parseArchive(text){
-  const out = { status: "", note: "", updated: "", email: "", reddit: "", encora: "" };
+  const out = { status: "", note: "", updated: "", email: "", reddit: "", encora: "", texts: {} };
   const blocks = []; let cat = "Musical", cur = null, field = null;
   const push = () => { if(cur) blocks.push(cur); cur = null; field = null; };
   const start = title => { cur = { title, category: cat, has: false, info: false, tagged: false, image: "", added: "" }; field = null; };
@@ -451,7 +464,7 @@ function parseArchive(text){
     if(dm){
       const k = dm[1].toLowerCase(), v = dm[2].trim();
       if(k === "updated") out.updated = parseDate(v); else if(k === "status") out.status = v; else if(k === "status note") out.note = v;
-      else if(k === "email") out.email = v; else if(/encora$/.test(k)) out.encora = v; else out.reddit = v;
+      else if(k === "email") out.email = v; else if(/encora$/.test(k)) out.encora = v; else if(TEXT_KEYS.includes(k)) out.texts[k] = v; else out.reddit = v;
       field = null; continue;
     }
     const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
@@ -527,6 +540,7 @@ function drawRecent(list){
 }
 
 function draw(d){
+  setTexts(d.texts);
   const st = statusInfo(d.status), tone = st.tone ? " " + st.tone : "";
   $("trade").textContent = st.short; $("trade").className = "trade" + tone; $("trade").hidden = false;
   $("status").className = "status" + tone;
