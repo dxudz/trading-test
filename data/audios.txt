@@ -1,19 +1,12 @@
-// AUDIOS. One show per block, pasted the way you keep it in your notes. No "# AUDIOS" heading needed.
-// Full format guide (tags, cast, notes, poster, Added dates...): data/_guide.txt
-// Example (remove the // to use it):
-//   Falsettos
-//   Never Gift ・Subtitles (en)
-//   Broadway, Walter Kerr Theatre | January 2017 | Pro-Shot | MKV (HD), 10.26GB
-//   Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer)
-//   Notes: Professional recording.      Added: Nov 15, 2026
-// Lines starting with // are ignored.
-
-
+// Audios
+// # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+// B
 The Boys in the Band
 Broadway, Booth Theatre | May 16, 2018 | redladydeath | M4A (untracked), 53.7MB
 Cast: Matt Bomer, Zachary Quinto, Jim Parsons, Andrew Rannells, Robin De Jesus, Brian Hutchison, Charlie Carver, Michael Benjamin Washington, Tuc Watkins
 https://encora.it/recordings/609/
 
+// F
 Falsettos
 Never Gift
 Carnegie Hall - 10-Year Revival Anniversary Concert | October 18, 2026 | ColorAndLight | M4A (separated acts, untracked), 139MB
@@ -21,10 +14,9 @@ Cast: Christian Borle (Marvin), Andrew Rannells (Whizzer), Stephanie J. Block (T
 Notes: Recorded from the orchestra. Occasional shuffling. The first of 3 reunion concerts in NY. Very enthusiastic audience. Includes the pre-show speech by Betsy Wolfe.
 https://encora.it/recordings/2041088
 
+// H
 Hedwig and the Angry Inch
 Broadway, Belasco Theatre | October 12, 2014 | Unknown | M4A (untracked), 45.7MB
 Cast: Andrew Rannells (Hedwig), Lena Hall (Yitzhak)
 Notes: Andrew Rannells FINAL SHOW! Clear audio!
 https://encora.it/recordings/8887/
-
-
