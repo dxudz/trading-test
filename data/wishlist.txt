@@ -1,3 +1,36 @@
+// ============================================================
+// YOUR WISHLIST. Same pasting style as the collection, plus a quick bullet list.
+//
+//   - Hedwig and the Angry Inch 2014 Audios    a line starting with "- " goes into the
+//                                               bullet list at the top. Use it for vague
+//                                               wants or anything you're not sure about.
+//   # Musicals / # Plays / # Recordings         sets the category for the detailed wants below
+//   Title
+//   Location | Month Year | Master | Filetype (Resolution), Filesize
+//   Cast: ...        Notes: ...        (fill in only what you know, "Any" is fine)
+//   EVERYTHING IS OPTIONAL. Leave out whatever you don't have, or fill only part of the
+//   Location | Month Year | Master | Filetype line (for example: Broadway | 2017). You can
+//   also give single items their own line:  Location: ...  Date: ...  Master: ...  Format: MKV (HD), 10GB
+//   A show needs at least one line besides its title (tags, cast, notes, a link...).
+//   For a bare title, put --- on the line under it.
+//   Image: image/my-poster.png                 optional; otherwise the picture is found by the show's name
+//                                               in your "images" or "image" folder (falsettos.jpg, Falsettos.png...)
+//   Updated: November 11, 2026                  optional; shown in the header and footer
+//
+// Lines starting with // are ignored.
+// ============================================================
+
+- Anything with Andrew Rannells/Christian Borle
+- The Book of Mormon (any cast)
+- Wicked w/ Idina Menzel or Stephanie J Block
+- Hedwig Andrew Rannells Audios (!!!)
+- Hedwig w/ JCM or Lena Hall
+- The Great Gatsby w/ Will Branner
+- Waitress w/ Betsy Wolfe
+- Into the Woods
+- Sunset Boulevard
+
+
 // Wishlist
 # Musicals
 // # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
