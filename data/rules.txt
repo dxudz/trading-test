@@ -1,14 +1,14 @@
-// CONTACT & RULES page text. Edit and commit, no HTML needed.
+// CONTACT & RULES page text.
 //   # Heading        a title
 //   - something      a bullet point
 //   plain line       a paragraph
 // Lines starting with // are ignored.
+
 # About Me
 ATM I’m really interested in collecting The Book of Mormon, Hedwig and the Angry Inch, and Falsettos!!
-While I do wish to have a collection with hundreds of shows, unfortunately I have limited storage at the moment, so all the files I’m gathering are things I am really excited about watching and having. 
+While I do wish to have a collection with hundreds of shows, unfortunately I have limited storage at the moment, so all the files I’m gathering are things I am really excited about acquiring.
 So, I might not have exactly what you’re looking for, but take a look around! Maybe you’ll find something to enjoy, I really hope you do!
-Mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :) 
-
+Mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :)
 
 # Rules
 - Please send your whole list, even if it’s small.
@@ -17,3 +17,4 @@ Mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days
 - Please don't share my links or post the videos anywhere online.
 - My trade ratios are usually the standard:
 1:1 video | 1:1 audio | 2:1 audio to video
+But I'm always open to figuring something out if it makes sense :)
