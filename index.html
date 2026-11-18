@@ -319,7 +319,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
     <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
     <div class="hbot">
       <!-- YOUR INTRODUCTION: edit these few lines -->
-      <p class="intro">Hello! Welcome to my page! Trading since October 2026, just a uni student with apparently too much time on my hands :) Please check out the “Contact & Rules” tab for more information!</p>
+      <p class="intro">Hello! Welcome to my page! I’ve been trading since November 2026, mostly using Mega, Transfer.it or Google Drive. My links usually last for 7 days, but you can always tell me if you need more time :) More information on the “Contact &amp; Rules” tab.</p>
       <a class="cta" href="collection.html#collection">Browse the collection</a>
     </div>
   </div>
@@ -328,7 +328,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
     <div class="status" id="status"><i class="dot"></i><span class="slabel" id="slabel">–</span></div>
     <p class="stext" id="stext"></p>
     <p class="snote" id="snote" hidden></p>
-    <div class="glinks"><a href="wishlist.html">See my wishlist</a><a href="collection.html#request" id="reqlink">Open the request list</a></div>
+    <div class="glinks"><a href="wishlist.html">See my wishlist</a><a href="#" id="encoraLink" target="_blank" rel="noopener" hidden>My Encora</a></div>
   </div></div>
 </div></header>
 
@@ -438,9 +438,9 @@ function nextImg(el){
 
 /* counts the shows in the same pasted text that collection.html uses */
 const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
-const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
+const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i;
 function parseArchive(text){
-  const out = { status: "", note: "", updated: "", email: "", reddit: "" };
+  const out = { status: "", note: "", updated: "", email: "", reddit: "", encora: "" };
   const blocks = []; let cat = "Musical", cur = null, field = null;
   const push = () => { if(cur) blocks.push(cur); cur = null; field = null; };
   const start = title => { cur = { title, category: cat, has: false, info: false, tagged: false, image: "", added: "" }; field = null; };
@@ -451,7 +451,7 @@ function parseArchive(text){
     if(dm){
       const k = dm[1].toLowerCase(), v = dm[2].trim();
       if(k === "updated") out.updated = parseDate(v); else if(k === "status") out.status = v; else if(k === "status note") out.note = v;
-      else if(k === "email") out.email = v; else out.reddit = v;
+      else if(k === "email") out.email = v; else if(/encora$/.test(k)) out.encora = v; else out.reddit = v;
       field = null; continue;
     }
     const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
@@ -532,7 +532,7 @@ function draw(d){
   $("status").className = "status" + tone;
   $("slabel").textContent = st.label; $("stext").textContent = st.text; $("stext").hidden = !st.text;
   $("snote").textContent = d.note || ""; $("snote").hidden = !d.note;
-  $("reqlink").hidden = st.tone === "off";
+  { const en = $("encoraLink"); if(d.encora){ en.href = d.encora; en.hidden = false; } else en.hidden = true; }
 
   const upd = fmtDate(d.updated) || "–";
   $("upd").textContent = upd; $("upd2").textContent = upd;
