@@ -266,7 +266,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 </head>
 <body>
 <nav id="nav"><div class="navin">
-  <a class="brand" href="index.html"><i>WiredPossum4's</i>Collection</a>
+  <a class="brand" href="index.html"><i data-sn="first">WiredPossum4's</i><span data-sn="last">Collection</span></a>
   <div class="links"><a href="index.html">Home</a><a href="collection.html#collection">Collection</a><a href="wishlist.html">Wishlist</a><a class="on" href="contact.html">Contact &amp; Rules</a></div>
   <span class="trade" id="trade" hidden></span>
   <a class="reqbtn" href="collection.html#request">Request List <b id="reqN">0</b></a>
@@ -276,7 +276,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
   <div class="pgmeta"><span class="trade tm" id="trade2" hidden></span></div>
   <div class="panel" id="rules"></div>
   <div class="panel">
-    <h2 class="ph">Get in touch</h2>
+    <h2 class="ph" data-text="contact title">Get in touch</h2>
     <p id="rStatus" role="status"></p>
     <form id="cForm">
       <label for="cName">Your name</label>
@@ -299,10 +299,23 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 const RULES_PAGE = "data/rules.txt";
 const FORM = { url: "https://api.web3forms.com/submit", accessKey: "7505f919-d54e-4854-9d0e-e676422bd271" };   // see README: free key from web3forms.com, requests go to your inbox
 const $ = id => document.getElementById(id);
+const TEXT_KEYS = ["index description", "collection description", "wishlist description", "site name", "contact title"];
+const TEXTS = {}, BASE_TITLE = document.title;          // texts you can change from the Data tab / site.txt (Key: value lines)
+function applyTexts(){
+  const pick = (el, v) => { if(el.dataset.def === undefined) el.dataset.def = el.textContent; el.textContent = v || el.dataset.def; };
+  document.querySelectorAll("[data-text]").forEach(el => pick(el, TEXTS[el.dataset.text]));
+  const sn = TEXTS["site name"], i = sn ? sn.lastIndexOf(" ") : -1;
+  document.querySelectorAll("[data-sn=first]").forEach(el => pick(el, sn && (i < 0 ? "" : sn.slice(0, i))));
+  document.querySelectorAll("[data-sn=last]").forEach(el => pick(el, sn && (i < 0 ? sn : sn.slice(i + 1))));
+  document.title = sn ? BASE_TITLE.replace("WiredPossum4's Collection", sn) : BASE_TITLE; }
+function setTexts(t){ if(!t) return; Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
+  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); }
+try{ Object.assign(TEXTS, JSON.parse(localStorage.getItem("site-texts") || "{}")); applyTexts(); }catch{}
+
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i;
+const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora|index description|collection description|wishlist description|site name|contact title)\s*:\s*(.+)$/i;
 const CONTACT = { email: "" };
 const MON3 = ["jan","feb|fev","mar","apr|abr","may|mai","jun","jul","aug|ago","sep|set","oct|out","nov","dec|dez"];
 function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 November 2026, 15/11/2026, 11/2026, "January 2017"...
@@ -324,12 +337,13 @@ const STATUS_MAP = { active: { short: "Open for trade", tone: "" }, wants: { sho
 function statusInfo(v){ const t = String(v || "").toLowerCase();
   const k = /want/.test(t) ? "wants" : /gift/.test(t) ? "gifts" : /inactive|closed|not|off|pause|\bno\b/.test(t) ? "inactive" : /active|open|yes|\bon\b/.test(t) ? "active" : t ? "" : "active";
   return STATUS_MAP[k] || { short: String(v).slice(0, 22), tone: "mid" }; }
-function siteInfo(text){ const out = { status: "", updated: "", email: "", reddit: "" };
+function siteInfo(text){ const out = { status: "", updated: "", email: "", reddit: "", texts: {} };
   for(const raw of String(text).split(/\r?\n/)){ const line = raw.trim(); if(line.startsWith("//")) continue;
     const m = line.match(DIRECTIVE); if(!m) continue; const k = m[1].toLowerCase(), v = m[2].trim();
-    if(k === "updated") out.updated = parseDate(v); else if(k === "status") out.status = v; else if(k === "email") out.email = v; else if(k === "reddit") out.reddit = v; }
+    if(k === "updated") out.updated = parseDate(v); else if(k === "status") out.status = v; else if(k === "email") out.email = v; else if(k === "reddit") out.reddit = v; else if(TEXT_KEYS.includes(k)) out.texts[k] = v; }
   return out; }
 function drawSite(d){
+  setTexts(d.texts);
   const st = statusInfo(d.status), cls = "trade" + (st.tone ? " " + st.tone : "");
   $("trade").textContent = st.short; $("trade").className = cls; $("trade").hidden = false;
   $("trade2").textContent = st.short; $("trade2").className = cls + " tm"; $("trade2").hidden = false;
