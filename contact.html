@@ -302,7 +302,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const DIRECTIVE = /^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i;
+const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i;
 const CONTACT = { email: "" };
 const MON3 = ["jan","feb|fev","mar","apr|abr","may|mai","jun","jul","aug|ago","sep|set","oct|out","nov","dec|dez"];
 function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 November 2026, 15/11/2026, 11/2026, "January 2017"...
