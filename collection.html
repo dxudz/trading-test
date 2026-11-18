@@ -281,7 +281,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2"></span></span><span class="trade tm" id="trade2" hidden></span></div>
     <h1><span class="scr">WiredPossum4's</span> <span class="blk">Collection</span></h1>
-    <div class="hbot"><p class="sub">I don’t have an Encora yet (I’d love an invite, though!), so all information is gathered from the lists of people I got the file from.</p></div>
+    <div class="hbot"><p class="sub">I try my best to keep my list up-to-date, but some things might slip through. Please contact me if there are any errors on the file’s info!</p></div>
   </div>
   <div class="hr"><div class="glass">
     <div class="gtop"><span class="gl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search the archive</span></div>
@@ -363,12 +363,13 @@ let UPDATED = "", STATUS = "", STATUS_NOTE = "";
 /* ---------- reads the pasted text above into shows ---------- */
 const splitTags = line => {          // tags split on ・ · • and on commas that are not inside (brackets)
   const out = []; let cur = "", depth = 0;
-  for(const ch of line){
+  for(let i = 0; i < line.length; i++){ const ch = line[i];
     if("([（".includes(ch)) depth++; else if(")]）".includes(ch)) depth = Math.max(0, depth - 1);
-    if(depth === 0 && /[・·•,]/.test(ch)){ out.push(cur); cur = ""; } else cur += ch; }
+    const yearComma = ch === "," && /\d$/.test(cur) && /^\s*\d{4}(?!\d)/.test(line.slice(i + 1));   // "December 30, 2025" stays in one piece
+    if(depth === 0 && /[・·•,]/.test(ch) && !yearComma){ out.push(cur); cur = ""; } else cur += ch; }
   out.push(cur); return out.map(x => x.trim()).filter(Boolean); };
-const TAGCLS = { "never gift": "red", "nft": "red", "gift on request": "green", "trade only": "yellow" };
-const tagCls = t => TAGCLS[t.toLowerCase().replace(/\s+/g, " ").trim()] || "";
+const tagCls = t => { const x = t.toLowerCase().replace(/\s+/g, " ").trim();      // starts-with, so "NFT until Dec 30 2025" or "NFT Forever" work too
+  return /^(nft|never gift)\b/.test(x) ? "red" : /^gift on request\b/.test(x) ? "green" : /^trade only\b/.test(x) ? "yellow" : ""; };
 const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|master|format|file)\s*:\s*(.*)$/i;
 const slug = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -426,11 +427,11 @@ function parseArchive(text){
   for(const raw of String(text).split(/\r?\n/)){
     const line = raw.trim();
     if(line.startsWith("//")) continue;
-    const dm = line.match(/^(updated|status note|status|email|reddit)\s*:\s*(.+)$/i);
+    const dm = line.match(/^(updated|status note|status|email|reddit|my encora|encora)\s*:\s*(.+)$/i);
     if(dm){
       const k = dm[1].toLowerCase(), v = dm[2].trim();
       if(k === "updated") UPDATED = parseDate(v); else if(k === "status") STATUS = v; else if(k === "status note") STATUS_NOTE = v;
-      else if(k === "email") CONTACT.email = v; else CONTACT.reddit = v;
+      else if(k === "email") CONTACT.email = v; else if(/encora$/.test(k)){ /* used on the home page */ } else CONTACT.reddit = v;
       field = null; continue;
     }
     const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
