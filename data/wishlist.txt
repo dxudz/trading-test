@@ -1,10 +1,9 @@
 // ============================================================
-// YOUR WISHLIST. Same pasting style as the collection, plus a quick bullet list.
+// A line starting with a “-” goes into the bullet list at the top.
+// # Musicals / # Plays / # Recordings  sets the category for the detailed wants below
 //
-//   - Hedwig and the Angry Inch 2014 Audios    a line starting with "- " goes into the
-//                                               bullet list at the top. Use it for vague
-//                                               wants or anything you're not sure about.
-//   # Musicals / # Plays / # Recordings         sets the category for the detailed wants below
+// Template (most of the information is optional):
+//
 //   Title
 //   Location | Month Year | Master | Filetype (Resolution), Filesize
 //   Cast: ...        Notes: ...        (fill in only what you know, "Any" is fine)
@@ -125,7 +124,21 @@ https://encora.it/recordings/17567
 // T
 
 
-// =======================//
+// ===================//
+
+# Plays
+// # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+// A
+All In: Comedy About Love
+Never Gift, NFT until December 31, 2025
+Broadway | January, 2025 | Le Ciel d’Andalousie | MP4, 6.30GB
+Cast: Lin-Manuel Miranda (Performer), Aidy Bryant (Performer), Andrew Rannells (Performer), Nick Kroll (Performer)
+https://encora.it/recordings/2017736
+
+
+
+
+// ===================//
 
 # Audios
 // # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
