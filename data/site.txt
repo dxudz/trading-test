@@ -1,4 +1,4 @@
-Updated: November 18, 2026
+Updated: November 20, 2026
 // SITE INFO. Every line is optional, and each one stays on a single line.
 //   Status: active | wants | gifts | inactive
 //   Status note: an extra line shown on the home page
