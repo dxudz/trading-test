@@ -6,8 +6,10 @@ Updated: November 20, 2026
 //   Leave a line out to keep the site's built-in text.
 // Closed for Trades: Closed for the moment. Check back later :)
 // Limited Trades: Trading for my wants only.
+// Open for Trades: Requests are welcome!
 
-Status: active
+Status: Open for Trades
+Status note: Requests are welcome!
 Email: wiredpossum4@gmail.com
 Reddit: https://www.reddit.com/user/WiredPossum4
 Encora: https://encora.it/traders/wiredpossum4/collection
