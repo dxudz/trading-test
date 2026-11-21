@@ -4,8 +4,10 @@ Updated: November 20, 2026
 //   Status note: an extra line shown on the home page
 //   The "Updated:" date is automatic, so there is no line for it here.
 //   Leave a line out to keep the site's built-in text.
+// Closed for Trades: Closed for the moment. Check back later :)
+// Limited Trades: Trading for my wants only.
 
-Status: limited trades
+Status: active
 Email: wiredpossum4@gmail.com
 Reddit: https://www.reddit.com/user/WiredPossum4
 Encora: https://encora.it/traders/wiredpossum4/collection
