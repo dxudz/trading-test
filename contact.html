@@ -34,8 +34,8 @@ nav{position:sticky;top:0;z-index:30;padding:10px 20px 0;pointer-events:none}
 .links a.on{background:var(--green);color:#2f2a24}
 .trade{margin-left:auto;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:99px;background:rgba(155,173,80,.16);border:1.5px solid var(--green);color:var(--ink)}
 .trade::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
-.trade.mid{background:rgba(223,127,82,.16);border-color:var(--orange-l);color:#ffd9c4}.trade.mid::before{background:var(--orange-l)}
-.trade.off{background:rgba(181,86,47,.22);border-color:var(--orange);color:#f4cdb8}.trade.off::before{background:var(--orange-l)}
+.trade.mid{background:rgba(240,196,60,.16);border-color:#e8bf3a;color:#fbe8a0}.trade.mid::before{background:#e8bf3a}
+.trade.off{background:rgba(224,86,72,.18);border-color:#e0564a;color:#ffc2b8}.trade.off::before{background:#e0564a}
 .reqbtn{display:inline-block;white-space:nowrap;text-decoration:none;font-weight:700;font-size:.9rem;background:var(--orange);color:#fff3e6;border-radius:99px;padding:10px 18px}
 .reqbtn b{margin-left:8px;background:#fff3e6;color:var(--orange-d);border-radius:99px;padding:1px 9px}
 .reqbtn:hover{background:var(--orange-d)}.reqbtn.on{outline:2px solid var(--green);outline-offset:2px}
@@ -263,9 +263,9 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 footer{position:relative;overflow:hidden;isolation:isolate;margin:56px 14px 14px;padding:58px 22px 62px;text-align:center;color:#ece4d0;background:#14110e;border-radius:34px;border:1.5px solid rgba(246,240,225,.14)}
 footer::before{content:"";position:absolute;inset:-12% -10%;z-index:-2;pointer-events:none;
   background:radial-gradient(58% 95% at 10% 96%,rgba(126,176,62,.98),transparent 68%),radial-gradient(62% 100% at 92% 98%,rgba(238,124,56,1),transparent 68%),radial-gradient(40% 70% at 55% 110%,rgba(246,182,100,.75),transparent 70%);
-  filter:blur(22px);animation:fglow 14s ease-in-out infinite alternate}
+  filter:blur(12px);animation:fglow 14s ease-in-out infinite alternate}
 footer::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(14,12,10,.93) 0%,rgba(14,12,10,.62) 48%,rgba(14,12,10,.05) 100%)}
-.footbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:blur(14px) saturate(1.2);opacity:.6;transform:scale(1.15);animation:fdrift 22s ease-in-out infinite alternate}
+.footbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:blur(3px) saturate(1.2);opacity:.6;transform:scale(1.15);animation:fdrift 22s ease-in-out infinite alternate}
 @keyframes fglow{from{transform:translate(-3%,0) scale(1)}to{transform:translate(3%,-4%) scale(1.12)}}
 @keyframes fdrift{from{transform:scale(1.12) translate(-1.5%,0)}to{transform:scale(1.22) translate(1.5%,-1%)}}
 @media(prefers-reduced-motion:reduce){footer::before,.footbg{animation:none}}
@@ -276,6 +276,7 @@ footer .small{color:#d6cbb4}
 @media(max-width:640px){footer{margin:0 10px 10px;border-radius:26px;padding:44px 16px 48px}}
 /* dropdown lists readable in Chrome too */
 select{color-scheme:dark}select option,select optgroup{background:#2b2520;color:#f6f0e1}
+html.tx-wait [data-text]{visibility:hidden}
 </style>
 </head>
 <body>
@@ -323,9 +324,11 @@ function applyTexts(){
   document.querySelectorAll("[data-sn=first]").forEach(el => pick(el, sn && (i < 0 ? "" : sn.slice(0, i))));
   document.querySelectorAll("[data-sn=last]").forEach(el => pick(el, sn && (i < 0 ? sn : sn.slice(i + 1))));
   document.title = sn ? BASE_TITLE.replace("WiredPossum4's Collection", sn) : BASE_TITLE; }
-function setTexts(t){ if(!t) return; Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
-  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); }
-try{ Object.assign(TEXTS, JSON.parse(localStorage.getItem("site-texts") || "{}")); applyTexts(); }catch{}
+const reveal = () => document.documentElement.classList.remove("tx-wait");
+function setTexts(t){ if(t){ Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
+  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); } reveal(); }
+try{ const c = JSON.parse(localStorage.getItem("site-texts") || "{}"); Object.assign(TEXTS, c); applyTexts(); if(Object.keys(c).length) reveal(); }catch{}
+setTimeout(reveal, 2500);
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
@@ -348,10 +351,16 @@ function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 No
 }
 function fmtDate(d){ if(!d) return ""; if(!/^\d{4}(-\d{2}){0,2}$/.test(d)) return d;
   const [y, m, day] = d.split("-").map(Number); return (m ? MONTHS[m-1] + " " : "") + (day ? day + ", " : "") + y; }
-const STATUS_MAP = { active: { short: "Open for trade", tone: "" }, wants: { short: "Wants only", tone: "mid" }, gifts: { short: "Gifts only", tone: "mid" }, inactive: { short: "Not trading", tone: "off" } };
-function statusInfo(v){ const t = String(v || "").toLowerCase();
-  const k = /want/.test(t) ? "wants" : /gift/.test(t) ? "gifts" : /inactive|closed|not|off|pause|\bno\b/.test(t) ? "inactive" : /active|open|yes|\bon\b/.test(t) ? "active" : t ? "" : "active";
-  return STATUS_MAP[k] || { short: String(v).slice(0, 22), tone: "mid" }; }
+const STATUS_MAP = {      // only three states: open (green) | limited (yellow) | closed (red)
+  open:    { short: "Open for Trades",   label: "Open for Trades",   tone: "",    text: "" },
+  limited: { short: "Limited Trades",    label: "Limited Trades",    tone: "mid", text: "I’m only accepting a limited number of trades right now." },
+  closed:  { short: "Closed for Trades", label: "Closed for Trades", tone: "off", text: "My list is closed for now. Check back soon." }
+};
+function statusInfo(v){          // "Status: open | limited | closed" (the old words active / wants / gifts / inactive still work)
+  const t = String(v || "").toLowerCase().trim();
+  const k = !t ? "open" : /clos|inactive|\bnot\b|\bno\b|\boff\b|stop/.test(t) ? "closed" : /limit|want|gift|partial|some|few|pause|slow/.test(t) ? "limited" : /open|active|yes|\bon\b/.test(t) ? "open" : "limited";
+  return STATUS_MAP[k];
+}
 function siteInfo(text){ const out = { status: "", updated: "", email: "", reddit: "", encora: "", texts: {} };
   for(const raw of String(text).split(/\r?\n/)){ const line = raw.trim(); if(line.startsWith("//")) continue;
     const m = line.match(DIRECTIVE); if(!m) continue; const k = m[1].toLowerCase(), v = m[2].trim();
