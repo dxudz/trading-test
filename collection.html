@@ -151,9 +151,6 @@ form label{display:block;font-weight:700;margin:18px 0 6px}
 .btn{font:700 .95rem Manrope,sans-serif;border:0;border-radius:99px;padding:12px 26px;background:var(--orange);color:#fff3e6;cursor:pointer;margin-top:20px}
 .btn:hover{background:var(--orange-d)}.btn[disabled]{opacity:.6;cursor:wait}
 #rStatus{font-weight:700;color:var(--green);margin:0 0 8px}
-footer{position:relative;overflow:hidden;margin-top:56px;padding:52px 20px 56px;text-align:center;color:#cfc6b2;background:var(--bg2);border-radius:46px 46px 0 0;border-top:1.5px solid var(--line)}
-footer::before{content:"";position:absolute;left:50%;bottom:-280px;width:640px;height:640px;transform:translateX(-50%);border-radius:50%;pointer-events:none;
-  background:repeating-conic-gradient(rgba(246,240,225,.07) 0 1.2deg,transparent 1.2deg 7deg);-webkit-mask:radial-gradient(circle,#000 25%,transparent 68%);mask:radial-gradient(circle,#000 25%,transparent 68%)}
 footer>*{position:relative}
 footer h2{font:italic 700 2.1rem var(--disp);margin:0 0 6px;color:var(--ink)}
 footer h2 em{color:var(--green)}
@@ -245,7 +242,6 @@ h2.t{padding-right:48px}
   .pg{padding-top:34px}.pt{font-size:2.4rem}.panel{padding:20px;border-radius:26px}
   .btn{width:100%}
   .rcov{width:64px}
-  footer{border-radius:30px 30px 0 0}
 }
 
 /* footer sticks to the bottom on short pages */
@@ -269,6 +265,33 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 /* master gets the emphasis */
 .file .ml{font-size:.74em;text-transform:uppercase;letter-spacing:.08em;opacity:.7;font-weight:700}
 .file .mst{font-weight:800;font-size:1.12em}.file .fr{opacity:.78;font-weight:600}
+
+/* ===== footer: blurred animated photo + green/orange glow ===== */
+footer{position:relative;overflow:hidden;isolation:isolate;margin:56px 14px 14px;padding:58px 22px 62px;text-align:center;color:#ece4d0;background:#14110e;border-radius:34px;border:1.5px solid rgba(246,240,225,.14)}
+footer::before{content:"";position:absolute;inset:-12% -10%;z-index:-2;pointer-events:none;
+  background:radial-gradient(58% 95% at 10% 96%,rgba(126,176,62,.98),transparent 68%),radial-gradient(62% 100% at 92% 98%,rgba(238,124,56,1),transparent 68%),radial-gradient(40% 70% at 55% 110%,rgba(246,182,100,.75),transparent 70%);
+  filter:blur(22px);animation:fglow 14s ease-in-out infinite alternate}
+footer::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(14,12,10,.93) 0%,rgba(14,12,10,.62) 48%,rgba(14,12,10,.05) 100%)}
+.footbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:blur(14px) saturate(1.2);opacity:.6;transform:scale(1.15);animation:fdrift 22s ease-in-out infinite alternate}
+@keyframes fglow{from{transform:translate(-3%,0) scale(1)}to{transform:translate(3%,-4%) scale(1.12)}}
+@keyframes fdrift{from{transform:scale(1.12) translate(-1.5%,0)}to{transform:scale(1.22) translate(1.5%,-1%)}}
+@media(prefers-reduced-motion:reduce){footer::before,.footbg{animation:none}}
+footer h2 em{color:#f3d9a0}
+footer .links2 a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.45)}
+footer .links2 a:hover{text-decoration-color:#fff}
+footer .small{color:#d6cbb4}
+@media(max-width:640px){footer{margin:0 10px 10px;border-radius:26px;padding:44px 16px 48px}}
+/* dropdown lists readable in Chrome too */
+select{color-scheme:dark}select option,select optgroup{background:#2b2520;color:#f6f0e1}
+
+/* ticket background = the cover, blurred, under a dark gradient */
+.card{isolation:isolate}
+.cbg{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s}
+.cbg::before{content:"";position:absolute;inset:-30px;background:var(--cover) center/cover no-repeat;filter:blur(20px) saturate(1.2)}
+.cbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,6,.84) 0,rgba(10,8,6,.62) 38%,rgba(10,8,6,.8) 100%)}
+.card.hascover .cbg{opacity:1}
+.card.hascover .stub{background:rgba(10,8,6,.3)}
+@media(max-width:640px){.card.collapsed{padding-bottom:16px}.card.collapsed .tg{top:50%;transform:translateY(-50%)}}
 </style>
 </head>
 <body>
@@ -308,6 +331,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
   <h1 class="pt">Request <em>list</em></h1>
   <div class="panel">
     <p id="rStatus" role="status"></p>
+    <div class="toolrow"><button class="mini" id="copyAll" type="button" hidden>Copy all</button></div>
     <ul class="requl" id="reqUl"></ul>
     <form id="reqForm">
       <label for="rName">Your name</label>
@@ -325,6 +349,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 </div>
 
 <footer id="contact">
+  <img class="footbg" src="image/footer.jpg" alt="" aria-hidden="true" onerror="this.remove()">
   <h2>You can <em>find me</em> on</h2>
   <p class="links2" id="contactLinks"></p>
   <p class="small">Last updated <span id="upd"></span></p>
@@ -336,7 +361,7 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 /* ============================================================
    YOUR INFO
    ============================================================ */
-const CONTACT = { email: "", reddit: "" };         // filled in from the Email: and Reddit: lines in the text block
+const CONTACT = { email: "", reddit: "", encora: "" };         // filled in from the Email: and Reddit: lines in the text block
 const STATUS_MAP = {
   active:   { short: "Open for trade", tone: "",    text: "" },
   wants:    { short: "Wants only",     tone: "mid", text: "I’m only trading for shows on my wishlist right now." },
@@ -413,6 +438,7 @@ function imgTag(title, custom){
 }
 function imgOk(el){
   el.classList.add("ok");
+  const card = el.closest(".card"); if(card){ card.style.setProperty("--cover", `url("${el.currentSrc || el.src}")`); card.classList.add("hascover"); }
   const m = (el.getAttribute("src") || "").match(/^([^/]+)\/.*\.([A-Za-z0-9]+)$/);
   if(m){ IMG_PREF = { dir: m[1], ext: m[2].toLowerCase() }; try{ localStorage.setItem("archive-img", JSON.stringify(IMG_PREF)); }catch{} }
 }
@@ -423,7 +449,7 @@ function nextImg(el){
 
 const MON3 = ["jan","feb|fev","mar","apr|abr","may|mai","jun","jul","aug|ago","sep|set","oct|out","nov","dec|dez"];
 function parseDate(t){      // any common format: 2026-11-15, Nov 15 2026, 15 November 2026, 15/11/2026, 11/2026, "January 2017"...
-  t = String(t || "").trim().replace(/\s+/g, " ").replace(/[ ,T]+\d{1,2}:\d{2}(:\d{2})?(\s*[ap]m)?$/i, "");
+  t = String(t || "").trim().replace(/\s+/g, " ").replace(/[ ,T]+\d{1,2}:\d{2}(:\d{2})?(\s*[ap]m)?$/i, "").replace(/\s*,\s*/g, " ");
   if(/^\d{4}(-\d{2}){0,2}$/.test(t)) return t;
   const p2 = n => String(n).padStart(2, "0"), mk = (y, mo, d) => y + "-" + p2(mo) + (d ? "-" + p2(d) : "");
   const mi = s => MON3.findIndex(x => x.split("|").includes(s.slice(0, 3).toLowerCase()));
@@ -454,7 +480,7 @@ function parseArchive(text){
     if(dm){
       const k = dm[1].toLowerCase(), v = dm[2].trim();
       if(k === "updated") UPDATED = parseDate(v); else if(k === "status") STATUS = v; else if(k === "status note") STATUS_NOTE = v;
-      else if(k === "email") CONTACT.email = v; else if(/encora$/.test(k)){ /* used on the home page */ } else if(TEXT_KEYS.includes(k)) PARSED_TEXTS[k] = v; else CONTACT.reddit = v;
+      else if(k === "email") CONTACT.email = v; else if(/encora$/.test(k)){ CONTACT.encora = v; } else if(TEXT_KEYS.includes(k)) PARSED_TEXTS[k] = v; else CONTACT.reddit = v;
       field = null; continue;
     }
     const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
@@ -543,7 +569,8 @@ const SVG_COPY = `<svg class="i-copy" viewBox="0 0 24 24" width="16" height="16"
 // "Title | Location | Month Day, Year | Master | Filetype (Resolution), Filesize"
 function copyStr(s, v){
   const ft = [v.filetype && v.filetype + (v.resolution ? " (" + v.resolution + ")" : ""), v.size].filter(Boolean).join(", ");
-  return [s.title, v.loc, fmtDate(v.date), v.master, ft].filter(Boolean).join(" | ");
+  const link = /^https?:\/\//i.test(v.link) ? v.link : "";
+  return [s.title, v.loc, fmtDate(v.date), v.master, ft, link].filter(Boolean).join(" | ");
 }
 async function copyText(t){
   try{ await navigator.clipboard.writeText(t); return true; }catch{}
@@ -578,7 +605,7 @@ function card(s, i, id){
   const letter = esc(key(s)[0]?.toUpperCase() || "?");
   const art = imgTag(s.title, s.image);
   const n = s.viewings.length, tot = s.total ?? n;
-  return `<article class="card t${i % 3}${COLL.has(ckey(s)) ? " collapsed" : ""}" data-k="${esc(ckey(s))}"${id ? ` id="${id}"` : ""}>
+  return `<article class="card t${i % 3}${COLL.has(ckey(s)) ? " collapsed" : ""}" data-k="${esc(ckey(s))}"${id ? ` id="${id}"` : ""}><div class="cbg" aria-hidden="true"></div>
     <div class="stub"><div class="poster"><span class="ltr" aria-hidden="true">${letter}</span>${art}</div></div>
     <div class="body"><button class="tg" type="button" aria-expanded="${!COLL.has(ckey(s))}" aria-label="Show or hide details" title="Show / hide details">${SVG_CHEV}</button><h2 class="t">${esc(s.title)}</h2>
       <p class="meta">${esc(s.category)} · ${n === tot ? n : n + " of " + tot} ${tot === 1 ? "show" : "shows"}</p>
@@ -635,8 +662,11 @@ function reqItem(k){
 function renderReq(){
   $("reqUl").innerHTML = reqSet.size ? [...reqSet].map(reqItem).join("")
     : `<li class="none">Nothing here yet.</li>`;
-  $("reqForm").hidden = !reqSet.size;
+  $("reqForm").hidden = !reqSet.size; $("copyAll").hidden = !reqSet.size;
 }
+$("copyAll").addEventListener("click", async () => { const n = reqSet.size;
+  const ok = await copyText([...reqSet].map(k => { const r = REQ_INDEX.get(k); return r ? copyStr(r.s, r.v) : k; }).join("\n"));
+  setStatus(ok ? "Copied " + n + (n === 1 ? " item." : " items.") : "Couldn’t copy, please try again."); });
 const toggle = k => { reqSet.has(k) ? reqSet.delete(k) : reqSet.add(k); saveReq(); setStatus(""); render(); renderReq(); };
 
 $("q").addEventListener("input", render);
@@ -694,7 +724,7 @@ window.addEventListener("hashchange", route);
 
 const st = statusInfo(STATUS);
 $("trade").textContent = st.short; $("trade").className = "trade" + (st.tone ? " " + st.tone : "");
-$("contactLinks").innerHTML = [CONTACT.email && `<a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a>`, CONTACT.reddit && `<a href="${esc(CONTACT.reddit)}" target="_blank" rel="noopener">${esc(redditName(CONTACT.reddit))}</a>`].filter(Boolean).join(" · ");
+$("contactLinks").innerHTML = [CONTACT.email && `<a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a>`, CONTACT.reddit && `<a href="${esc(CONTACT.reddit)}" target="_blank" rel="noopener">${esc(redditName(CONTACT.reddit))}</a>`, CONTACT.encora && `<a href="${esc(CONTACT.encora)}" target="_blank" rel="noopener">My Encora</a>`].filter(Boolean).join(" · ");
 const updated = fmtDate(UPDATED || SHOWS.map(lastSeen).sort().pop() || "");
 $("upd").textContent = updated;
 $("upd2").textContent = updated;
