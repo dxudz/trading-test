@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="tx-wait">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +34,8 @@ nav{position:sticky;top:0;z-index:30;padding:10px 20px 0;pointer-events:none}
 .links a.on{background:var(--green);color:#2f2a24}
 .trade{margin-left:auto;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:99px;background:rgba(155,173,80,.16);border:1.5px solid var(--green);color:var(--ink)}
 .trade::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
-.trade.mid{background:rgba(223,127,82,.16);border-color:var(--orange-l);color:#ffd9c4}.trade.mid::before{background:var(--orange-l)}
-.trade.off{background:rgba(181,86,47,.22);border-color:var(--orange);color:#f4cdb8}.trade.off::before{background:var(--orange-l)}
+.trade.mid{background:rgba(240,196,60,.16);border-color:#e8bf3a;color:#fbe8a0}.trade.mid::before{background:#e8bf3a}
+.trade.off{background:rgba(224,86,72,.18);border-color:#e0564a;color:#ffc2b8}.trade.off::before{background:#e0564a}
 .reqbtn{display:inline-block;white-space:nowrap;text-decoration:none;font-weight:700;font-size:.9rem;background:var(--orange);color:#fff3e6;border-radius:99px;padding:10px 18px}
 .reqbtn b{margin-left:8px;background:#fff3e6;color:var(--orange-d);border-radius:99px;padding:1px 9px}
 .reqbtn:hover{background:var(--orange-d)}.reqbtn.on{outline:2px solid var(--green);outline-offset:2px}
@@ -278,9 +278,9 @@ body>main,body>.page:not([hidden]){margin-bottom:56px}
 footer{position:relative;overflow:hidden;isolation:isolate;margin:56px 14px 14px;padding:58px 22px 62px;text-align:center;color:#ece4d0;background:#14110e;border-radius:34px;border:1.5px solid rgba(246,240,225,.14)}
 footer::before{content:"";position:absolute;inset:-12% -10%;z-index:-2;pointer-events:none;
   background:radial-gradient(58% 95% at 10% 96%,rgba(126,176,62,.98),transparent 68%),radial-gradient(62% 100% at 92% 98%,rgba(238,124,56,1),transparent 68%),radial-gradient(40% 70% at 55% 110%,rgba(246,182,100,.75),transparent 70%);
-  filter:blur(22px);animation:fglow 14s ease-in-out infinite alternate}
+  filter:blur(12px);animation:fglow 14s ease-in-out infinite alternate}
 footer::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(14,12,10,.93) 0%,rgba(14,12,10,.62) 48%,rgba(14,12,10,.05) 100%)}
-.footbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:blur(14px) saturate(1.2);opacity:.6;transform:scale(1.15);animation:fdrift 22s ease-in-out infinite alternate}
+.footbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:blur(3px) saturate(1.2);opacity:.6;transform:scale(1.15);animation:fdrift 22s ease-in-out infinite alternate}
 @keyframes fglow{from{transform:translate(-3%,0) scale(1)}to{transform:translate(3%,-4%) scale(1.12)}}
 @keyframes fdrift{from{transform:scale(1.12) translate(-1.5%,0)}to{transform:scale(1.22) translate(1.5%,-1%)}}
 @media(prefers-reduced-motion:reduce){footer::before,.footbg{animation:none}}
@@ -292,14 +292,13 @@ footer .small{color:#d6cbb4}
 /* dropdown lists readable in Chrome too */
 select{color-scheme:dark}select option,select optgroup{background:#2b2520;color:#f6f0e1}
 
-/* ticket background = the cover, blurred, under a dark gradient */
-.card{isolation:isolate}
-.cbg{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s}
-.cbg::before{content:"";position:absolute;inset:-30px;background:var(--cover) center/cover no-repeat;filter:blur(20px) saturate(1.2)}
-.cbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,6,.84) 0,rgba(10,8,6,.62) 38%,rgba(10,8,6,.8) 100%)}
-.card.hascover .cbg{opacity:1}
-.card.hascover .stub{background:rgba(10,8,6,.3)}
 @media(max-width:640px){.card.collapsed{padding-bottom:16px}.card.collapsed .tg{top:50%;transform:translateY(-50%)}}
+html.tx-wait [data-text]{visibility:hidden}
+
+/* master in its own bubble, the other file info grouped in a second one */
+.files{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}.files .file{margin:0}
+.file.mbub{background:color-mix(in srgb,var(--cf) 28%,transparent);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--cf) 75%,transparent)}
+.file.mbub .ml{opacity:.8}
 </style>
 </head>
 <body>
@@ -315,7 +314,7 @@ select{color-scheme:dark}select option,select optgroup{background:#2b2520;color:
   <div class="hl">
     <div class="hmeta"><span>Updated on <span id="upd2">–</span></span><span class="trade tm" id="trade2" hidden></span></div>
     <h1><span class="scr" data-sn="first">WiredPossum4's</span> <span class="blk">Wishlist</span></h1>
-    <div class="hbot"><p class="sub" data-text="wishlist description">Shows I’m still looking for. If you have one of them, I’d love to hear from you!</p></div>
+    <div class="hbot"><p class="sub" data-text="wishlist description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p></div>
   </div>
   <div class="hr"><div class="glass">
     <div class="gtop"><span class="gl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search the wishlist</span></div>
@@ -364,9 +363,11 @@ function applyTexts(){
   document.querySelectorAll("[data-sn=first]").forEach(el => pick(el, sn && (i < 0 ? "" : sn.slice(0, i))));
   document.querySelectorAll("[data-sn=last]").forEach(el => pick(el, sn && (i < 0 ? sn : sn.slice(i + 1))));
   document.title = sn ? BASE_TITLE.replace("WiredPossum4's Collection", sn) : BASE_TITLE; }
-function setTexts(t){ if(!t) return; Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
-  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); }
-try{ Object.assign(TEXTS, JSON.parse(localStorage.getItem("site-texts") || "{}")); applyTexts(); }catch{}
+const reveal = () => document.documentElement.classList.remove("tx-wait");
+function setTexts(t){ if(t){ Object.keys(TEXTS).forEach(k => delete TEXTS[k]); Object.assign(TEXTS, t);
+  try{ localStorage.setItem("site-texts", JSON.stringify(TEXTS)); }catch{} applyTexts(); } reveal(); }
+try{ const c = JSON.parse(localStorage.getItem("site-texts") || "{}"); Object.assign(TEXTS, c); applyTexts(); if(Object.keys(c).length) reveal(); }catch{}
+setTimeout(reveal, 2500);
 
 const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#\s]+)/i); return m ? "u/" + m[1] : "Reddit"; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -428,7 +429,6 @@ function imgTag(title, custom){
 }
 function imgOk(el){
   el.classList.add("ok");
-  const card = el.closest(".card"); if(card){ card.style.setProperty("--cover", `url("${el.currentSrc || el.src}")`); card.classList.add("hascover"); }
   const m = (el.getAttribute("src") || "").match(/^([^/]+)\/.*\.([A-Za-z0-9]+)$/);
   if(m){ IMG_PREF = { dir: m[1], ext: m[2].toLowerCase() }; try{ localStorage.setItem("archive-img", JSON.stringify(IMG_PREF)); }catch{} }
 }
@@ -518,13 +518,13 @@ function linkLabel(u){
 }
 function viewing(v){
   const rest = [v.filetype, v.resolution, v.size].filter(Boolean).join(" · ");
-  const file = (v.master || rest) ? `<span class="ml">${v.master ? "Master " : ""}</span>${v.master ? `<b class="mst">${esc(v.master)}</b>` : ""}${v.master && rest ? " · " : ""}${rest ? `<span class="fr">${esc(rest)}</span>` : ""}` : "";
+  const file = (v.master || rest) ? `<div class="files">${v.master ? `<span class="file mbub"><span class="ml">Master</span> <b class="mst">${esc(v.master)}</b></span>` : ""}${rest ? `<span class="file">${esc(rest)}</span>` : ""}</div>` : "";
   const link = /^https?:\/\//i.test(v.link) ? `<a class="pill" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer">${esc(linkLabel(v.link))}</a>` : "";
   const tags = v.tags.map(t => `<span class="pill${tagCls(t) ? " " + tagCls(t) : ""}">${esc(t)}</span>`).join("") + link;
   const f = [["Cast", v.cast], ["Details", v.details], ["Notes", v.notes], ["More details", v.more]]
     .filter(r => r[1]).map(r => `<p class="f"><b>${r[0]}</b>${esc(r[1])}</p>`).join("");
   return `<div class="v"><div class="vh"><h3>${esc(fmtDate(v.date) || "Any date")}</h3></div>
-    ${v.loc ? `<p class="where">${esc(v.loc)}</p>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}${file ? `<p class="file">${file}</p>` : ""}${f}</div>`;
+    ${v.loc ? `<p class="where">${esc(v.loc)}</p>` : ""}${tags ? `<div class="tags">${tags}</div>` : ""}${file}${f}</div>`;
 }
 const COLL = new Set(), ckey = s => s.category + "|" + s.title;
 const SVG_CHEV = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
@@ -532,7 +532,7 @@ function card(s, i, id){
   const letter = esc(key(s)[0]?.toUpperCase() || "?");
   const art = imgTag(s.title, s.image);
   const n = s.viewings.length, tot = s.total ?? n;
-  return `<article class="card t${i % THEMES}${COLL.has(ckey(s)) ? " collapsed" : ""}" data-k="${esc(ckey(s))}"${id ? ` id="${id}"` : ""}><div class="cbg" aria-hidden="true"></div>
+  return `<article class="card t${i % THEMES}${COLL.has(ckey(s)) ? " collapsed" : ""}" data-k="${esc(ckey(s))}"${id ? ` id="${id}"` : ""}>
     <div class="stub"><div class="poster"><span class="ltr" aria-hidden="true">${letter}</span>${art}</div></div>
     <div class="body"><button class="tg" type="button" aria-expanded="${!COLL.has(ckey(s))}" aria-label="Show or hide details" title="Show / hide details">${SVG_CHEV}</button><h2 class="t">${esc(s.title)}</h2>
       <p class="meta">${esc(s.category)} · ${n === tot ? n : n + " of " + tot} ${tot === 1 ? "version" : "versions"} wanted</p>
@@ -577,16 +577,15 @@ function render(){
 }
 
 /* ---------- header badge, date and contact links come from collection.html ---------- */
-const STATUS_MAP = {
-  active:   { short: "Open for trade", tone: "" },
-  wants:    { short: "Wants only",     tone: "mid" },
-  gifts:    { short: "Gifts only",     tone: "mid" },
-  inactive: { short: "Not trading",    tone: "off" }
+const STATUS_MAP = {      // only three states: open (green) | limited (yellow) | closed (red)
+  open:    { short: "Open for Trades",   label: "Open for Trades",   tone: "",    text: "" },
+  limited: { short: "Limited Trades",    label: "Limited Trades",    tone: "mid", text: "I’m only accepting a limited number of trades right now." },
+  closed:  { short: "Closed for Trades", label: "Closed for Trades", tone: "off", text: "My list is closed for now. Check back soon." }
 };
-function statusInfo(v){
-  const t = String(v || "").toLowerCase();
-  const k = /want/.test(t) ? "wants" : /gift/.test(t) ? "gifts" : /inactive|closed|not|off|pause|\bno\b/.test(t) ? "inactive" : /active|open|yes|\bon\b/.test(t) ? "active" : t ? "" : "active";
-  return STATUS_MAP[k] || { short: String(v).slice(0, 22), tone: "mid" };
+function statusInfo(v){          // "Status: open | limited | closed" (the old words active / wants / gifts / inactive still work)
+  const t = String(v || "").toLowerCase().trim();
+  const k = !t ? "open" : /clos|inactive|\bnot\b|\bno\b|\boff\b|stop/.test(t) ? "closed" : /limit|want|gift|partial|some|few|pause|slow/.test(t) ? "limited" : /open|active|yes|\bon\b/.test(t) ? "open" : "limited";
+  return STATUS_MAP[k];
 }
 function siteInfo(text){
   const out = { status: "", updated: "", email: "", reddit: "", encora: "", texts: {} };
