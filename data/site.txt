@@ -1,9 +1,9 @@
-Updated: November 23, 2026
-// SITE INFO. Every line is optional, and each one stays on a single line.
-//   Status: open | closed | limited
-//   Status note: an extra line shown on the home page
-//   The "Updated:" date is automatic, so there is no line for it here.
-//   Leave a line out to keep the site's built-in text.
+Updated: November 25, 2026
+// SITE INFO
+// Status can be: open | closed | limited
+// Status note: an extra line shown on the home page
+// updated line is now automatic
+// Some notes:
 // Closed for Trades: Closed for the moment. Check back later :)
 // Limited Trades: Trading for my wants only.
 // Open for Trades: Requests are welcome!
