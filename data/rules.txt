@@ -1,8 +1,7 @@
-// CONTACT & RULES page text.
-//   # Heading        a title
-//   - something      a bullet point
-//   plain line       a paragraph
-// Lines starting with // are ignored.
+// CONTACT & RULES page text
+// # Heading        a title
+// - something      a bullet point
+// plain line       a paragraph
 
 # About Me
 ATM I’m really interested in collecting The Book of Mormon, Hedwig and the Angry Inch, and Falsettos!!
