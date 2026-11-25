@@ -1,23 +1,19 @@
-// ============================================================
-// A line starting with a “-” goes into the bullet list at the top.
-// # Musicals / # Plays / # Recordings  sets the category for the detailed wants below
+// ‘-’ bullet list at the top
+// # Musicals / # Plays / # Audios  categories
 //
-// Template (most of the information is optional):
+// Template (most of the info is optional):
 //
 //   Title
 //   Location | Month Year | Master | Filetype (Resolution), Filesize
-//   Cast: ...        Notes: ...        (fill in only what you know, "Any" is fine)
-//   EVERYTHING IS OPTIONAL. Leave out whatever you don't have, or fill only part of the
-//   Location | Month Year | Master | Filetype line (for example: Broadway | 2017). You can
-//   also give single items their own line:  Location: ...  Date: ...  Master: ...  Format: MKV (HD), 10GB
-//   A show needs at least one line besides its title (tags, cast, notes, a link...).
-//   For a bare title, put --- on the line under it.
-//   Image: image/my-poster.png                 optional; otherwise the picture is found by the show's name
-//                                               in your "images" or "image" folder (falsettos.jpg, Falsettos.png...)
-//   Updated: November 11, 2026                  optional; shown in the header and footer
+//   Cast: ...
+//   Notes: ...
+//   More Details: ...
+//   Encora Link
 //
-// Lines starting with // are ignored.
-// ============================================================
+//   For a bare title, put --- on the line under it
+//   Image: image/my-poster.png (write the show’s name without special characters)
+//
+//
 
 - Anything with Andrew Rannells/Christian Borle
 - The Book of Mormon (any cast)
@@ -31,21 +27,9 @@
 # Musicals
 // # A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 // A
-Andrew Rannells in Concert
-Subtitles (en)
-Live From Lincoln Center | December 20, 2017 | Pro-Shot | MP4, 1.7GB
-Cast: Andrew Rannells (Performer)
-Notes: For one night only in the gorgeous Appel Room, Andrew Rannells brings his signature blend of superb vocal prowess and wry wit to a sparkling set of songs. Filmed for Live From Lincoln Center.
-https://encora.it/recordings/2028750
 
 
 // B
-The Book of Mormon
-Broadway | 2011 | House-Cam | VOB + smalls, 2GB
-Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M. James (Nabulungi), Rory O'Malley (Elder McKinley)
-Notes: House camera. Clear audio, missing VTS_01_3.VOB and .BUP files. Ends during the dialogue right before “Man Up”
-https://encora.it/recordings/1575
-
 The Book of Mormon
 Broadway (Preview) | March 1, 2011 | NYCG8R | VOB + smalls, 3.66GB
 Cast: Andrew Rannells (Elder Price), Josh Gad (Elder Cunningham), Nikki M. James (Nabulungi), Rory O'Malley (Elder McKinley), Michael Potts (Mafala Hatimbi), Lewis Cleale (Mission President), Kevin Duda (Cunningham's Father), Darlesia Cearcy (Sadaka), Clark Johnsen (Elder Michaels), Scott Barnhardt (Elder Thomas), Justin Bohon (Elder Zelder), John Eric Parker (Guard), Asmeret Ghebremichael (Ensemble)
