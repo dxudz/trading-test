@@ -373,9 +373,9 @@ const redditName = u => { const m = String(u || "").match(/\/(?:u|user)\/([^\/?#
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const TABS = [["Musical","Musicals"],["Audio","Audios"],["Play","Plays"],["","All"]];
+const TABS = [["Video","Videos"],["Audio","Audios"],["","All"]];
 const THEMES = 3;
-let cat = "Musical";
+let cat = "Video";
 
 function fmtDate(d){
   if(!d) return "";
@@ -456,7 +456,7 @@ const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|ma
 const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora|index description|collection description|wishlist description|site name|contact title)\s*:\s*(.+)$/i;
 function parseArchive(text){
   const bullets = []; let updated = "";
-  const blocks = []; let cat = "Musical", cur = null, field = null;
+  const blocks = []; let cat = "Video", cur = null, field = null;
   const push = () => { if(cur && cur.title) blocks.push(cur); cur = null; field = null; };
   const start = title => { cur = { title, category: cat, tags: [], link: "", loc: "", date: "", master: "", filetype: "", resolution: "", size: "",
     cast: "", details: "", notes: "", more: "", image: "", added: "", info: false, has: false }; field = null; };
@@ -467,8 +467,8 @@ function parseArchive(text){
     if(dm){ if(dm[1].toLowerCase() === "updated") updated = parseDate(dm[2].trim()); field = null; continue; }
     const bm = line.match(/^[-•*]\s+(.+)$/);
     if(bm && !field){ push(); bullets.push(bm[1].trim()); continue; }
-    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
-    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Audio"; continue; }
+    const h = line.match(/^(?:#+|=+)\s*(videos?|musicals?|plays?|audios?|recordings?)\b/i);
+    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "a" || c === "r" ? "Audio" : "Video"; continue; }
     if(/^-{3,}$/.test(line)){ push(); continue; }
     if(!line){ field = null; continue; }
     const lab = line.match(LABEL), isUrl = /^https?:\/\//i.test(line), hasPipe = line.includes("|"), plain = !lab && !isUrl && !hasPipe;
@@ -497,7 +497,7 @@ function parseArchive(text){
   push();
   const map = new Map();
   blocks.forEach((b, i) => {
-    const id = b.category + "|" + b.title.toLowerCase();      // the same title can be a musical AND a recording
+    const id = b.category + "|" + b.title.toLowerCase();      // the same title can be a video AND an audio
     let s = map.get(id);
     if(!s){ s = { title: b.title, category: b.category, image: "", viewings: [], ord: 0 }; map.set(id, s); }
     if(b.image) s.image = b.image;
@@ -600,12 +600,12 @@ function siteInfo(text){
 const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
 async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
 async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
-async function loadArchiveText(){          // data/musicals.txt + audios.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in. An old recordings.txt still counts as audios.
-  const [site, mus, aud, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "audios.txt", "recordings.txt", "plays.txt"].map(getTxt));
-  const all = [mus, aud, rec, pla], old = all.some(hasContent) ? null : await getTxt("collection.txt");
+async function loadArchiveText(){          // data/videos.txt + audios.txt (+ site.txt). The old musicals.txt / plays.txt / recordings.txt still count until you empty them. Falls back to the old collection.txt until those are filled in.
+  const [site, vid, mus, pla, aud, rec] = await Promise.all(["site.txt", "videos.txt", "musicals.txt", "plays.txt", "audios.txt", "recordings.txt"].map(getTxt));
+  const all = [vid, mus, pla, aud, rec], old = all.some(hasContent) ? null : await getTxt("collection.txt");
   if(old === null && [site, ...all].every(x => x === null)) throw new Error("no data");
   if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
-  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Audios\n" + (aud || "") + "\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+  return [hasContent(site) && site, "# Videos\n" + [vid, mus, pla].filter(Boolean).join("\n\n"), "# Audios\n" + [aud, rec].filter(Boolean).join("\n\n")].filter(Boolean).join("\n\n");
 }
 async function loadSite(){
   try{
