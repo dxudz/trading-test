@@ -193,7 +193,7 @@ footer .small{font-size:.85rem;color:#9a8f7c;margin-top:20px}
 .glinks a:hover{border-color:#fff}
 #counter{padding:48px 0 10px}
 #counter h2{margin:0 0 18px;font:italic 700 clamp(2rem,4vw,2.8rem)/1.1 var(--disp)}
-.counter{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:14px}
+.counter{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px}
 .ctile{display:flex;flex-direction:column;justify-content:flex-end;min-height:170px;padding:20px 22px 18px;border-radius:28px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none}
 .ctile b{font:800 clamp(2.8rem,6vw,4.6rem)/1 "Inter Tight","Helvetica Neue",Arial,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .ctile span{margin-top:8px;font-weight:700;font-size:.95rem}
@@ -357,9 +357,8 @@ html.tx-wait [data-text]{visibility:hidden}
     <h2>In the archive</h2>
     <div class="counter">
       <div class="ctile big"><b id="c-shows">0</b><span>shows in the archive</span><small id="c-titles">&nbsp;</small></div>
-      <a class="ctile" href="collection.html?cat=musicals#collection"><b id="c-m">0</b><span>musicals</span><small id="c-ms">&nbsp;</small></a>
+      <a class="ctile" href="collection.html?cat=videos#collection"><b id="c-m">0</b><span>videos</span><small id="c-ms">&nbsp;</small></a>
       <a class="ctile" href="collection.html?cat=audios#collection"><b id="c-r">0</b><span>audios</span><small id="c-rs">&nbsp;</small></a>
-      <a class="ctile" href="collection.html?cat=plays#collection"><b id="c-p">0</b><span>plays</span><small id="c-ps">&nbsp;</small></a>
     </div>
   </section>
   <section id="recent" hidden>
@@ -386,10 +385,10 @@ html.tx-wait [data-text]{visibility:hidden}
    ============================================================ */
 const FALLBACK = { status: "active", note: "", updated: "October 30, 2026",
   email: "you@example.com", reddit: "https://www.reddit.com/user/WiredPossum4",
-  musicals: { titles: 1, shows: 2 }, plays: { titles: 1, shows: 1 }, audios: { titles: 1, shows: 1 },
+  videos: { titles: 2, shows: 3 }, audios: { titles: 1, shows: 1 },
   recent: [ { title: "Example Cast Album", category: "Audio", image: "" },
-            { title: "Hamlet", category: "Play", image: "" },
-            { title: "Falsettos", category: "Musical", image: "" } ] };
+            { title: "Hamlet", category: "Video", image: "" },
+            { title: "Falsettos", category: "Video", image: "" } ] };
 
 const $ = id => document.getElementById(id);
 const TEXT_KEYS = ["index description", "collection description", "wishlist description", "site name", "contact title"];
@@ -476,7 +475,7 @@ const LABEL = /^(cast|more details?|details?|notes?|image|added|location|date|ma
 const DIRECTIVE = /^(updated|status note|status|email|reddit|my encora|encora|index description|collection description|wishlist description|site name|contact title)\s*:\s*(.+)$/i;
 function parseArchive(text){
   const out = { status: "", note: "", updated: "", email: "", reddit: "", encora: "", texts: {} };
-  const blocks = []; let cat = "Musical", cur = null, field = null;
+  const blocks = []; let cat = "Video", cur = null, field = null;
   const push = () => { if(cur) blocks.push(cur); cur = null; field = null; };
   const start = title => { cur = { title, category: cat, has: false, info: false, tagged: false, image: "", added: "" }; field = null; };
   for(const raw of String(text).split(/\r?\n/)){
@@ -489,8 +488,8 @@ function parseArchive(text){
       else if(k === "email") out.email = v; else if(/encora$/.test(k)) out.encora = v; else if(TEXT_KEYS.includes(k)) out.texts[k] = v; else out.reddit = v;
       field = null; continue;
     }
-    const h = line.match(/^(?:#+|=+)\s*(musicals?|plays?|audios?|recordings?)\b/i);
-    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "m" ? "Musical" : c === "p" ? "Play" : "Audio"; continue; }
+    const h = line.match(/^(?:#+|=+)\s*(videos?|musicals?|plays?|audios?|recordings?)\b/i);
+    if(h){ push(); const c = h[1][0].toLowerCase(); cat = c === "a" || c === "r" ? "Audio" : "Video"; continue; }
     if(/^-{3,}$/.test(line)){ push(); continue; }
     if(!line){ field = null; continue; }
     const lab = line.match(LABEL), isUrl = /^https?:\/\//i.test(line), hasPipe = line.includes("|"), plain = !lab && !isUrl && !hasPipe;
@@ -508,7 +507,7 @@ function parseArchive(text){
     if(!cur.tagged && !hasPipe){ cur.tagged = true; cur.has = true; continue; }
   }
   push();
-  const map = new Map(), n = { Musical: { titles: 0, shows: 0 }, Play: { titles: 0, shows: 0 }, Audio: { titles: 0, shows: 0 } };
+  const map = new Map(), n = { Video: { titles: 0, shows: 0 }, Audio: { titles: 0, shows: 0 } };
   blocks.forEach((b, i) => {
     const id = b.category + "|" + b.title.toLowerCase();
     let s = map.get(id);
@@ -519,18 +518,18 @@ function parseArchive(text){
   });
   // newest first: by "Added:" date, otherwise by position in the text
   const recent = [...map.values()].sort((a, b) => b.addedAt.localeCompare(a.addedAt) || b.ord - a.ord).slice(0, 4);
-  return { ...out, musicals: n.Musical, plays: n.Play, audios: n.Audio, recent };
+  return { ...out, videos: n.Video, audios: n.Audio, recent };
 }
 
 const hasContent = t => typeof t === "string" && t.split(/\r?\n/).some(l => l.trim() && !l.trim().startsWith("//"));
 async function getTxt(f){ try{ const r = await fetch("data/" + f, { cache: "no-cache" }); return r.ok ? await r.text() : null; }catch{ return null; } }
 async function loadSiteText(){ const s = await getTxt("site.txt"); return hasContent(s) ? s : (await getTxt("collection.txt")) || ""; }
-async function loadArchiveText(){          // data/musicals.txt + audios.txt + plays.txt (+ site.txt). Falls back to the old collection.txt until those are filled in. An old recordings.txt still counts as audios.
-  const [site, mus, aud, rec, pla] = await Promise.all(["site.txt", "musicals.txt", "audios.txt", "recordings.txt", "plays.txt"].map(getTxt));
-  const all = [mus, aud, rec, pla], old = all.some(hasContent) ? null : await getTxt("collection.txt");
+async function loadArchiveText(){          // data/videos.txt + audios.txt (+ site.txt). The old musicals.txt / plays.txt / recordings.txt still count until you empty them. Falls back to the old collection.txt until those are filled in.
+  const [site, vid, mus, pla, aud, rec] = await Promise.all(["site.txt", "videos.txt", "musicals.txt", "plays.txt", "audios.txt", "recordings.txt"].map(getTxt));
+  const all = [vid, mus, pla, aud, rec], old = all.some(hasContent) ? null : await getTxt("collection.txt");
   if(old === null && [site, ...all].every(x => x === null)) throw new Error("no data");
   if(old !== null) return old + "\n" + (hasContent(site) ? site : "");
-  return [hasContent(site) && site, "# Musicals\n" + (mus || ""), "# Audios\n" + (aud || "") + "\n" + (rec || ""), "# Plays\n" + (pla || "")].filter(Boolean).join("\n\n");
+  return [hasContent(site) && site, "# Videos\n" + [vid, mus, pla].filter(Boolean).join("\n\n"), "# Audios\n" + [aud, rec].filter(Boolean).join("\n\n")].filter(Boolean).join("\n\n");
 }
 async function load(){
   try{
@@ -552,7 +551,7 @@ function tween(el, to){
 }
 const plural = (n, a, b) => n + " " + (n === 1 ? a : b);
 
-const CAT_KEY = { Musical: "musicals", Play: "plays", Audio: "audios" };
+const CAT_KEY = { Video: "videos", Audio: "audios" };
 function drawRecent(list){
   $("recent").hidden = !list.length;
   $("recent-grid").innerHTML = list.map(s => {
@@ -573,10 +572,10 @@ function draw(d){
   const upd = fmtDate(d.updated) || "–";
   $("upd").textContent = upd; $("upd2").textContent = upd;
 
-  const cats = [d.musicals, d.plays, d.audios];
+  const cats = [d.videos, d.audios];
   const shows = cats.reduce((n, c) => n + c.shows, 0), titles = cats.reduce((n, c) => n + c.titles, 0);
   tween($("c-shows"), shows); $("c-titles").textContent = "across " + plural(titles, "title", "titles");
-  [["c-m", d.musicals], ["c-p", d.plays], ["c-r", d.audios]].forEach(([id, c]) => {
+  [["c-m", d.videos], ["c-r", d.audios]].forEach(([id, c]) => {
     tween($(id), c.titles); $(id + "s").textContent = plural(c.shows, "show", "shows");
   });
 
